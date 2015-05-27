@@ -14,13 +14,15 @@
 #include <QJsonArray>
 #include <QWebView>
 #include <QList>
+#include <QWebFrame>
+#include <QWebElement>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->topic->load(QUrl("http://google.com/"));
+    ui->topic->setHtml("<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"></head><body><h1>Hello World!</h1><ul class=\"list\"><li>test</li></ul></body></html>");
 
     ui->topic_list->setColumnCount(6);
     ui->topic_list->setHeaderLabels(QStringList()<<"ID"<<tr("Title")<<tr("count")<<tr("rank")<<tr("updated")<<tr("modified"));
@@ -141,6 +143,36 @@ void MainWindow::on_action_Get_topic_list_triggered()
 
 void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
 {
-        ui->topic->load(QUrl("http://askmona.org/"+item->text(0)));
+//        ui->topic->load(QUrl("http://askmona.org/"+item->text(0)));
+    QString api_name = "responses/list";
+    QUrlQuery api_query;
+    api_query.addQueryItem("t_id",item->text(0));
+    api_query.addQueryItem("from","1");
+    api_query.addQueryItem("to","5");
+    QString key = knock_api(api_name,api_query);
+    qDebug()<<key;
+    QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
+    if (json.object().value("status").toInt() == 0){
+        ui->topic->setHtml("<h2>error</h2><BR>"+json.object().value("error").toString());
+    }else{
+        ui->topic->setHtml("<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"></head><body><div class=\"title\"></div><ul class=\"list\"></ul></body></html>");
+        QJsonArray res = json.object().value("responses").toArray();
+        QWebElement title = ui->topic->page()->mainFrame()->findFirstElement("div.title");
+        title.appendInside(item->text(1));
+        QWebElement list;
+        for (int i = 0; i < 5;i++){
+            list = ui->topic->page()->mainFrame()->findFirstElement("ul.list");
+            QString response = QString::number(res.at(i).toObject().value("r_id").toInt()) + " " +
+                    res.at(i).toObject().value("u_name").toString() +
+                    res.at(i).toObject().value("u_dan").toString() + " : " +
+                    QString::number(res.at(i).toObject().value("created").toInt()) + " [" +
+                    res.at(i).toObject().value("u_times").toString() + "] +" +
+                    res.at(i).toObject().value("receive").toString() + "MONA / " +
+                    QString::number(res.at(i).toObject().value("res_count").toInt()) + tr("man") +
+                    res.at(i).toObject().value("response").toString();
+            list.appendInside("<li>"+response+"</li>");
+            qDebug()<<response;
+        }
+    }
         qDebug()<<secret_key;
 }
