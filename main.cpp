@@ -4,6 +4,7 @@
 #include <QTranslator>
 
 int get_topic_limit;
+int get_res_limit;
 QString secret_key;
 
 int main(int argc, char *argv[])

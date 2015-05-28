@@ -55,35 +55,40 @@
         <translation>トピックリストを取得(&amp;G)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="26"/>
+        <location filename="mainwindow.cpp" line="28"/>
         <source>Title</source>
         <translation>タイトル</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="26"/>
+        <location filename="mainwindow.cpp" line="28"/>
         <source>count</source>
         <translation>レス</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="26"/>
+        <location filename="mainwindow.cpp" line="28"/>
         <source>rank</source>
         <translation>順位</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="26"/>
+        <location filename="mainwindow.cpp" line="28"/>
         <source>updated</source>
         <translation>浮上</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="26"/>
+        <location filename="mainwindow.cpp" line="28"/>
         <source>modified</source>
         <translation>更新</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="172"/>
+        <source>man</source>
+        <translation>人</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="main.cpp" line="18"/>
+        <location filename="main.cpp" line="19"/>
         <source>Mona Cha-du-ke!</source>
         <translation>モナ茶漬け</translation>
     </message>
@@ -96,29 +101,34 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="setting_window.ui" line="52"/>
+        <location filename="setting_window.ui" line="54"/>
         <source>Monacoin Address</source>
         <translation>モナコインアドレス</translation>
     </message>
     <message>
-        <location filename="setting_window.ui" line="59"/>
+        <location filename="setting_window.ui" line="61"/>
         <source>u_password</source>
         <translation>パスワード</translation>
     </message>
     <message>
-        <location filename="setting_window.ui" line="66"/>
+        <location filename="setting_window.ui" line="68"/>
         <source>u_id</source>
         <translation>ID</translation>
     </message>
     <message>
-        <location filename="setting_window.ui" line="116"/>
+        <location filename="setting_window.ui" line="118"/>
         <source>get_secretkey_and_u_id</source>
         <translation>Secret_KeyとIDを取得</translation>
     </message>
     <message>
-        <location filename="setting_window.ui" line="127"/>
+        <location filename="setting_window.ui" line="129"/>
         <source>get_topic_limit</source>
         <translation>トピックリスト取得上限</translation>
+    </message>
+    <message>
+        <location filename="setting_window.ui" line="145"/>
+        <source>get_res_limit</source>
+        <translation>レス取得上限</translation>
     </message>
 </context>
 <context>

@@ -16,6 +16,7 @@
 #include <QList>
 #include <QWebFrame>
 #include <QWebElement>
+#include <QFile>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -34,6 +35,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->topic_list->setColumnWidth(5,80);
 
     get_topic_limit = 10;
+    get_res_limit = 10;
 
 
 }
@@ -148,31 +150,41 @@ void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
     QUrlQuery api_query;
     api_query.addQueryItem("t_id",item->text(0));
     api_query.addQueryItem("from","1");
-    api_query.addQueryItem("to","5");
+    api_query.addQueryItem("to",QString::number(get_res_limit));
     QString key = knock_api(api_name,api_query);
     qDebug()<<key;
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
         ui->topic->setHtml("<h2>error</h2><BR>"+json.object().value("error").toString());
     }else{
-        ui->topic->setHtml("<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"></head><body><div class=\"title\"></div><ul class=\"list\"></ul></body></html>");
-        QJsonArray res = json.object().value("responses").toArray();
-        QWebElement title = ui->topic->page()->mainFrame()->findFirstElement("div.title");
+            //load template file
+        QString source;
+        QFile file("./template.html");
+        if(!file.open(QIODevice::ReadOnly)){
+            qDebug()<<"auti";
+        }
+        QTextStream in(&file);
+        source = in.readAll();
+        ui->topic->setHtml(source);
+            //set title
+        QWebElement title;
+        title = ui->topic->page()->mainFrame()->findFirstElement("div.title");
         title.appendInside(item->text(1));
+            //set responses
+        QJsonArray res = json.object().value("responses").toArray();
         QWebElement list;
-        for (int i = 0; i < 5;i++){
-            list = ui->topic->page()->mainFrame()->findFirstElement("ul.list");
+        for (int i = 0; i < get_res_limit; i++){
+            list = ui->topic->page()->mainFrame()->findFirstElement("div.responses");
             QString response = QString::number(res.at(i).toObject().value("r_id").toInt()) + " " +
                     res.at(i).toObject().value("u_name").toString() +
                     res.at(i).toObject().value("u_dan").toString() + " : " +
                     QString::number(res.at(i).toObject().value("created").toInt()) + " [" +
                     res.at(i).toObject().value("u_times").toString() + "] +" +
-                    res.at(i).toObject().value("receive").toString() + "MONA / " +
+                    res.at(i).toObject().value("receive").toString() + "watanabe / " +
                     QString::number(res.at(i).toObject().value("res_count").toInt()) + tr("man") +
                     res.at(i).toObject().value("response").toString();
-            list.appendInside("<li>"+response+"</li>");
-            qDebug()<<response;
+            list.appendInside("<div class=\"response\">"+response+"</div>");
+//            qDebug()<<response;
         }
     }
-        qDebug()<<secret_key;
 }

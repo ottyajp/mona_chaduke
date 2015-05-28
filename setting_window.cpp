@@ -38,5 +38,6 @@ void Setting_window::on_buttonBox_accepted()
 {
     qDebug()<<ui->get_topic_limit->text().toInt();
     get_topic_limit = ui->get_topic_limit->text().toInt();
+    get_res_limit = ui->get_res_limit->text().toInt();
 
 }
