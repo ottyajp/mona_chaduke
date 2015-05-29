@@ -17,13 +17,14 @@
 #include <QWebFrame>
 #include <QWebElement>
 #include <QFile>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->topic->setHtml("<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"></head><body><h1>Hello World!</h1><ul class=\"list\"><li>test</li></ul></body></html>");
+    ui->topic->setHtml("<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"></head><body>Mona_chaduke_top</body></html>");
 
     ui->topic_list->setColumnCount(6);
     ui->topic_list->setHeaderLabels(QStringList()<<"ID"<<tr("Title")<<tr("count")<<tr("rank")<<tr("updated")<<tr("modified"));
@@ -34,9 +35,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->topic_list->setColumnWidth(4,80);
     ui->topic_list->setColumnWidth(5,80);
 
-    get_topic_limit = 10;
-    get_res_limit = 10;
-
+    MainWindow::readSettings();
 
 }
 
@@ -56,6 +55,18 @@ void MainWindow::addTopicItem(QJsonValue topic_list_object){
     treeItem->setText(3,QString::number(topic_list_object.toObject().value("rank").toInt()));
     treeItem->setText(4,QString::number(topic_list_object.toObject().value("updated").toInt()));
     treeItem->setText(5,QString::number(topic_list_object.toObject().value("modified").toInt()));
+}
+
+void MainWindow::readSettings(){
+    QSettings settings("tea_soak_lab", "mona_chaduke");
+    get_topic_limit = settings.value("get_topic_limit").toInt();
+    get_res_limit = settings.value("get_res_limit").toInt();
+}
+
+void MainWindow::closeEvent(QCloseEvent* event){
+    QSettings settings("tea_soak_lab", "mona_chaduke");
+    settings.setValue("get_topic_limit", get_topic_limit);
+    settings.setValue("get_res_limit", get_res_limit);
 }
 
 QString knock_api(QString api_name, QUrlQuery api_query){
@@ -187,4 +198,12 @@ void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
 //            qDebug()<<response;
         }
     }
+}
+
+void MainWindow::on_action_About_triggered()
+{
+    QMessageBox::about(this, tr("about mona chaduke"),
+                       tr("<h3>mona chaduke</h3>"
+                          "<p>Ah, monamona</p>"
+                          "<p>Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz</p>"));
 }

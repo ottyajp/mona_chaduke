@@ -8,7 +8,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QTreeWidget>
-//#include <QStandardItemModel>
+#include <QSettings>
 
 QString knock_api(QString, QUrlQuery);
 extern int get_topic_limit;
@@ -37,10 +37,15 @@ private slots:
     void on_action_Get_topic_list_triggered();
 
     void on_topic_list_itemDoubleClicked(QTreeWidgetItem *item);
+    void on_action_About_triggered();
+
 private:
     Ui::MainWindow *ui;
 
     void addTopicItem(QJsonValue topic_list_object);
+    void readSettings();
+    void writeSettings();
+    void closeEvent(QCloseEvent* event);
 };
 
 #endif // MAINWINDOW_H

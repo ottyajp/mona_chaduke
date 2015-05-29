@@ -82,9 +82,16 @@
     </property>
     <addaction name="action_Get_topic_list"/>
    </widget>
+   <widget class="QMenu" name="menu_Help">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="action_About"/>
+   </widget>
    <addaction name="menu_File"/>
    <addaction name="menu_Profile"/>
    <addaction name="menuTest"/>
+   <addaction name="menu_Help"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="action_Config">
@@ -108,6 +115,11 @@
   <action name="action_Get_topic_list">
    <property name="text">
     <string>&amp;Get_topic_list</string>
+   </property>
+  </action>
+  <action name="action_About">
+   <property name="text">
+    <string>&amp;About</string>
    </property>
   </action>
  </widget>
