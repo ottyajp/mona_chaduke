@@ -64,6 +64,7 @@ void MainWindow::readSettings(){
 }
 
 void MainWindow::closeEvent(QCloseEvent* event){
+
     QSettings settings("tea_soak_lab", "mona_chaduke");
     settings.setValue("get_topic_limit", get_topic_limit);
     settings.setValue("get_res_limit", get_res_limit);

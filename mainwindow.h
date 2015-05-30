@@ -44,7 +44,6 @@ private:
 
     void addTopicItem(QJsonValue topic_list_object);
     void readSettings();
-    void writeSettings();
     void closeEvent(QCloseEvent* event);
 };
 
