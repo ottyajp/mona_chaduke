@@ -72,7 +72,6 @@ void MainWindow::closeEvent(QCloseEvent* event){
     settings.setValue("get_res_limit", get_res_limit);
     settings.setValue("user_id", user_id);
     settings.setValue("secret_key", secret_key);
-    qDebug()<<secret_key;
 }
 
 QString knock_api(QString api_name, QUrlQuery api_query){
@@ -191,14 +190,21 @@ void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
         QJsonArray res = json.object().value("responses").toArray();
         QWebElement list;
         for (int i = 0; i < get_res_limit; i++){
+            QString received_mona;
+            if(res.at(i).toObject().value("receive").toString()!="0"){
+                received_mona = "<span class=\"mona_yay\">" +res.at(i).toObject().value("receive").toString() + "watanabe</b> / " +
+                        QString::number(res.at(i).toObject().value("rec_count").toInt()) + tr("man") + "</span><BR>";
+            }else{
+                received_mona = res.at(i).toObject().value("receive").toString() + "watanabe / " +
+                        QString::number(res.at(i).toObject().value("rec_count").toInt()) + tr("man") + "</span><BR>";
+            }
             list = ui->topic->page()->mainFrame()->findFirstElement("div.responses");
             QString response = QString::number(res.at(i).toObject().value("r_id").toInt()) + " " +
                     res.at(i).toObject().value("u_name").toString() +
                     res.at(i).toObject().value("u_dan").toString() + " : " +
                     QString::number(res.at(i).toObject().value("created").toInt()) + " [" +
                     res.at(i).toObject().value("u_times").toString() + "] +" +
-                    res.at(i).toObject().value("receive").toString() + "watanabe / " +
-                    QString::number(res.at(i).toObject().value("res_count").toInt()) + tr("man") +
+                    received_mona +
                     res.at(i).toObject().value("response").toString();
             list.appendInside("<div class=\"response\">"+response+"</div>");
 //            qDebug()<<response;
