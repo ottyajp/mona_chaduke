@@ -13,6 +13,7 @@
 QString knock_api(QString, QUrlQuery);
 extern int get_topic_limit;
 extern int get_res_limit;
+extern int user_id;
 extern QString secret_key;
 
 namespace Ui {

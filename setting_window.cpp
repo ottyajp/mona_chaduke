@@ -7,8 +7,10 @@ Setting_window::Setting_window(QWidget *parent) :
     ui(new Ui::Setting_window)
 {
     ui->setupUi(this);
-    ui->get_topic_limit->setText("10");
-    extern QString secret_key;
+    ui->get_topic_limit->setText(QString::number(get_topic_limit));
+    ui->get_res_limit->setText(QString::number(get_res_limit));
+    ui->u_id->setText(QString::number(user_id));
+    QString secret_key;
 }
 
 Setting_window::~Setting_window()
@@ -32,6 +34,7 @@ void Setting_window::on_pushButton_clicked()
     secret_key = key;
     qDebug()<<secret_key;
     ui->u_id->setText(QString::number(json.object().value("u_id").toInt()));
+    user_id = json.object().value("u_id").toInt();
 }
 
 void Setting_window::on_buttonBox_accepted()

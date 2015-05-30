@@ -61,6 +61,8 @@ void MainWindow::readSettings(){
     QSettings settings("tea_soak_lab", "mona_chaduke");
     get_topic_limit = settings.value("get_topic_limit").toInt();
     get_res_limit = settings.value("get_res_limit").toInt();
+    user_id = settings.value("user_id").toInt();
+    secret_key = settings.value("secret_key").toString();
 }
 
 void MainWindow::closeEvent(QCloseEvent* event){
@@ -68,6 +70,9 @@ void MainWindow::closeEvent(QCloseEvent* event){
     QSettings settings("tea_soak_lab", "mona_chaduke");
     settings.setValue("get_topic_limit", get_topic_limit);
     settings.setValue("get_res_limit", get_res_limit);
+    settings.setValue("user_id", user_id);
+    settings.setValue("secret_key", secret_key);
+    qDebug()<<secret_key;
 }
 
 QString knock_api(QString api_name, QUrlQuery api_query){
