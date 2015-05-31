@@ -30,65 +30,91 @@
         <translation>トピック(&amp;T)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="92"/>
+        <location filename="mainwindow.ui" line="87"/>
+        <source>&amp;Help</source>
+        <translation>ヘルプ(&amp;H)</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="99"/>
         <source>&amp;Config</source>
         <translation>コンフィグ(&amp;C)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="97"/>
+        <location filename="mainwindow.ui" line="104"/>
         <source>&amp;Quit</source>
         <translation>終了(&amp;Q)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="100"/>
+        <location filename="mainwindow.ui" line="107"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="105"/>
+        <location filename="mainwindow.ui" line="112"/>
         <source>&amp;get_profile</source>
         <translation>プロフィールを取得(&amp;G)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="110"/>
+        <location filename="mainwindow.ui" line="117"/>
         <source>&amp;Get_topic_list</source>
         <translation>トピックリストを取得(&amp;G)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="28"/>
+        <location filename="mainwindow.ui" line="122"/>
+        <source>&amp;About</source>
+        <translation>&amp;About</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="31"/>
         <source>Title</source>
         <translation>タイトル</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="28"/>
+        <location filename="mainwindow.cpp" line="31"/>
         <source>count</source>
         <translation>レス</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="28"/>
+        <location filename="mainwindow.cpp" line="31"/>
         <source>rank</source>
         <translation>順位</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="28"/>
+        <location filename="mainwindow.cpp" line="31"/>
         <source>updated</source>
         <translation>浮上</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="28"/>
+        <location filename="mainwindow.cpp" line="31"/>
         <source>modified</source>
         <translation>更新</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="172"/>
+        <location filename="mainwindow.cpp" line="197"/>
+        <location filename="mainwindow.cpp" line="200"/>
         <source>man</source>
         <translation>人</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="209"/>
+        <source>send mona</source>
+        <translation>送る</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="221"/>
+        <source>about mona chaduke</source>
+        <translation>モナ茶漬け</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="222"/>
+        <source>&lt;h3&gt;mona chaduke&lt;/h3&gt;&lt;p&gt;Ah, monamona&lt;/p&gt;&lt;p&gt;Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz&lt;/p&gt;</source>
+        <translation>&lt;h3&gt;モナ茶漬け&lt;/h3&gt;&lt;p&gt;あぁ、モナモナ&lt;/p&gt;&lt;p&gt;Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="main.cpp" line="19"/>
+        <location filename="main.cpp" line="20"/>
         <source>Mona Cha-du-ke!</source>
         <translation>モナ茶漬け</translation>
     </message>
