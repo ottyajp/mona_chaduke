@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "setting_window.h"
 #include "user_profile_window.h"
+#include "jsobj.h"
 #include <QCoreApplication>
 #include <QDebug>
 #include <QNetworkAccessManager>
@@ -205,8 +206,11 @@ void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
                     QString::number(res.at(i).toObject().value("created").toInt()) + " [" +
                     res.at(i).toObject().value("u_times").toString() + "] +" +
                     received_mona +
+                    "<button onclick=\"jsobj.hogeSlot();\">Click</button>" +
                     res.at(i).toObject().value("response").toString();
             list.appendInside("<div class=\"response\">"+response+"</div>");
+            JsObj *jo = new JsObj();
+            ui->topic->page()->mainFrame()->addToJavaScriptWindowObject("jsobj",jo);
 //            qDebug()<<response;
         }
     }

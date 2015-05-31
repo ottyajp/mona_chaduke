@@ -18,11 +18,13 @@ RESOURCES += lang.qrc
 SOURCES += main.cpp\
         mainwindow.cpp \
     setting_window.cpp \
-    user_profile_window.cpp
+    user_profile_window.cpp \
+    jsobj.cpp
 
 HEADERS  += mainwindow.h \
     setting_window.h \
-    user_profile_window.h
+    user_profile_window.h \
+    jsobj.h
 
 FORMS    += mainwindow.ui \
     setting_window.ui \
