@@ -193,20 +193,20 @@ void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
         for (int i = 0; i < get_res_limit; i++){
             QString received_mona;
             if(res.at(i).toObject().value("receive").toString()!="0"){
-                received_mona = "<span class=\"mona_yay\">" +res.at(i).toObject().value("receive").toString() + "watanabe</b> / " +
-                        QString::number(res.at(i).toObject().value("rec_count").toInt()) + tr("man") + "</span><BR>";
+                received_mona = "<span class=\"mona_yay\">+" +res.at(i).toObject().value("receive").toString() + "watanabe</b> / " +
+                        QString::number(res.at(i).toObject().value("rec_count").toInt()) + tr("man") + "</span>";
             }else{
-                received_mona = res.at(i).toObject().value("receive").toString() + "watanabe / " +
-                        QString::number(res.at(i).toObject().value("rec_count").toInt()) + tr("man") + "</span><BR>";
+                received_mona = "+" + res.at(i).toObject().value("receive").toString() + "watanabe / " +
+                        QString::number(res.at(i).toObject().value("rec_count").toInt()) + tr("man") + "</span>";
             }
             list = ui->topic->page()->mainFrame()->findFirstElement("div.responses");
             QString response = QString::number(res.at(i).toObject().value("r_id").toInt()) + " " +
                     res.at(i).toObject().value("u_name").toString() +
                     res.at(i).toObject().value("u_dan").toString() + " : " +
                     QString::number(res.at(i).toObject().value("created").toInt()) + " [" +
-                    res.at(i).toObject().value("u_times").toString() + "] +" +
+                    res.at(i).toObject().value("u_times").toString() + "] " +
                     received_mona +
-                    "<button onclick=\"jsobj.hogeSlot();\">Click</button>" +
+                    " <span onclick=\"jsobj.send_mona_to_res();\" class=\"send_mona\">" + tr("send mona") + "</span><BR>" +
                     res.at(i).toObject().value("response").toString();
             list.appendInside("<div class=\"response\">"+response+"</div>");
             JsObj *jo = new JsObj();
