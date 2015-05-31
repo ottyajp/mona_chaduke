@@ -6,6 +6,6 @@ JsObj::JsObj(QObject *parent) : QObject(parent)
 
 }
 
-void JsObj::hogeSlot(){
-    QMessageBox::information(0,"JsObj::hogeSlot()","test");
+void JsObj::send_mona_to_res(){
+    QMessageBox::information(0,"t","asd");
 }

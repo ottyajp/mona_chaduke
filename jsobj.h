@@ -12,7 +12,7 @@ public:
 signals:
 
 public slots:
-    void hogeSlot();
+    void send_mona_to_res();
 };
 
 #endif // JSOBJ_H
