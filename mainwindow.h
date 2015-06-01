@@ -11,6 +11,7 @@
 #include <QSettings>
 
 QString knock_api(QString, QUrlQuery);
+QString generate_auth_key(QString, QString);
 extern int get_topic_limit;
 extern int get_res_limit;
 extern int user_id;

@@ -19,6 +19,8 @@
 #include <QWebElement>
 #include <QFile>
 #include <QMessageBox>
+#include <QCryptographicHash>
+#include <QDateTime>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -109,6 +111,13 @@ QString knock_api(QString api_name, QUrlQuery api_query){
         delete reply;
         return r;
     }
+}
+
+QString generate_auth_key(QString time, QString nonce){
+    QByteArray hash_suru = "Av610r8WvmpW4Vz3KseGRIF/SJpQFvP1Ul4EXgCZb7qQ=" + nonce.toUtf8() + time.toUtf8() + secret_key.toUtf8();
+    QByteArray hash = QCryptographicHash::hash(hash_suru,QCryptographicHash::Sha256);
+
+    return hash.toBase64();
 }
 
 void MainWindow::on_action_Config_triggered()
