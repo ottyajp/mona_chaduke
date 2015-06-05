@@ -219,7 +219,7 @@ void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
         QString source;
         QFile file("./template.html");
         if(!file.open(QIODevice::ReadOnly)){
-            qDebug()<<"auti";
+            qDebug()<<tr("can't open template file.");
         }
         QTextStream in(&file);
         source = in.readAll();
@@ -232,6 +232,9 @@ void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
         QJsonArray res = json.object().value("responses").toArray();
         QWebElement list;
         for (int i = 0; i < get_res_limit; i++){
+            if(res.at(i).toObject().value("u_name").toString() == ""){
+                break;
+            }
             QString received_mona;
             if(res.at(i).toObject().value("receive").toString()!="0"){
                 received_mona = "<span class=\"mona_yay\">+" +res.at(i).toObject().value("receive").toString() + "watanabe</b> / " +
