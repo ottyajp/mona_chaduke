@@ -19,13 +19,16 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     setting_window.cpp \
     user_profile_window.cpp \
-    jsobj.cpp
+    jsobj.cpp \
+    post_message.cpp
 
 HEADERS  += mainwindow.h \
     setting_window.h \
     user_profile_window.h \
-    jsobj.h
+    jsobj.h \
+    post_message.h
 
 FORMS    += mainwindow.ui \
     setting_window.ui \
-    user_profile_window.ui
+    user_profile_window.ui \
+    post_message.ui

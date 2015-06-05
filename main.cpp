@@ -6,7 +6,10 @@
 int get_topic_limit;
 int get_res_limit;
 int user_id;
+QString now_topic_id;
 QString secret_key;
+QString post_text;
+bool sage_check;
 
 int main(int argc, char *argv[])
 {

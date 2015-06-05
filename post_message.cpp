@@ -39,16 +39,14 @@ void post_message::on_buttonBox_accepted()
 }
 
 void call_post_message_api(){
-    QString time = QString::number(QDateTime::currentDateTime().toTime_t());
-    Nonce nonce;
-    QString auth_key = generate_auth_key(time,nonce.read_Nonce());
+    auth_Key auth_key;
     QString api_name = "responses/post";
     QUrlQuery api_query;
     api_query.addQueryItem("app_id","2332");
     api_query.addQueryItem("u_id",QString::number(user_id));
-    api_query.addQueryItem("nonce",nonce.read_Nonce());
-    api_query.addQueryItem("time",time);
-    api_query.addQueryItem("auth_key",auth_key);
+    api_query.addQueryItem("nonce",auth_key.read_nonce());
+    api_query.addQueryItem("time",auth_key.read_time());
+    api_query.addQueryItem("auth_key",auth_key.read_auth_key());
     api_query.addQueryItem("t_id",now_topic_id);
     api_query.addQueryItem("text",post_text);
     QString key = knock_api(api_name,api_query);

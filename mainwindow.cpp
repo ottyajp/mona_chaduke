@@ -2,7 +2,9 @@
 #include "ui_mainwindow.h"
 #include "setting_window.h"
 #include "user_profile_window.h"
+#include "post_message.h"
 #include "jsobj.h"
+#include <QtGlobal>
 #include <QCoreApplication>
 #include <QDebug>
 #include <QNetworkAccessManager>
@@ -90,10 +92,12 @@ QString knock_api(QString api_name, QUrlQuery api_query){
     QString address = "http://askmona.org/v1/" + api_name;
     QUrl url(address);
     //QNetworkRequest req( QUrl( QString("http://askmona.org/v1/auth/secretkey") ) );
-    url.setQuery(api_query);
+//    url.setQuery(api_query);
     QNetworkRequest req(url);
+    req.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
     QByteArray data;
     data.append(api_query.toString());
+    qDebug()<<"data:"<<data;
     QNetworkReply *reply = mgr.post(req,data);
     eventLoop.exec(); // blocks stack until "finished()" has been called
 
@@ -113,11 +117,39 @@ QString knock_api(QString api_name, QUrlQuery api_query){
     }
 }
 
-QString generate_auth_key(QString time, QString nonce){
-    QByteArray hash_suru = "Av610r8WvmpW4Vz3KseGRIF/SJpQFvP1Ul4EXgCZb7qQ=" + nonce.toUtf8() + time.toUtf8() + secret_key.toUtf8();
-    QByteArray hash = QCryptographicHash::hash(hash_suru,QCryptographicHash::Sha256);
+QString knock_api_get(QString api_name, QUrlQuery api_query){
 
-    return hash.toBase64();
+    // create custom temporary event loop on stack
+    QEventLoop eventLoop;
+
+    // "quit()" the event-loop, when the network request "finished()"
+    QNetworkAccessManager mgr;
+    QObject::connect(&mgr, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
+
+    // the HTTP request
+    QString address = "http://askmona.org/v1/" + api_name;
+    QUrl url(address);
+    //QNetworkRequest req( QUrl( QString("http://askmona.org/v1/auth/secretkey") ) );
+    url.setQuery(api_query);
+    QNetworkRequest req(url);
+    req.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
+    QNetworkReply *reply = mgr.get(req);
+    eventLoop.exec(); // blocks stack until "finished()" has been called
+
+    if (reply->error() == QNetworkReply::NoError) {
+        //success
+//        qDebug() << "Success" <<reply->readAll();
+        QString r = reply->readAll();
+        delete reply;
+        return r;
+    }
+    else {
+        //failure
+        qDebug() << "Failure" <<reply->errorString();
+        QString r = "1";
+        delete reply;
+        return r;
+    }
 }
 
 void MainWindow::on_action_Config_triggered()
@@ -171,13 +203,13 @@ void MainWindow::on_action_Get_topic_list_triggered()
 
 void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
 {
-//        ui->topic->load(QUrl("http://askmona.org/"+item->text(0)));
+    now_topic_id = item->text(0);
     QString api_name = "responses/list";
     QUrlQuery api_query;
     api_query.addQueryItem("t_id",item->text(0));
     api_query.addQueryItem("from","1");
     api_query.addQueryItem("to",QString::number(get_res_limit));
-    QString key = knock_api(api_name,api_query);
+    QString key = knock_api_get(api_name,api_query);
     qDebug()<<key;
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
@@ -232,3 +264,78 @@ void MainWindow::on_action_About_triggered()
                           "<p>Ah, monamona</p>"
                           "<p>Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz</p>"));
 }
+
+void MainWindow::on_call_post_window_clicked()
+{
+    post_message *window = new post_message(this);
+    window->setModal(1);
+    window->show();
+}
+
+void MainWindow::on_actionGet_balance_triggered()
+{
+    auth_Key auth_key;
+    QString api_name = "account/balance";
+    QUrlQuery api_query;
+    api_query.addQueryItem("app_id","2332");
+    api_query.addQueryItem("u_id",QString::number(user_id));
+    api_query.addQueryItem("nonce",auth_key.read_nonce());
+    api_query.addQueryItem("time",auth_key.read_time());
+    api_query.addQueryItem("auth_key",auth_key.read_auth_key());
+    qDebug()<<"nonce:"<<auth_key.read_nonce()<<", time:"<<auth_key.read_time()<<", auth_key:"<<auth_key.read_auth_key();
+    QString key = knock_api(api_name,api_query);
+    qDebug()<<key;
+    QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
+    if (json.object().value("status").toInt() == 0){
+        qDebug()<<"error";
+        qDebug()<<json.object().value("error").toString();
+    }else{
+        QMessageBox::information(this,tr("balance"),tr("your balance is\n")+json.object().value("balance").toString());
+    }
+}
+
+auth_Key::auth_Key(){
+    time = QString::number(QDateTime::currentDateTime().toTime_t());
+    int f = 0;
+    int pos;
+    while(1){
+        qsrand(QDateTime::currentDateTime().toTime_t());
+        for(int i=0; i<5; i++){
+            nonce.append(QString(qrand()%256));
+        }
+
+        hash = QCryptographicHash::hash("Av610r8WvmpW4Vz3KseGRIF/SJpQFvP1Ul4EXgCZb7qQ=" +
+                                        nonce.toBase64() +
+                                        time.toUtf8() +
+                                        secret_key.toUtf8(),QCryptographicHash::Sha256);
+        int pos = nonce.toBase64().toStdString().find("+",0);
+        if(pos == std::string::npos){
+            qDebug()<<nonce.toBase64();
+            f = 1;
+        }
+        pos = hash.toBase64().toStdString().find("+",0);
+        if(pos == std::string::npos){
+            qDebug()<<hash.toBase64();
+            f = 1;
+        }else{
+            f = 0;
+        }
+        qDebug()<<hash.toBase64();
+        if(f==1){
+            break;
+        }
+    }
+}
+
+QString auth_Key::read_time(){
+    return time;
+}
+
+QString auth_Key::read_nonce(){
+    return nonce.toBase64();
+}
+
+QString auth_Key::read_auth_key(){
+    return hash.toBase64();
+}
+
