@@ -251,7 +251,9 @@ void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
                     res.at(i).toObject().value("u_times").toString() + "] " +
                     received_mona +
                     " <span onclick=\"jsobj.send_mona_to_res();\" class=\"send_mona\">" + tr("send mona") + "</span><BR>" +
-                    res.at(i).toObject().value("response").toString();
+                    "<span class=\"level" + QString::number(res.at(i).toObject().value("res_lv").toInt()) + "\">" +
+                    res.at(i).toObject().value("response").toString() +
+                    "</span>";
             list.appendInside("<div class=\"response\">"+response+"</div>");
             JsObj *jo = new JsObj();
             ui->topic->page()->mainFrame()->addToJavaScriptWindowObject("jsobj",jo);
