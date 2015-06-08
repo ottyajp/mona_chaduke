@@ -248,18 +248,21 @@ void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
             //set responses
         QJsonArray res = json.object().value("responses").toArray();
         QWebElement list;
+        double receive;
         for (int i = 0; i < get_res_limit; i++){
             if(res.at(i).toObject().value("u_name").toString() == ""){
                 break;
             }
             QString received_mona;
+            receive = res.at(i).toObject().value("receive").toString().toDouble() / 100000000;
             if(res.at(i).toObject().value("receive").toString()!="0"){
-                received_mona = "<span class=\"mona_yay\">+" +res.at(i).toObject().value("receive").toString() + "watanabe</b> / " +
+                received_mona = "<span class=\"mona_yay\">+" +QString::number(receive) + "MONA</b> / " +
                         QString::number(res.at(i).toObject().value("rec_count").toInt()) + tr("man") + "</span>";
             }else{
-                received_mona = "+" + res.at(i).toObject().value("receive").toString() + "watanabe / " +
+                received_mona = "+" + QString::number(receive) + "MONA / " +
                         QString::number(res.at(i).toObject().value("rec_count").toInt()) + tr("man") + "</span>";
             }
+
             list = ui->topic->page()->mainFrame()->findFirstElement("div.responses");
             QString response = QString::number(res.at(i).toObject().value("r_id").toInt()) +
                     res.at(i).toObject().value("u_name").toString() +
