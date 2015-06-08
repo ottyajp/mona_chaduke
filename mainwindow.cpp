@@ -314,7 +314,9 @@ void MainWindow::on_actionGet_balance_triggered()
         qDebug()<<"error";
         qDebug()<<json.object().value("error").toString();
     }else{
-        QMessageBox::information(this,tr("balance"),tr("your balance is\n")+json.object().value("balance").toString());
+        double balance = json.object().value("balance").toString().toDouble();
+        balance = balance / 100000000;
+        QMessageBox::information(this,tr("balance"),tr("your balance is\n")+QString::number(balance));
     }
 }
 
