@@ -24,6 +24,7 @@
 #include <QMessageBox>
 #include <QCryptographicHash>
 #include <QDateTime>
+#include <QCloseEvent>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -72,12 +73,12 @@ void MainWindow::readSettings(){
 }
 
 void MainWindow::closeEvent(QCloseEvent* event){
-
     QSettings settings("tea_soak_lab", "mona_chaduke");
     settings.setValue("get_topic_limit", get_topic_limit);
     settings.setValue("get_res_limit", get_res_limit);
     settings.setValue("user_id", user_id);
     settings.setValue("secret_key", secret_key);
+    event->accept();
 }
 
 QString knock_api(QString api_name, QUrlQuery api_query){
@@ -323,13 +324,13 @@ auth_Key::auth_Key(){
                                         nonce.toBase64() +
                                         time.toUtf8() +
                                         secret_key.toUtf8(),QCryptographicHash::Sha256);
-        int pos = nonce.toBase64().toStdString().find("+",0);
-        if(pos == std::string::npos){
+        pos = nonce.toBase64().toStdString().find("+",0);
+        if(pos == -1){
             qDebug()<<nonce.toBase64();
             f = 1;
         }
         pos = hash.toBase64().toStdString().find("+",0);
-        if(pos == std::string::npos){
+        if(pos == -1){
             qDebug()<<hash.toBase64();
             f = 1;
         }else{
