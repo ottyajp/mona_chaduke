@@ -19,6 +19,7 @@ extern int user_id;
 extern QString now_topic_id;
 extern QString secret_key;
 extern QString post_text;
+extern QString send_to;
 extern bool sage_check;
 
 namespace Ui {
@@ -49,6 +50,8 @@ private slots:
     void on_call_post_window_clicked();
 
     void on_actionGet_balance_triggered();
+
+    void on_action_send_mona_to_res_clicked(QString);
 
 private:
     Ui::MainWindow *ui;

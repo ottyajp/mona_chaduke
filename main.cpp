@@ -9,6 +9,7 @@ int user_id;
 QString now_topic_id;
 QString secret_key;
 QString post_text;
+QString send_to;
 bool sage_check;
 
 int main(int argc, char *argv[])

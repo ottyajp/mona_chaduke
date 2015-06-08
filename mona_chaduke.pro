@@ -20,15 +20,18 @@ SOURCES += main.cpp\
     setting_window.cpp \
     user_profile_window.cpp \
     jsobj.cpp \
-    post_message.cpp
+    post_message.cpp \
+    send_mona_to_res_window.cpp
 
 HEADERS  += mainwindow.h \
     setting_window.h \
     user_profile_window.h \
     jsobj.h \
-    post_message.h
+    post_message.h \
+    send_mona_to_res_window.h
 
 FORMS    += mainwindow.ui \
     setting_window.ui \
     user_profile_window.ui \
-    post_message.ui
+    post_message.ui \
+    send_mona_to_res_window.ui

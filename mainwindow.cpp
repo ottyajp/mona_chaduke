@@ -3,6 +3,7 @@
 #include "setting_window.h"
 #include "user_profile_window.h"
 #include "post_message.h"
+#include "send_mona_to_res_window.h"
 #include "jsobj.h"
 #include <QtGlobal>
 #include <QCoreApplication>
@@ -159,6 +160,13 @@ void MainWindow::on_action_Config_triggered()
     window->show();
 }
 
+void MainWindow::on_action_send_mona_to_res_clicked(QString s){
+    send_to = s;
+    send_mona_to_res_window *window = new send_mona_to_res_window(this);
+    window->setModal(1);
+    window->show();
+}
+
 void MainWindow::on_action_Quit_triggered()
 {
     close();
@@ -244,19 +252,21 @@ void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
                         QString::number(res.at(i).toObject().value("rec_count").toInt()) + tr("man") + "</span>";
             }
             list = ui->topic->page()->mainFrame()->findFirstElement("div.responses");
-            QString response = QString::number(res.at(i).toObject().value("r_id").toInt()) + " " +
+            QString response = QString::number(res.at(i).toObject().value("r_id").toInt()) +
                     res.at(i).toObject().value("u_name").toString() +
                     res.at(i).toObject().value("u_dan").toString() + " : " +
                     QString::number(res.at(i).toObject().value("created").toInt()) + " [" +
                     res.at(i).toObject().value("u_times").toString() + "] " +
                     received_mona +
-                    " <span onclick=\"jsobj.send_mona_to_res();\" class=\"send_mona\">" + tr("send mona") + "</span><BR>" +
+                    " <span onclick=\"onClick_send_mona_link(" + QString::number(res.at(i).toObject().value("r_id").toInt()) +
+                    ");\" class=\"send_mona\">" + tr("send mona") + "</span><BR>" +
                     "<span class=\"level" + QString::number(res.at(i).toObject().value("res_lv").toInt()) + "\">" +
                     res.at(i).toObject().value("response").toString() +
                     "</span>";
             list.appendInside("<div class=\"response\">"+response+"</div>");
             JsObj *jo = new JsObj();
             ui->topic->page()->mainFrame()->addToJavaScriptWindowObject("jsobj",jo);
+            QObject::connect(jo,SIGNAL(send_mona_to_res_signal(QString)),this,SLOT(on_action_send_mona_to_res_clicked(QString)));
 //            qDebug()<<response;
         }
     }
