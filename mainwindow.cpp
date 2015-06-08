@@ -70,6 +70,10 @@ void MainWindow::readSettings(){
     get_res_limit = settings.value("get_res_limit").toInt();
     user_id = settings.value("user_id").toInt();
     secret_key = settings.value("secret_key").toString();
+    send_mona_amount_1 = settings.value("send_mona_amount_1").toString();
+    send_mona_amount_2 = settings.value("send_mona_amount_2").toString();
+    send_mona_amount_3 = settings.value("send_mona_amount_3").toString();
+    send_mona_amount_4 = settings.value("send_mona_amount_4").toString();
 }
 
 void MainWindow::closeEvent(QCloseEvent* event){
@@ -78,6 +82,10 @@ void MainWindow::closeEvent(QCloseEvent* event){
     settings.setValue("get_res_limit", get_res_limit);
     settings.setValue("user_id", user_id);
     settings.setValue("secret_key", secret_key);
+    settings.setValue("send_mona_amount_1", send_mona_amount_1);
+    settings.setValue("send_mona_amount_2", send_mona_amount_2);
+    settings.setValue("send_mona_amount_3", send_mona_amount_3);
+    settings.setValue("send_mona_amount_4", send_mona_amount_4);
     event->accept();
 }
 

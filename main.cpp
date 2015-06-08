@@ -10,6 +10,10 @@ QString now_topic_id;
 QString secret_key;
 QString post_text;
 QString send_to;
+QString send_mona_amount_1;
+QString send_mona_amount_2;
+QString send_mona_amount_3;
+QString send_mona_amount_4;
 bool sage_check;
 
 int main(int argc, char *argv[])

@@ -20,6 +20,10 @@ extern QString now_topic_id;
 extern QString secret_key;
 extern QString post_text;
 extern QString send_to;
+extern QString send_mona_amount_1;
+extern QString send_mona_amount_2;
+extern QString send_mona_amount_3;
+extern QString send_mona_amount_4;
 extern bool sage_check;
 
 namespace Ui {
