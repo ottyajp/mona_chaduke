@@ -19,7 +19,7 @@ void User_Profile_window::on_pushButton_clicked()
     QString api_name = "users/profile";
     QUrlQuery api_query;
     api_query.addQueryItem("u_id",ui->u_id->text());
-    QString key = knock_api(api_name,api_query);
+    QString key = knock_api_get(api_name,api_query);
     qDebug()<<key;
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
