@@ -256,7 +256,7 @@ void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
             QString received_mona;
             receive = res.at(i).toObject().value("receive").toString().toDouble() / 100000000;
             if(res.at(i).toObject().value("receive").toString()!="0"){
-                received_mona = "<span class=\"mona_yay\">+" +QString::number(receive) + "MONA</b> / " +
+                received_mona = "<span class=\"mona_yay\">+" +QString::number(receive,'f',8) + "MONA</b> / " +
                         QString::number(res.at(i).toObject().value("rec_count").toInt()) + tr("man") + "</span>";
             }else{
                 received_mona = "+" + QString::number(receive) + "MONA / " +
