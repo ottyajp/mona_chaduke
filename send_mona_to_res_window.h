@@ -15,6 +15,17 @@ public:
     explicit send_mona_to_res_window(QWidget *parent = 0);
     ~send_mona_to_res_window();
 
+private slots:
+    void on_send_button_clicked();
+
+    void on_send_mona_preset1_clicked();
+
+    void on_send_mona_preset2_clicked();
+
+    void on_send_mona_preset3_clicked();
+
+    void on_send_mona_preset4_clicked();
+
 private:
     Ui::send_mona_to_res_window *ui;
 };
