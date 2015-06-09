@@ -279,7 +279,7 @@ void MainWindow::on_action_About_triggered()
 {
     QMessageBox::about(this, tr("about mona chaduke"),
                        tr("<h3>mona chaduke</h3>"
-                          "<p>Ah, monamona</p>"
+                          "<p><img src=\":/mona.png\"></p>"
                           "<p>Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz</p>"));
 }
 

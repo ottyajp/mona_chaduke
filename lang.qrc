@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>ja.qm</file>
+        <file>mona.png</file>
     </qresource>
 </RCC>

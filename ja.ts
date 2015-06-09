@@ -105,50 +105,51 @@
         <translation>更新</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="239"/>
+        <location filename="mainwindow.cpp" line="229"/>
         <source>can&apos;t open template file.</source>
         <translation>テンプレートファイルが開けません。</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="260"/>
-        <location filename="mainwindow.cpp" line="263"/>
+        <location filename="mainwindow.cpp" line="250"/>
+        <location filename="mainwindow.cpp" line="253"/>
         <source>man</source>
         <translation>人</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="274"/>
+        <location filename="mainwindow.cpp" line="264"/>
         <source>send mona</source>
         <translation>送る</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="289"/>
+        <location filename="mainwindow.cpp" line="280"/>
         <source>about mona chaduke</source>
         <translation>モナ茶漬け</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="290"/>
-        <source>&lt;h3&gt;mona chaduke&lt;/h3&gt;&lt;p&gt;Ah, monamona&lt;/p&gt;&lt;p&gt;Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz&lt;/p&gt;</source>
-        <translation>&lt;h3&gt;モナ茶漬け&lt;/h3&gt;&lt;p&gt;あぁ、モナモナ&lt;/p&gt;&lt;p&gt;Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz&lt;/p&gt;</translation>
+        <location filename="mainwindow.cpp" line="281"/>
+        <source>&lt;h3&gt;mona chaduke&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;:/mona.png&quot;&gt;&lt;/p&gt;&lt;p&gt;Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz&lt;/p&gt;</source>
+        <oldsource>&lt;h3&gt;mona chaduke&lt;/h3&gt;&lt;p&gt;Ah, monamona&lt;/p&gt;&lt;p&gt;Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz&lt;/p&gt;</oldsource>
+        <translation type="unfinished">&lt;h3&gt;モナ茶漬け&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;:/mona.png&quot;&gt;&lt;/p&gt;&lt;p&gt;Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="322"/>
+        <location filename="mainwindow.cpp" line="311"/>
         <source>balance</source>
         <translation>残高</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="322"/>
+        <location filename="mainwindow.cpp" line="311"/>
         <source>your balance is
 </source>
         <translation>あなたの残高(MONA)
 </translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="389"/>
+        <location filename="mainwindow.cpp" line="374"/>
         <source>your deposit address</source>
         <translation>入金アドレス</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="389"/>
+        <location filename="mainwindow.cpp" line="374"/>
         <source>your deposit address is
 
 </source>
@@ -170,7 +171,7 @@
     <message>
         <location filename="setting_window.ui" line="14"/>
         <source>Dialog</source>
-        <translation></translation>
+        <translation>設定</translation>
     </message>
     <message>
         <source>Monacoin Address</source>
@@ -203,17 +204,17 @@
     <message>
         <location filename="setting_window.ui" line="112"/>
         <source>get_&amp;topic_limit</source>
-        <translation>トピックリスト取得上限(&amp;t)</translation>
+        <translation>トピックリスト取得上限(&amp;T)</translation>
     </message>
     <message>
         <location filename="setting_window.ui" line="122"/>
         <source>get_&amp;res_limit</source>
-        <translation>レス取得上限(&amp;r)</translation>
+        <translation>レス取得上限(&amp;R)</translation>
     </message>
     <message>
         <location filename="setting_window.ui" line="155"/>
         <source>send_mona amount prefix</source>
-        <translation>モナを送るボタン</translation>
+        <translation>送るMONA量のプリセット</translation>
     </message>
     <message>
         <location filename="setting_window.ui" line="168"/>
@@ -249,7 +250,7 @@
     <message>
         <location filename="user_profile_window.ui" line="14"/>
         <source>Dialog</source>
-        <translation></translation>
+        <translation>プロフィール</translation>
     </message>
     <message>
         <location filename="user_profile_window.ui" line="24"/>
@@ -287,7 +288,7 @@
     <message>
         <location filename="post_message.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation>投稿</translation>
     </message>
     <message>
         <location filename="post_message.ui" line="37"/>
@@ -366,6 +367,11 @@
         <location filename="send_mona_to_res_window.cpp" line="28"/>
         <source>do you really want send MONA?</source>
         <translation>MONAを本当に送りますか？</translation>
+    </message>
+    <message>
+        <location filename="send_mona_to_res_window.cpp" line="64"/>
+        <source>invalid amount</source>
+        <translation>無効な値です</translation>
     </message>
 </context>
 </TS>
