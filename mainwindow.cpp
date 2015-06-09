@@ -368,3 +368,25 @@ QString auth_Key::read_auth_key(){
     return hash.toBase64();
 }
 
+
+void MainWindow::on_actionGet_deposit_address_triggered()
+{
+    auth_Key auth_key;
+    QString api_name = "account/deposit";
+    QUrlQuery api_query;
+    api_query.addQueryItem("app_id","2332");
+    api_query.addQueryItem("u_id",QString::number(user_id));
+    api_query.addQueryItem("nonce",auth_key.read_nonce());
+    api_query.addQueryItem("time",auth_key.read_time());
+    api_query.addQueryItem("auth_key",auth_key.read_auth_key());
+    QString key = knock_api(api_name,api_query);
+    qDebug()<<key;
+    QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
+    if (json.object().value("status").toInt() == 0){
+        qDebug()<<"error";
+        qDebug()<<json.object().value("error").toString();
+    }else{
+        QMessageBox::information(this,tr("your deposit address"),tr("your deposit address is\n\n") +
+                                 json.object().value("d_address").toString());
+    }
+}

@@ -57,6 +57,8 @@ private slots:
 
     void on_action_send_mona_to_res_clicked(QString);
 
+    void on_actionGet_deposit_address_triggered();
+
 private:
     Ui::MainWindow *ui;
 
