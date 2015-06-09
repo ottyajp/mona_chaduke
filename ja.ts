@@ -30,49 +30,54 @@
         <translation>プロフィール(&amp;P)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="106"/>
+        <location filename="mainwindow.ui" line="107"/>
         <source>&amp;Topic</source>
         <translation>トピック(&amp;T)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="112"/>
+        <location filename="mainwindow.ui" line="113"/>
         <source>&amp;Help</source>
         <translation>ヘルプ(&amp;H)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="124"/>
+        <location filename="mainwindow.ui" line="125"/>
         <source>&amp;Config</source>
         <translation>コンフィグ(&amp;C)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="129"/>
+        <location filename="mainwindow.ui" line="130"/>
         <source>&amp;Quit</source>
         <translation>終了(&amp;Q)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="132"/>
+        <location filename="mainwindow.ui" line="133"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="137"/>
+        <location filename="mainwindow.ui" line="138"/>
         <source>&amp;get_profile</source>
         <translation>プロフィールを取得(&amp;G)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="142"/>
+        <location filename="mainwindow.ui" line="143"/>
         <source>&amp;Get_topic_list</source>
         <translation>トピックリストを取得(&amp;G)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="147"/>
+        <location filename="mainwindow.ui" line="148"/>
         <source>&amp;About</source>
         <translation>&amp;About</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="152"/>
+        <location filename="mainwindow.ui" line="153"/>
         <source>get_&amp;balance</source>
         <translation>残高を取得(&amp;B)</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="158"/>
+        <source>get_&amp;deposit_address</source>
+        <translation>入金アドレス取得(&amp;D)</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="37"/>
@@ -105,36 +110,50 @@
         <translation>テンプレートファイルが開けません。</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="258"/>
-        <location filename="mainwindow.cpp" line="261"/>
+        <location filename="mainwindow.cpp" line="260"/>
+        <location filename="mainwindow.cpp" line="263"/>
         <source>man</source>
         <translation>人</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="271"/>
+        <location filename="mainwindow.cpp" line="274"/>
         <source>send mona</source>
         <translation>送る</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="286"/>
+        <location filename="mainwindow.cpp" line="289"/>
         <source>about mona chaduke</source>
         <translation>モナ茶漬け</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="287"/>
+        <location filename="mainwindow.cpp" line="290"/>
         <source>&lt;h3&gt;mona chaduke&lt;/h3&gt;&lt;p&gt;Ah, monamona&lt;/p&gt;&lt;p&gt;Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz&lt;/p&gt;</source>
         <translation>&lt;h3&gt;モナ茶漬け&lt;/h3&gt;&lt;p&gt;あぁ、モナモナ&lt;/p&gt;&lt;p&gt;Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="319"/>
+        <location filename="mainwindow.cpp" line="322"/>
         <source>balance</source>
         <translation>残高</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="319"/>
+        <location filename="mainwindow.cpp" line="322"/>
         <source>your balance is
 </source>
         <translation>あなたの残高(MONA)
+</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="389"/>
+        <source>your deposit address</source>
+        <translation>入金アドレス</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="389"/>
+        <source>your deposit address is
+
+</source>
+        <translation>入金アドレス
+
 </translation>
     </message>
 </context>
@@ -233,17 +252,17 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="user_profile_window.ui" line="35"/>
+        <location filename="user_profile_window.ui" line="24"/>
         <source>u_id</source>
         <translation>ID</translation>
     </message>
     <message>
-        <location filename="user_profile_window.ui" line="55"/>
+        <location filename="user_profile_window.ui" line="57"/>
         <source>Name</source>
         <translation>名前</translation>
     </message>
     <message>
-        <location filename="user_profile_window.ui" line="62"/>
+        <location filename="user_profile_window.ui" line="64"/>
         <source>Dann-i</source>
         <translation>段位</translation>
     </message>
@@ -253,12 +272,12 @@
         <translation>プロフィール</translation>
     </message>
     <message>
-        <location filename="user_profile_window.ui" line="115"/>
+        <location filename="user_profile_window.ui" line="113"/>
         <source>&amp;Reload</source>
         <translation>更新(&amp;R)</translation>
     </message>
     <message>
-        <location filename="user_profile_window.ui" line="122"/>
+        <location filename="user_profile_window.ui" line="120"/>
         <source>&amp;Close</source>
         <translation>閉じる(&amp;C)</translation>
     </message>
@@ -334,14 +353,19 @@
         <translation>送る(&amp;s)</translation>
     </message>
     <message>
-        <location filename="send_mona_to_res_window.cpp" line="10"/>
+        <location filename="send_mona_to_res_window.cpp" line="11"/>
         <source>How much mona send to &gt;&gt;</source>
         <translation>&gt;&gt;</translation>
     </message>
     <message>
-        <location filename="send_mona_to_res_window.cpp" line="10"/>
+        <location filename="send_mona_to_res_window.cpp" line="11"/>
         <source> ?</source>
         <translation> に何MONA送りますか？</translation>
+    </message>
+    <message>
+        <location filename="send_mona_to_res_window.cpp" line="28"/>
+        <source>do you really want send MONA?</source>
+        <translation>MONAを本当に送りますか？</translation>
     </message>
 </context>
 </TS>
