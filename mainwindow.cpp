@@ -272,6 +272,7 @@ void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
 //            qDebug()<<response;
         }
     }
+    ui->topic->setFocus();
 }
 
 void MainWindow::on_action_About_triggered()
