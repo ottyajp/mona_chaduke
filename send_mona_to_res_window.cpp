@@ -23,7 +23,6 @@ send_mona_to_res_window::~send_mona_to_res_window()
 void send_mona_to_res_window::on_send_button_clicked()
 {
     double mona_amount = ui->send_mona_fixed->text().toDouble();
-    qDebug()<<mona_amount;
     if(mona_amount > 0){
         QMessageBox confirm_text;
         confirm_text.setText(tr("do you really want send MONA?"));
@@ -47,7 +46,6 @@ void send_mona_to_res_window::on_send_button_clicked()
                 api_query.addQueryItem("r_id",send_to);
                 api_query.addQueryItem("amount",QString::number(mona_amount_watanabe));
                 QString key = knock_api(api_name,api_query);
-                qDebug()<<key;
                 QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
                 if (json.object().value("status").toInt() == 0){
                     qDebug()<<"error";

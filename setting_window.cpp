@@ -31,19 +31,15 @@ void Setting_window::on_pushButton_clicked()
     api_query.addQueryItem("u_address",ui->u_address->text());
     api_query.addQueryItem("pass",ui->pass->text());
     QString key = knock_api(api_name,api_query);
-    qDebug()<<key;
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     key = json.object().value("secretkey").toString();
-    qDebug()<<key;
     secret_key = key;
-    qDebug()<<secret_key;
     ui->u_id->setText(QString::number(json.object().value("u_id").toInt()));
     user_id = json.object().value("u_id").toInt();
 }
 
 void Setting_window::on_buttonBox_accepted()
 {
-    qDebug()<<ui->get_topic_limit->text().toInt();
     get_topic_limit = ui->get_topic_limit->text().toInt();
     get_res_limit = ui->get_res_limit->text().toInt();
     send_mona_amount_1 = ui->send_mona_amount_1->text();

@@ -101,13 +101,10 @@ QString knock_api(QString api_name, QUrlQuery api_query){
     // the HTTP request
     QString address = "http://askmona.org/v1/" + api_name;
     QUrl url(address);
-    //QNetworkRequest req( QUrl( QString("http://askmona.org/v1/auth/secretkey") ) );
-//    url.setQuery(api_query);
     QNetworkRequest req(url);
     req.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
     QByteArray data;
     data.append(api_query.toString());
-    qDebug()<<"data:"<<data;
     QNetworkReply *reply = mgr.post(req,data);
     eventLoop.exec(); // blocks stack until "finished()" has been called
 
@@ -139,7 +136,6 @@ QString knock_api_get(QString api_name, QUrlQuery api_query){
     // the HTTP request
     QString address = "http://askmona.org/v1/" + api_name;
     QUrl url(address);
-    //QNetworkRequest req( QUrl( QString("http://askmona.org/v1/auth/secretkey") ) );
     url.setQuery(api_query);
     QNetworkRequest req(url);
     req.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
@@ -194,20 +190,15 @@ void MainWindow::on_action_Get_topic_list_triggered()
     QUrlQuery api_query;
     api_query.addQueryItem("limit",QString::number(get_topic_limit));
     QString key = knock_api(api_name,api_query);
-//    qDebug()<<key;
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toString() == "0"){
         qDebug()<<"error";
-//        ui->profile->setText(json.object().value("error").toString());
     }else{
         QJsonArray item = json.object().value("topics").toArray();
-        qDebug()<<item;
         QString topic_list_object;
         QList<QTreeWidgetItem*> check_topic;
         for(int i=0; i<get_topic_limit; i++){
-            qDebug()<<item.at(i);
             check_topic = ui->topic_list->findItems(QString::number(item.at(i).toObject().value("t_id").toInt()),Qt::MatchContains,0);
-            qDebug()<<"check_topic is"<<check_topic;
             if(check_topic.count() != 0){
                 check_topic.clear();
                 continue;
@@ -227,7 +218,6 @@ void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
     api_query.addQueryItem("from","1");
     api_query.addQueryItem("to",QString::number(get_res_limit));
     QString key = knock_api_get(api_name,api_query);
-    qDebug()<<key;
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
         ui->topic->setHtml("<h2>error</h2><BR>"+json.object().value("error").toString());
@@ -309,9 +299,7 @@ void MainWindow::on_actionGet_balance_triggered()
     api_query.addQueryItem("nonce",auth_key.read_nonce());
     api_query.addQueryItem("time",auth_key.read_time());
     api_query.addQueryItem("auth_key",auth_key.read_auth_key());
-    qDebug()<<"nonce:"<<auth_key.read_nonce()<<", time:"<<auth_key.read_time()<<", auth_key:"<<auth_key.read_auth_key();
     QString key = knock_api(api_name,api_query);
-    qDebug()<<key;
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
         qDebug()<<"error";
@@ -339,17 +327,14 @@ auth_Key::auth_Key(){
                                         secret_key.toUtf8(),QCryptographicHash::Sha256);
         pos = nonce.toBase64().toStdString().find("+",0);
         if(pos == -1){
-            qDebug()<<nonce.toBase64();
             f = 1;
         }
         pos = hash.toBase64().toStdString().find("+",0);
         if(pos == -1){
-            qDebug()<<hash.toBase64();
             f = 1;
         }else{
             f = 0;
         }
-        qDebug()<<hash.toBase64();
         if(f==1){
             break;
         }
@@ -380,7 +365,6 @@ void MainWindow::on_actionGet_deposit_address_triggered()
     api_query.addQueryItem("time",auth_key.read_time());
     api_query.addQueryItem("auth_key",auth_key.read_auth_key());
     QString key = knock_api(api_name,api_query);
-    qDebug()<<key;
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
         qDebug()<<"error";

@@ -20,7 +20,6 @@ void User_Profile_window::on_pushButton_clicked()
     QUrlQuery api_query;
     api_query.addQueryItem("u_id",ui->u_id->text());
     QString key = knock_api_get(api_name,api_query);
-    qDebug()<<key;
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
         ui->u_name->setText("error");

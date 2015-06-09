@@ -50,7 +50,6 @@ void call_post_message_api(){
     api_query.addQueryItem("t_id",now_topic_id);
     api_query.addQueryItem("text",post_text);
     QString key = knock_api(api_name,api_query);
-    qDebug()<<key;
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
         qDebug()<<"error";
