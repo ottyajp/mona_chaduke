@@ -189,7 +189,7 @@ void MainWindow::on_action_Get_topic_list_triggered()
     QString api_name = "topics/list";
     QUrlQuery api_query;
     api_query.addQueryItem("limit",QString::number(get_topic_limit));
-    QString key = knock_api(api_name,api_query);
+    QString key = knock_api_get(api_name,api_query);
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toString() == "0"){
         qDebug()<<"error";
