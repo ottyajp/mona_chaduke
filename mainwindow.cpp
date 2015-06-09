@@ -375,3 +375,8 @@ void MainWindow::on_actionGet_deposit_address_triggered()
                                  json.object().value("d_address").toString());
     }
 }
+
+void MainWindow::on_topic_list_itemActivated(QTreeWidgetItem *item)
+{
+    this->on_topic_list_itemDoubleClicked(item);
+}
