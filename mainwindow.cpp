@@ -291,7 +291,6 @@ void MainWindow::on_action_About_triggered()
 void MainWindow::on_call_post_window_clicked()
 {
     post_message *window = new post_message(this);
-    window->setModal(1);
     window->show();
 }
 
