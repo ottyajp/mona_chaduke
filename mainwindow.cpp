@@ -200,12 +200,17 @@ void MainWindow::on_action_Get_topic_list_triggered()
         for(int i=0; i<get_topic_limit; i++){
             check_topic = ui->topic_list->findItems(QString::number(item.at(i).toObject().value("t_id").toInt()),Qt::MatchContains,0);
             if(check_topic.count() != 0){
+                check_topic.at(0)->setText(2, QString::number(item.at(i).toObject().value("count").toInt()));
+                check_topic.at(0)->setText(3, QString::number(item.at(i).toObject().value("rank").toInt()));
+                check_topic.at(0)->setText(4, QString::number(item.at(i).toObject().value("updated").toInt()));
+                check_topic.at(0)->setText(5, QString::number(item.at(i).toObject().value("modified").toInt()));
                 check_topic.clear();
                 continue;
             }else{
                 MainWindow::addTopicItem(item.at(i));
             }
         }
+        ui->topic_list->sortByColumn(4,Qt::DescendingOrder);
     }
 }
 
