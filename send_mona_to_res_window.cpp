@@ -32,7 +32,8 @@ void send_mona_to_res_window::on_send_button_clicked()
         int ret = confirm_text.exec();
         switch(ret){
             case QMessageBox::Ok:{
-                int mona_amount_watanabe = int(mona_amount * 100000000);
+                long mona_amount_watanabe = (long)100000000 * mona_amount;
+                qDebug()<<mona_amount_watanabe<<","<<mona_amount;
 
                 auth_Key auth_key;
                 QString api_name = "account/send";
@@ -47,6 +48,7 @@ void send_mona_to_res_window::on_send_button_clicked()
                 api_query.addQueryItem("amount",QString::number(mona_amount_watanabe));
                 QString key = knock_api(api_name,api_query);
                 QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
+
                 if (json.object().value("status").toInt() == 0){
                     qDebug()<<"error";
                     qDebug()<<json.object().value("error").toString();
