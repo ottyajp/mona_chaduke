@@ -13,6 +13,8 @@ send_mona_to_res_window::send_mona_to_res_window(QWidget *parent) :
     ui->send_mona_preset2->setText("(&2)" + send_mona_amount_2);
     ui->send_mona_preset3->setText("(&3)" + send_mona_amount_3);
     ui->send_mona_preset4->setText("(&4)" + send_mona_amount_4);
+
+    QObject::connect(this,SIGNAL(send_success()),parent,SLOT(topic_reload_signal_fire()));
 }
 
 send_mona_to_res_window::~send_mona_to_res_window()
@@ -35,7 +37,7 @@ void send_mona_to_res_window::on_send_button_clicked()
                 long mona_amount_watanabe = (long)100000000 * mona_amount;
                 qDebug()<<mona_amount_watanabe<<","<<mona_amount;
 
-                auth_Key auth_key;
+/*                auth_Key auth_key;
                 QString api_name = "account/send";
                 QUrlQuery api_query;
                 api_query.addQueryItem("app_id","2332");
@@ -54,7 +56,8 @@ void send_mona_to_res_window::on_send_button_clicked()
                     qDebug()<<json.object().value("error").toString();
                 }else{
 
-                }
+                }*/
+                this->send_success_fire();
                 break;
             }
             case QMessageBox::Cancel:{
@@ -85,4 +88,8 @@ void send_mona_to_res_window::on_send_mona_preset3_clicked()
 void send_mona_to_res_window::on_send_mona_preset4_clicked()
 {
     ui->send_mona_fixed->setText(send_mona_amount_4);
+}
+
+void send_mona_to_res_window::send_success_fire(){
+    emit send_success();
 }

@@ -15,6 +15,9 @@ public:
     explicit send_mona_to_res_window(QWidget *parent = 0);
     ~send_mona_to_res_window();
 
+signals:
+    void send_success();
+
 private slots:
     void on_send_button_clicked();
 
@@ -28,6 +31,7 @@ private slots:
 
 private:
     Ui::send_mona_to_res_window *ui;
+    void send_success_fire();
 };
 
 #endif // SEND_MONA_TO_RES_WINDOW_H

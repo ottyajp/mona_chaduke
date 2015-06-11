@@ -393,7 +393,9 @@ void MainWindow::topic_reload(){
     this->on_topic_list_itemDoubleClicked(ui->topic_list->selectedItems().at(0));
 //    ui->topic->page()->mainFrame()->scroll(0,pos.y());
     QThread::sleep(1);
-    ui->topic->page()->mainFrame()->scroll(0,pos.y());//setScrollPosition(QPoint(0,pos.y()));
+    ui->topic->page()->mainFrame()->setScrollPosition(QPoint(0,pos.y()));
+    qDebug()<<pos.y();
+    pos = ui->topic->page()->mainFrame()->scrollPosition();
     qDebug()<<pos.y();
 }
 
