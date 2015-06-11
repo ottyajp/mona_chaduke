@@ -37,7 +37,7 @@ void send_mona_to_res_window::on_send_button_clicked()
                 long mona_amount_watanabe = (long)100000000 * mona_amount;
                 qDebug()<<mona_amount_watanabe<<","<<mona_amount;
 
-/*                auth_Key auth_key;
+                auth_Key auth_key;
                 QString api_name = "account/send";
                 QUrlQuery api_query;
                 api_query.addQueryItem("app_id","2332");
@@ -55,9 +55,8 @@ void send_mona_to_res_window::on_send_button_clicked()
                     qDebug()<<"error";
                     qDebug()<<json.object().value("error").toString();
                 }else{
-
-                }*/
-                this->send_success_fire();
+                    this->send_success_fire();
+                }
                 break;
             }
             case QMessageBox::Cancel:{
