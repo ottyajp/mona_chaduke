@@ -5,6 +5,7 @@
 #include "post_message.h"
 #include "send_mona_to_res_window.h"
 #include "jsobj.h"
+#include "image_window.h"
 #include <QtGlobal>
 #include <QCoreApplication>
 #include <QDebug>
@@ -175,6 +176,12 @@ void MainWindow::on_action_send_mona_to_res_clicked(QString s){
     window->show();
 }
 
+void MainWindow::open_image_window(QString s){
+    send_to = s;
+    image_Window *window = new image_Window(this);
+    window->show();
+}
+
 void MainWindow::on_action_Quit_triggered()
 {
     close();
@@ -260,6 +267,9 @@ void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
                 received_mona = "+" + QString::number(receive) + "MONA / " +
                         QString::number(res.at(i).toObject().value("rec_count").toInt()) + tr("man") + "</span>";
             }
+            QString replace_imgur = res.at(i).toObject().value("response").toString();
+            replace_imgur.replace(QRegularExpression("(http://i.imgur.com/.+)(..{3})"),
+                                  "<span onclick=\"onClick_image('\\1\\2');\"><img src=\"\\1m\\2\" class=\"imgur\"></span>");
 
             list = ui->topic->page()->mainFrame()->findFirstElement("div.responses");
             QString response = QString::number(res.at(i).toObject().value("r_id").toInt()) +
@@ -271,14 +281,15 @@ void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
                     " <span onclick=\"onClick_send_mona_link(" + QString::number(res.at(i).toObject().value("r_id").toInt()) +
                     ");\" class=\"send_mona\">" + tr("send mona") + "</span><BR>" +
                     "<span class=\"level" + QString::number(res.at(i).toObject().value("res_lv").toInt()) + "\">" +
-                    res.at(i).toObject().value("response").toString() +
+                    replace_imgur +
                     "</span>";
             list.appendInside("<div class=\"response\">"+response+"</div>");
-            JsObj *jo = new JsObj();
-            ui->topic->page()->mainFrame()->addToJavaScriptWindowObject("jsobj",jo);
-            QObject::connect(jo,SIGNAL(send_mona_to_res_signal(QString)),this,SLOT(on_action_send_mona_to_res_clicked(QString)));
 //            qDebug()<<response;
         }
+        JsObj *jo = new JsObj();
+        ui->topic->page()->mainFrame()->addToJavaScriptWindowObject("jsobj",jo);
+        QObject::connect(jo,SIGNAL(send_mona_to_res_signal(QString)),this,SLOT(on_action_send_mona_to_res_clicked(QString)));
+        QObject::connect(jo,SIGNAL(open_image_window_signal(QString)),this,SLOT(open_image_window(QString)));
     }
     ui->topic->setFocus();
 }

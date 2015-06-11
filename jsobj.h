@@ -13,8 +13,12 @@ public:
 signals:
     void send_mona_to_res_signal(QString);
 
+    void open_image_window_signal(QString);
+
 public slots:
     void send_mona_to_res(QString s);
+
+    void open_image(QString s);
 };
 
 #endif // JSOBJ_H

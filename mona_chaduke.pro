@@ -21,17 +21,20 @@ SOURCES += main.cpp\
     user_profile_window.cpp \
     jsobj.cpp \
     post_message.cpp \
-    send_mona_to_res_window.cpp
+    send_mona_to_res_window.cpp \
+    image_window.cpp
 
 HEADERS  += mainwindow.h \
     setting_window.h \
     user_profile_window.h \
     jsobj.h \
     post_message.h \
-    send_mona_to_res_window.h
+    send_mona_to_res_window.h \
+    image_window.h
 
 FORMS    += mainwindow.ui \
     setting_window.ui \
     user_profile_window.ui \
     post_message.ui \
-    send_mona_to_res_window.ui
+    send_mona_to_res_window.ui \
+    image_window.ui

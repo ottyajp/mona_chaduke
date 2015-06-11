@@ -68,6 +68,8 @@ private slots:
 
     void on_topic_list_itemActivated(QTreeWidgetItem *item);
 
+    void open_image_window(QString);
+
 private:
     Ui::MainWindow *ui;
 

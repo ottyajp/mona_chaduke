@@ -86,17 +86,28 @@
 		white-space: pre-wrap;
 		word-wrap:break-word;
 	}
+
+	img.imgur{
+		max-width: 462px;
+	}
+	img.imgur:hover{
+		padding: 1px;
+	}
 	</style>
 	<script type="text/javascript">
 	var onClick_send_mona_link = function(x) {
 		jsobj.send_mona_to_res(x);
+	};
+
+	var onClick_image = function(str) {
+		jsobj.open_image(str);
 	};
 	</script>
 </head>
 <body>
 	<div class="title"></div>
 	<div class="responses">
-		
+
 	</div>
 </body>
 </html>
