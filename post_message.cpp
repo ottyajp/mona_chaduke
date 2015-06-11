@@ -12,6 +12,7 @@ post_message::post_message(QWidget *parent) :
     if(sage_check){
         ui->sage_check->setCheckState(Qt::Checked);
     }
+    QObject::connect(this,SIGNAL(post_success()),parent,SLOT(topic_reload_signal_fire()));
 }
 
 post_message::~post_message()
@@ -30,7 +31,8 @@ void post_message::on_buttonBox_accepted()
     int ret = confirm_text.exec();
     switch(ret){
         case QMessageBox::Ok:
-            call_post_message_api();
+            this->call_post_message_api();
+//            emit topic_reload_signal();
             break;
         case QMessageBox::Cancel:
             qDebug()<<"Cancel";
@@ -38,7 +40,7 @@ void post_message::on_buttonBox_accepted()
     }
 }
 
-void call_post_message_api(){
+void post_message::call_post_message_api(){
     auth_Key auth_key;
     QString api_name = "responses/post";
     QUrlQuery api_query;
@@ -57,4 +59,5 @@ void call_post_message_api(){
     }else{
 
     }
+    emit post_success();
 }

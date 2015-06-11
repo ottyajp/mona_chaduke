@@ -12,7 +12,6 @@
 
 QString knock_api(QString, QUrlQuery);
 QString knock_api_get(QString, QUrlQuery);
-void call_post_message_api();
 extern int get_topic_limit;
 extern int get_res_limit;
 extern int user_id;
@@ -38,6 +37,14 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void call_post_window();
+
+signals:
+    void topic_reload_signal();
+
+public slots:
+    void topic_reload();
+
+    void topic_reload_signal_fire();
 
 private slots:
     void on_action_Quit_triggered();

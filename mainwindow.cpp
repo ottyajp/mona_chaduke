@@ -25,6 +25,7 @@
 #include <QCryptographicHash>
 #include <QDateTime>
 #include <QCloseEvent>
+#include <QThread>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -43,6 +44,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->topic_list->setColumnWidth(5,80);
 
     MainWindow::readSettings();
+
+    QObject::connect(this,SIGNAL(topic_reload_signal()),this,SLOT(topic_reload()));
 
 }
 
@@ -383,4 +386,17 @@ void MainWindow::on_actionGet_deposit_address_triggered()
 void MainWindow::on_topic_list_itemActivated(QTreeWidgetItem *item)
 {
     this->on_topic_list_itemDoubleClicked(item);
+}
+
+void MainWindow::topic_reload(){
+    QPoint pos = ui->topic->page()->mainFrame()->scrollPosition();
+    this->on_topic_list_itemDoubleClicked(ui->topic_list->selectedItems().at(0));
+//    ui->topic->page()->mainFrame()->scroll(0,pos.y());
+    QThread::sleep(1);
+    ui->topic->page()->mainFrame()->scroll(0,pos.y());//setScrollPosition(QPoint(0,pos.y()));
+    qDebug()<<pos.y();
+}
+
+void MainWindow::topic_reload_signal_fire(){
+    emit topic_reload_signal();
 }
