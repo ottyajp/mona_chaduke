@@ -1,6 +1,4 @@
 #include "jsobj.h"
-#include <QMessageBox>
-#include <QDebug>
 
 JsObj::JsObj(QObject *parent) : QObject(parent)
 {

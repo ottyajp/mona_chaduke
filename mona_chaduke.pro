@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     jsobj.cpp \
     post_message.cpp \
     send_mona_to_res_window.cpp \
-    image_window.cpp
+    image_window.cpp \
+    func_var.cpp
 
 HEADERS  += mainwindow.h \
     setting_window.h \
@@ -30,7 +31,8 @@ HEADERS  += mainwindow.h \
     jsobj.h \
     post_message.h \
     send_mona_to_res_window.h \
-    image_window.h
+    image_window.h \
+    func_var.h
 
 FORMS    += mainwindow.ui \
     setting_window.ui \
