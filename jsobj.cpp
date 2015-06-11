@@ -12,6 +12,5 @@ void JsObj::send_mona_to_res(QString s){
 }
 
 void JsObj::open_image(QString s){
-    qDebug()<<"s";
     emit open_image_window_signal(s);
 }
