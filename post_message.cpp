@@ -32,7 +32,6 @@ void post_message::on_buttonBox_accepted()
     switch(ret){
         case QMessageBox::Ok:
             this->call_post_message_api();
-//            emit topic_reload_signal();
             break;
         case QMessageBox::Cancel:
             qDebug()<<"Cancel";
@@ -57,7 +56,6 @@ void post_message::call_post_message_api(){
         qDebug()<<"error";
         qDebug()<<json.object().value("error").toString();
     }else{
-
+        emit post_success();
     }
-    emit post_success();
 }
