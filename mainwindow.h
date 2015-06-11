@@ -12,6 +12,7 @@
 
 QString knock_api(QString, QUrlQuery);
 QString knock_api_get(QString, QUrlQuery);
+QString from_unix_time(int);
 extern int get_topic_limit;
 extern int get_res_limit;
 extern int user_id;

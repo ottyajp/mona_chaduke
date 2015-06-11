@@ -37,12 +37,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->topic_list->setColumnCount(6);
     ui->topic_list->setHeaderLabels(QStringList()<<"ID"<<tr("Title")<<tr("count")<<tr("rank")<<tr("updated")<<tr("modified"));
-    ui->topic_list->setColumnWidth(0,80);
-    ui->topic_list->setColumnWidth(1,400);
-    ui->topic_list->setColumnWidth(2,50);
-    ui->topic_list->setColumnWidth(3,50);
-    ui->topic_list->setColumnWidth(4,80);
-    ui->topic_list->setColumnWidth(5,80);
+    ui->topic_list->setColumnWidth(0,60);
+    ui->topic_list->setColumnWidth(1,340);
+    ui->topic_list->setColumnWidth(2,40);
+    ui->topic_list->setColumnWidth(3,40);
+    ui->topic_list->setColumnWidth(4,130);
+    ui->topic_list->setColumnWidth(5,130);
 
     MainWindow::readSettings();
 
@@ -64,8 +64,8 @@ void MainWindow::addTopicItem(QJsonValue topic_list_object){
     treeItem->setText(1,topic_list_object.toObject().value("title").toString());
     treeItem->setText(2,QString::number(topic_list_object.toObject().value("count").toInt()));
     treeItem->setText(3,QString::number(topic_list_object.toObject().value("rank").toInt()));
-    treeItem->setText(4,QString::number(topic_list_object.toObject().value("updated").toInt()));
-    treeItem->setText(5,QString::number(topic_list_object.toObject().value("modified").toInt()));
+    treeItem->setText(4,from_unix_time(topic_list_object.toObject().value("updated").toInt()));
+    treeItem->setText(5,from_unix_time(topic_list_object.toObject().value("modified").toInt()));
 }
 
 void MainWindow::readSettings(){
@@ -212,8 +212,8 @@ void MainWindow::on_action_Get_topic_list_triggered()
             if(check_topic.count() != 0){
                 check_topic.at(0)->setText(2, QString::number(item.at(i).toObject().value("count").toInt()));
                 check_topic.at(0)->setText(3, QString::number(item.at(i).toObject().value("rank").toInt()));
-                check_topic.at(0)->setText(4, QString::number(item.at(i).toObject().value("updated").toInt()));
-                check_topic.at(0)->setText(5, QString::number(item.at(i).toObject().value("modified").toInt()));
+                check_topic.at(0)->setText(4, from_unix_time(item.at(i).toObject().value("updated").toInt()));
+                check_topic.at(0)->setText(5, from_unix_time(item.at(i).toObject().value("modified").toInt()));
                 check_topic.clear();
                 continue;
             }else{
@@ -270,12 +270,13 @@ void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
             QString replace_imgur = res.at(i).toObject().value("response").toString();
             replace_imgur.replace(QRegularExpression("(http://i.imgur.com/.+)(..{3})"),
                                   "<span onclick=\"onClick_image('\\1\\2');\"><img src=\"\\1m\\2\" class=\"imgur\"></span>");
+            QString created = from_unix_time(res.at(i).toObject().value("created").toInt());
 
             list = ui->topic->page()->mainFrame()->findFirstElement("div.responses");
-            QString response = QString::number(res.at(i).toObject().value("r_id").toInt()) +
+            QString response = QString::number(res.at(i).toObject().value("r_id").toInt()) + " : " +
                     res.at(i).toObject().value("u_name").toString() +
                     res.at(i).toObject().value("u_dan").toString() + " : " +
-                    QString::number(res.at(i).toObject().value("created").toInt()) + " [" +
+                    created + " [" +
                     res.at(i).toObject().value("u_times").toString() + "] " +
                     received_mona +
                     " <span onclick=\"onClick_send_mona_link(" + QString::number(res.at(i).toObject().value("r_id").toInt()) +
@@ -412,4 +413,10 @@ void MainWindow::topic_reload(){
 
 void MainWindow::topic_reload_signal_fire(){
     emit topic_reload_signal();
+}
+
+QString from_unix_time(int t){
+    QDateTime from_time;
+    from_time.setTime_t(t);
+    return from_time.toString("yyyy/MM/dd hh:mm:ss");
 }
