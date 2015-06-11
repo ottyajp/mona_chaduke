@@ -76,24 +76,5 @@ private:
     void closeEvent(QCloseEvent* event);
 };
 
-class auth_Key{
-private:
-    QString time;
-    QByteArray nonce;
-    QByteArray hash;
-public:
-    auth_Key();
-    QString read_time();
-    QString read_nonce();
-    QString read_auth_key();
-};
-
-class Nonce{
-private:
-    QByteArray nonce;
-public:
-    Nonce();
-    QString read_Nonce();
-};
 
 #endif // MAINWINDOW_H

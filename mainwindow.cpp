@@ -242,49 +242,6 @@ void MainWindow::on_actionGet_balance_triggered()
     }
 }
 
-auth_Key::auth_Key(){
-    time = QString::number(QDateTime::currentDateTime().toTime_t());
-    int f = 0;
-    int pos;
-    while(1){
-        qsrand(QDateTime::currentDateTime().toTime_t());
-        for(int i=0; i<5; i++){
-            nonce.append(QString(qrand()%256));
-        }
-
-        hash = QCryptographicHash::hash("Av610r8WvmpW4Vz3KseGRIF/SJpQFvP1Ul4EXgCZb7qQ=" +
-                                        nonce.toBase64() +
-                                        time.toUtf8() +
-                                        secret_key.toUtf8(),QCryptographicHash::Sha256);
-        pos = nonce.toBase64().toStdString().find("+",0);
-        if(pos == -1){
-            f = 1;
-        }
-        pos = hash.toBase64().toStdString().find("+",0);
-        if(pos == -1){
-            f = 1;
-        }else{
-            f = 0;
-        }
-        if(f==1){
-            break;
-        }
-    }
-}
-
-QString auth_Key::read_time(){
-    return time;
-}
-
-QString auth_Key::read_nonce(){
-    return nonce.toBase64();
-}
-
-QString auth_Key::read_auth_key(){
-    return hash.toBase64();
-}
-
-
 void MainWindow::on_actionGet_deposit_address_triggered()
 {
     auth_Key auth_key;

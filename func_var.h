@@ -24,6 +24,18 @@ extern QString send_mona_amount_3;
 extern QString send_mona_amount_4;
 extern bool sage_check;
 
+class auth_Key{
+private:
+    QString time;
+    QByteArray nonce;
+    QByteArray hash;
+public:
+    auth_Key();
+    QString read_time();
+    QString read_nonce();
+    QString read_auth_key();
+};
+
 
 #endif // FUNC_VAR_H
 
