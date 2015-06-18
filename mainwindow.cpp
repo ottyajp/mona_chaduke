@@ -144,14 +144,14 @@ void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
     log_file.close();
     QJsonArray log_json_array = log_json.object().value("topics").toArray();
     bool exist = false;
-    int indexof_now_topic;
+    int indexof_now_topic = 0;
     for(int i = 0; i < log_json_array.count(); i++){
         if (now_topic_id == log_json_array.at(i).toObject().value("t_id").toString()){
             exist = true;
             indexof_now_topic = i;
         }
     }
-    if(exist == false){
+    if(exist == false){     //loading topic isn't exist in log
         QString api_name = "responses/list";
         QUrlQuery api_query;
         api_query.addQueryItem("t_id",item->text(0));
@@ -182,7 +182,7 @@ void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
         formatted_log.setObject(root);
         QTextStream log_out(&log_file);
         log_out<<formatted_log.toJson();
-    }else{
+    }else{              //loading topic is exist in log
         QString api_name = "responses/list";
         QUrlQuery api_query;
         api_query.addQueryItem("t_id",now_topic_id);
@@ -194,10 +194,23 @@ void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
         if (json.object().value("status").toInt() == 0){
             ui->topic->setHtml("<h2>error</h2><BR>"+json.object().value("error").toString());
         }else{
-            if(json.object().value("status").toInt() == 2){
+            if(json.object().value("status").toInt() == 2){     //there is no update
                 ui->topic->setHtml(log_json_array.at(indexof_now_topic).toObject().value("text").toString());
-            }else{
+            }else{      //there are update
                 format_topic(ui->topic->page()->mainFrame(), json, item->text(1));
+                if(!log_file.open(QFile::ReadWrite | QFile::Truncate)){}
+                QJsonObject adding_log;
+                adding_log["t_id"] = now_topic_id;
+                adding_log["time"] = QString::number(QDateTime::currentDateTime().toTime_t());
+                adding_log["text"] = ui->topic->page()->mainFrame()->toHtml();
+                log_json_array.removeAt(indexof_now_topic);
+                log_json_array += adding_log;
+                QJsonObject root;
+                root["topics"] = log_json_array;
+                QJsonDocument formatted_log;
+                formatted_log.setObject(root);
+                QTextStream log_out(&log_file);
+                log_out<<formatted_log.toJson();
             }
             JsObj *jo = new JsObj();
             ui->topic->page()->mainFrame()->addToJavaScriptWindowObject("jsobj",jo);
