@@ -8,7 +8,6 @@ Setting_window::Setting_window(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->get_topic_limit->setText(QString::number(get_topic_limit));
-    ui->get_res_limit->setText(QString::number(get_res_limit));
     ui->u_id->setText(QString::number(user_id));
     ui->send_mona_amount_1->setText(send_mona_amount_1);
     ui->send_mona_amount_2->setText(send_mona_amount_2);
@@ -41,7 +40,6 @@ void Setting_window::on_pushButton_clicked()
 void Setting_window::on_buttonBox_accepted()
 {
     get_topic_limit = ui->get_topic_limit->text().toInt();
-    get_res_limit = ui->get_res_limit->text().toInt();
     send_mona_amount_1 = ui->send_mona_amount_1->text();
     send_mona_amount_2 = ui->send_mona_amount_2->text();
     send_mona_amount_3 = ui->send_mona_amount_3->text();

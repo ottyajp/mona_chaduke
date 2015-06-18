@@ -51,7 +51,6 @@ void MainWindow::addTopicItem(QJsonValue topic_list_object){
 void MainWindow::readSettings(){
     QSettings settings("tea_soak_lab", "mona_chaduke");
     get_topic_limit = settings.value("get_topic_limit").toInt();
-    get_res_limit = settings.value("get_res_limit").toInt();
     user_id = settings.value("user_id").toInt();
     secret_key = settings.value("secret_key").toString();
     send_mona_amount_1 = settings.value("send_mona_amount_1").toString();
@@ -63,7 +62,6 @@ void MainWindow::readSettings(){
 void MainWindow::closeEvent(QCloseEvent* event){
     QSettings settings("tea_soak_lab", "mona_chaduke");
     settings.setValue("get_topic_limit", get_topic_limit);
-    settings.setValue("get_res_limit", get_res_limit);
     settings.setValue("user_id", user_id);
     settings.setValue("secret_key", secret_key);
     settings.setValue("send_mona_amount_1", send_mona_amount_1);
@@ -158,7 +156,7 @@ void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
         QUrlQuery api_query;
         api_query.addQueryItem("t_id",item->text(0));
         api_query.addQueryItem("from","1");
-        api_query.addQueryItem("to",QString::number(get_res_limit));
+        api_query.addQueryItem("to",QString::number(GET_RES_LIMIT));
         QString key = knock_api_get(api_name,api_query);
         QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
         if (json.object().value("status").toInt() == 0){
@@ -189,7 +187,7 @@ void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
         QUrlQuery api_query;
         api_query.addQueryItem("t_id",now_topic_id);
         api_query.addQueryItem("from","1");
-        api_query.addQueryItem("to",QString::number(get_res_limit));
+        api_query.addQueryItem("to",QString::number(GET_RES_LIMIT));
         api_query.addQueryItem("if_modified_since",log_json_array.at(indexof_now_topic).toObject().value("time").toString());
         QString key = knock_api_get(api_name,api_query);
         QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());

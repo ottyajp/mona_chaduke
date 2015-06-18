@@ -135,7 +135,7 @@ void format_topic(QWebFrame* frame, QJsonDocument json, QString title_string){
     QJsonArray res = json.object().value("responses").toArray();
     QWebElement list;
     double receive;
-    for (int i = 0; i < get_res_limit; i++){
+    for (int i = 0; i < GET_RES_LIMIT; i++){
     if(res.at(i).toObject().value("u_name").toString() == ""){
         break;
     }

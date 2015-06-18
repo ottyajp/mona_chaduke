@@ -3,8 +3,8 @@
 #include <QApplication>
 #include <QTranslator>
 
+
 int get_topic_limit;
-int get_res_limit;
 int user_id;
 QString now_topic_id;
 QString secret_key;

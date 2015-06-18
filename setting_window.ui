@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>421</height>
+    <height>315</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -116,25 +116,12 @@
            </property>
           </widget>
          </item>
-         <item>
-          <widget class="QLabel" name="label_5">
-           <property name="text">
-            <string>get_&amp;res_limit</string>
-           </property>
-           <property name="buddy">
-            <cstring>get_res_limit</cstring>
-           </property>
-          </widget>
-         </item>
         </layout>
        </item>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_4">
          <item>
           <widget class="QLineEdit" name="get_topic_limit"/>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="get_res_limit"/>
          </item>
         </layout>
        </item>
@@ -265,7 +252,6 @@
   <tabstop>u_id</tabstop>
   <tabstop>pushButton</tabstop>
   <tabstop>get_topic_limit</tabstop>
-  <tabstop>get_res_limit</tabstop>
  </tabstops>
  <resources/>
  <connections>
