@@ -7,10 +7,19 @@
 #include <QNetworkRequest>
 #include <QNetworkReply>
 #include <QEventLoop>
+#include <QWebFrame>
+#include <QWebElement>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QFile>
+#include <QObject>
+#include <QRegularExpression>
 
 QString knock_api(QString, QUrlQuery);
 QString knock_api_get(QString, QUrlQuery);
 QString from_unix_time(int);
+void format_topic(QWebFrame*, QJsonDocument, QString);
 extern int get_topic_limit;
 extern int get_res_limit;
 extern int user_id;
