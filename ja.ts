@@ -80,76 +80,72 @@
         <translation>入金アドレス取得(&amp;D)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="37"/>
+        <location filename="mainwindow.cpp" line="19"/>
         <source>Title</source>
         <translation>タイトル</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="37"/>
+        <location filename="mainwindow.cpp" line="19"/>
         <source>count</source>
         <translation>レス</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="37"/>
+        <location filename="mainwindow.cpp" line="19"/>
         <source>rank</source>
         <translation>順位</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="37"/>
+        <location filename="mainwindow.cpp" line="19"/>
         <source>updated</source>
         <translation>浮上</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="37"/>
+        <location filename="mainwindow.cpp" line="19"/>
         <source>modified</source>
         <translation>更新</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="229"/>
         <source>can&apos;t open template file.</source>
         <translation>テンプレートファイルが開けません。</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="250"/>
-        <location filename="mainwindow.cpp" line="253"/>
         <source>man</source>
         <translation>人</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="264"/>
         <source>send mona</source>
         <translation>送る</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="280"/>
+        <location filename="mainwindow.cpp" line="215"/>
         <source>about mona chaduke</source>
         <translation>モナ茶漬け</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="281"/>
+        <location filename="mainwindow.cpp" line="216"/>
         <source>&lt;h3&gt;mona chaduke&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;:/mona.png&quot;&gt;&lt;/p&gt;&lt;p&gt;Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz&lt;/p&gt;</source>
         <oldsource>&lt;h3&gt;mona chaduke&lt;/h3&gt;&lt;p&gt;Ah, monamona&lt;/p&gt;&lt;p&gt;Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz&lt;/p&gt;</oldsource>
-        <translation type="unfinished">&lt;h3&gt;モナ茶漬け&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;:/mona.png&quot;&gt;&lt;/p&gt;&lt;p&gt;Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz&lt;/p&gt;</translation>
+        <translation>&lt;h3&gt;モナ茶漬け&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;:/mona.png&quot;&gt;&lt;/p&gt;&lt;p&gt;Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="311"/>
+        <location filename="mainwindow.cpp" line="245"/>
         <source>balance</source>
         <translation>残高</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="311"/>
+        <location filename="mainwindow.cpp" line="245"/>
         <source>your balance is
 </source>
         <translation>あなたの残高(MONA)
 </translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="374"/>
+        <location filename="mainwindow.cpp" line="265"/>
         <source>your deposit address</source>
         <translation>入金アドレス</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="374"/>
+        <location filename="mainwindow.cpp" line="265"/>
         <source>your deposit address is
 
 </source>
@@ -164,6 +160,22 @@
         <location filename="main.cpp" line="28"/>
         <source>Mona Cha-du-ke!</source>
         <translation>モナ茶漬け</translation>
+    </message>
+    <message>
+        <location filename="func_var.cpp" line="125"/>
+        <source>can&apos;t open template file.</source>
+        <translation>テンプレートファイルが開けません。</translation>
+    </message>
+    <message>
+        <location filename="func_var.cpp" line="146"/>
+        <location filename="func_var.cpp" line="149"/>
+        <source>man</source>
+        <translation>人</translation>
+    </message>
+    <message>
+        <location filename="func_var.cpp" line="164"/>
+        <source>send mona</source>
+        <translation>送る</translation>
     </message>
 </context>
 <context>
@@ -284,6 +296,24 @@
     </message>
 </context>
 <context>
+    <name>image_Window</name>
+    <message>
+        <location filename="image_window.ui" line="20"/>
+        <source>Dialog</source>
+        <translation>画像</translation>
+    </message>
+    <message>
+        <location filename="image_window.ui" line="29"/>
+        <source>about:blank</source>
+        <translation>about:blank</translation>
+    </message>
+    <message>
+        <location filename="image_window.ui" line="52"/>
+        <source>&amp;close</source>
+        <translation>閉じる(&amp;C)</translation>
+    </message>
+</context>
+<context>
     <name>post_message</name>
     <message>
         <location filename="post_message.ui" line="14"/>
@@ -296,7 +326,7 @@
         <translation>&amp;sage</translation>
     </message>
     <message>
-        <location filename="post_message.cpp" line="26"/>
+        <location filename="post_message.cpp" line="27"/>
         <source>will you posting following sentences?</source>
         <translation>以下の文章で投稿しますか？</translation>
     </message>
@@ -364,12 +394,12 @@
         <translation> に何MONA送りますか？</translation>
     </message>
     <message>
-        <location filename="send_mona_to_res_window.cpp" line="28"/>
+        <location filename="send_mona_to_res_window.cpp" line="30"/>
         <source>do you really want send MONA?</source>
         <translation>MONAを本当に送りますか？</translation>
     </message>
     <message>
-        <location filename="send_mona_to_res_window.cpp" line="64"/>
+        <location filename="send_mona_to_res_window.cpp" line="68"/>
         <source>invalid amount</source>
         <translation>無効な値です</translation>
     </message>
