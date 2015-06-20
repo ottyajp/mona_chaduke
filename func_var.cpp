@@ -119,6 +119,7 @@ QString from_unix_time(int t){
 
 void format_topic(QWebFrame* frame, QJsonDocument json, QString title_string){
         //load template file
+    initial_contents_size = frame->contentsSize();
     QString source;
     QFile file("./template.html");
     if(!file.open(QIODevice::ReadOnly)){
@@ -127,44 +128,47 @@ void format_topic(QWebFrame* frame, QJsonDocument json, QString title_string){
     QTextStream in(&file);
     source = in.readAll();
     frame->setHtml(source);
+        qDebug()<<source;
         //set title
     QWebElement title;
     title = frame->findFirstElement("div.title");
     title.appendInside(title_string);
+    qDebug()<<frame->contentsSize();
         //set responses
     QJsonArray res = json.object().value("responses").toArray();
     QWebElement list;
     double receive;
     for (int i = 0; i < GET_RES_LIMIT; i++){
-    if(res.at(i).toObject().value("u_name").toString() == ""){
-        break;
-    }
-    QString received_mona;
-    receive = res.at(i).toObject().value("receive").toString().toDouble() / 100000000;
-    if(res.at(i).toObject().value("receive").toString()!="0"){
-        received_mona = "<span class=\"mona_yay\">+" +QString::number(receive,'f',8) + "MONA</b> / " +
-                QString::number(res.at(i).toObject().value("rec_count").toInt()) + QObject::tr("man") + "</span>";
-    }else{
-        received_mona = "+" + QString::number(receive) + "MONA / " +
-                QString::number(res.at(i).toObject().value("rec_count").toInt()) + QObject::tr("man") + "</span>";
-    }
-    QString replace_imgur = res.at(i).toObject().value("response").toString();
-    replace_imgur.replace(QRegularExpression("(http://i.imgur.com/.+)(..{3})"),
-                          "<span onclick=\"onClick_image('\\1\\2');\"><img src=\"\\1m\\2\" class=\"imgur\"></span>");
-    QString created = from_unix_time(res.at(i).toObject().value("created").toInt());
+        if(res.at(i).toObject().value("u_name").toString() == ""){
+            break;
+        }
+        QString received_mona;
+        receive = res.at(i).toObject().value("receive").toString().toDouble() / 100000000;
+        if(res.at(i).toObject().value("receive").toString()!="0"){
+            received_mona = "<span class=\"mona_yay\">+" +QString::number(receive,'f',8) + "MONA</b> / " +
+                    QString::number(res.at(i).toObject().value("rec_count").toInt()) + QObject::tr("man") + "</span>";
+        }else{
+            received_mona = "+" + QString::number(receive) + "MONA / " +
+                    QString::number(res.at(i).toObject().value("rec_count").toInt()) + QObject::tr("man") + "</span>";
+        }
+        QString replace_imgur = res.at(i).toObject().value("response").toString();
+        replace_imgur.replace(QRegularExpression("(http://i.imgur.com/.+)(..{3})"),
+                              "<div class=\"image\" onclick=\"onClick_image('\\1\\2');\"><img src=\"\\1m\\2\" class=\"imgur\"></div>");
+        QString created = from_unix_time(res.at(i).toObject().value("created").toInt());
 
-    list = frame->findFirstElement("div.responses");
-    QString response = QString::number(res.at(i).toObject().value("r_id").toInt()) + " : " +
-            res.at(i).toObject().value("u_name").toString() +
-            res.at(i).toObject().value("u_dan").toString() + " : " +
-            created + " [" +
-            res.at(i).toObject().value("u_times").toString() + "] " +
-            received_mona +
-            " <span onclick=\"onClick_send_mona_link(" + QString::number(res.at(i).toObject().value("r_id").toInt()) +
-            ");\" class=\"send_mona\">" + QObject::tr("send mona") + "</span><BR>" +
-            "<span class=\"level" + QString::number(res.at(i).toObject().value("res_lv").toInt()) + "\">" +
-            replace_imgur +
-            "</span>";
-    list.appendInside("<div class=\"response\">"+response+"</div>");
+        list = frame->findFirstElement("div.responses");
+        QString response = QString::number(res.at(i).toObject().value("r_id").toInt()) + " : " +
+                res.at(i).toObject().value("u_name").toString() +
+                res.at(i).toObject().value("u_dan").toString() + " : " +
+                created + " [" +
+                res.at(i).toObject().value("u_times").toString() + "] " +
+                received_mona +
+                " <span onclick=\"onClick_send_mona_link(" + QString::number(res.at(i).toObject().value("r_id").toInt()) +
+                ");\" class=\"send_mona\">" + QObject::tr("send mona") + "</span><BR>" +
+                "<span class=\"level" + QString::number(res.at(i).toObject().value("res_lv").toInt()) + "\">" +
+                replace_imgur +
+                "</span>";
+        list.appendInside("<div class=\"response\">"+response+"</div>");
     }
+    qDebug()<<frame->contentsSize();
 }

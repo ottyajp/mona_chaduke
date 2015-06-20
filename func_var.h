@@ -15,6 +15,8 @@
 #include <QFile>
 #include <QObject>
 #include <QRegularExpression>
+#include <QSize>
+#include <QPoint>
 
 #define GET_RES_LIMIT 1000
 
@@ -33,6 +35,8 @@ extern QString send_mona_amount_2;
 extern QString send_mona_amount_3;
 extern QString send_mona_amount_4;
 extern bool sage_check;
+extern QSize initial_contents_size;
+extern int position;
 
 class auth_Key{
 private:

@@ -27,7 +27,15 @@ MainWindow::MainWindow(QWidget *parent) :
     MainWindow::readSettings();
 
     QObject::connect(this,SIGNAL(topic_reload_signal()),this,SLOT(topic_reload()));
+    QObject::connect(ui->topic->page()->mainFrame(),SIGNAL(contentsSizeChanged(QSize)),this,SLOT(check_contents_size()));
 
+}
+
+void MainWindow::check_contents_size(){
+    qDebug()<<position<<ui->topic->page()->mainFrame()->contentsSize();
+    if(initial_contents_size != ui->topic->page()->mainFrame()->contentsSize()){
+        ui->topic->page()->mainFrame()->setScrollPosition(QPoint(0,position));
+    }
 }
 
 MainWindow::~MainWindow()
@@ -135,7 +143,11 @@ void MainWindow::on_action_Get_topic_list_triggered()
 
 void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
 {
-    now_topic_id = item->text(0);
+    ui->topic->setHtml("");
+    if (now_topic_id != item->text(0)){
+        now_topic_id = item->text(0);
+        position = 0;
+    }
     QFile log_file("./log");
     if(!log_file.open(QFile::ReadOnly)){
     }
@@ -284,14 +296,8 @@ void MainWindow::on_topic_list_itemActivated(QTreeWidgetItem *item)
 }
 
 void MainWindow::topic_reload(){
-    QPoint pos = ui->topic->page()->mainFrame()->scrollPosition();
+    position = ui->topic->page()->mainFrame()->scrollPosition().y();
     this->on_topic_list_itemDoubleClicked(ui->topic_list->selectedItems().at(0));
-//    ui->topic->page()->mainFrame()->scroll(0,pos.y());
-    QThread::sleep(1);
-    ui->topic->page()->mainFrame()->setScrollPosition(QPoint(0,pos.y()));
-    qDebug()<<pos.y();
-    pos = ui->topic->page()->mainFrame()->scrollPosition();
-    qDebug()<<pos.y();
 }
 
 void MainWindow::topic_reload_signal_fire(){
