@@ -23,9 +23,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->topic_list->setColumnWidth(3,40);
     ui->topic_list->setColumnWidth(4,130);
     QTreeWidgetItem *favorite_topic = new QTreeWidgetItem(ui->topic_list);
-    favorite_topic->setText(1,"Favorite topics");
+    favorite_topic->setText(1,tr("Favorite topics"));
     QTreeWidgetItem *askmona_topic = new QTreeWidgetItem(ui->topic_list);
-    askmona_topic->setText(1,"AskMona topics");
+    askmona_topic->setText(1,tr("AskMona topics"));
 
     MainWindow::readSettings();
 
