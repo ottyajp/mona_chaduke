@@ -23,6 +23,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->topic_list->setColumnWidth(3,40);
     ui->topic_list->setColumnWidth(4,130);
     ui->topic_list->setColumnWidth(5,130);
+    QTreeWidgetItem *favorite_topic = new QTreeWidgetItem(ui->topic_list);
+    favorite_topic->setText(1,"Favorite topics");
+    QTreeWidgetItem *askmona_topic = new QTreeWidgetItem(ui->topic_list);
+    askmona_topic->setText(1,"AskMona topics");
 
     MainWindow::readSettings();
 
@@ -43,9 +47,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::addTopicItem(QJsonValue topic_list_object){
+void MainWindow::addTopicItem(QJsonValue topic_list_object, int indexof_fav_ask){
     // QTreeWidgetItem(QTreeWidget * parent, int type = Type)
-    QTreeWidgetItem *treeItem = new QTreeWidgetItem(ui->topic_list);
+    QTreeWidgetItem *treeItem = new QTreeWidgetItem();
 
     // QTreeWidgetItem::setText(int column, const QString & text)
     treeItem->setText(0,QString::number(topic_list_object.toObject().value("t_id").toInt()));
@@ -54,6 +58,7 @@ void MainWindow::addTopicItem(QJsonValue topic_list_object){
     treeItem->setText(3,QString::number(topic_list_object.toObject().value("rank").toInt()));
     treeItem->setText(4,from_unix_time(topic_list_object.toObject().value("updated").toInt()));
     treeItem->setText(5,from_unix_time(topic_list_object.toObject().value("modified").toInt()));
+    ui->topic_list->invisibleRootItem()->child(indexof_fav_ask)->addChild(treeItem);
 }
 
 void MainWindow::readSettings(){
@@ -134,7 +139,7 @@ void MainWindow::on_action_Get_topic_list_triggered()
                 check_topic.clear();
                 continue;
             }else{
-                MainWindow::addTopicItem(item.at(i));
+                MainWindow::addTopicItem(item.at(i),1);
             }
         }
         ui->topic_list->sortByColumn(4,Qt::DescendingOrder);
