@@ -146,6 +146,7 @@ void MainWindow::on_action_Get_topic_list_triggered()
 
 void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
 {
+if(item->text(0) != ""){
     ui->topic->setHtml("");
     if (now_topic_id != item->text(0)){
         now_topic_id = item->text(0);
@@ -234,6 +235,7 @@ void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
         }
     }
     ui->topic->setFocus();
+}
 }
 
 void MainWindow::on_action_About_triggered()
