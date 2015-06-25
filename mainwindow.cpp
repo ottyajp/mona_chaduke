@@ -400,7 +400,7 @@ void MainWindow::on_remove_favorite_button_clicked()
     api_query.addQueryItem("nonce",auth_key.read_nonce());
     api_query.addQueryItem("time",auth_key.read_time());
     api_query.addQueryItem("auth_key",auth_key.read_auth_key());
-    api_query.addQueryItem("t_id",now_topic_id);
+    api_query.addQueryItem("t_id",ui->topic_list->currentItem()->text(0));
     QString key = knock_api(api_name,api_query);
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
