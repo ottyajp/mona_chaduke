@@ -29,6 +29,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     MainWindow::readSettings();
 
+    MainWindow::load_Favorite_topics();
+
     QObject::connect(this,SIGNAL(topic_reload_signal()),this,SLOT(topic_reload()));
     QObject::connect(ui->topic->page()->mainFrame(),SIGNAL(contentsSizeChanged(QSize)),this,SLOT(check_contents_size()));
 
@@ -82,6 +84,42 @@ void MainWindow::closeEvent(QCloseEvent* event){
     event->accept();
 }
 
+void MainWindow::load_Favorite_topics(){
+    auth_Key auth_key;
+    QString api_name = "favorites/list";
+    QUrlQuery api_query;
+    api_query.addQueryItem("app_id","2332");
+    api_query.addQueryItem("u_id",QString::number(user_id));
+    api_query.addQueryItem("nonce",auth_key.read_nonce());
+    api_query.addQueryItem("time",auth_key.read_time());
+    api_query.addQueryItem("auth_key",auth_key.read_auth_key());
+    QString key = knock_api(api_name,api_query);
+    QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
+    if (json.object().value("status").toInt() == 0){
+        qDebug()<<"error";
+        qDebug()<<json.object().value("error").toString();
+    }else{
+        QJsonArray item = json.object().value("topics").toArray();
+        QString topic_list_object;
+        QList<QTreeWidgetItem*> check_topic;
+        for(int i=0; i<get_topic_limit; i++){
+            if ( item.at(i).toObject().value("count").toInt() == 0 ) { break; }
+            check_topic = ui->topic_list->findItems(QString::number(item.at(i).toObject().value("t_id").toInt()),Qt::MatchContains,0);
+            if(check_topic.count() != 0){
+                check_topic.at(0)->setText(2, QString::number(item.at(i).toObject().value("count").toInt()));
+                check_topic.at(0)->setText(3, QString::number(item.at(i).toObject().value("rank").toInt()));
+                check_topic.at(0)->setText(4, from_unix_time(item.at(i).toObject().value("updated").toInt()));
+                check_topic.at(0)->setText(5, from_unix_time(item.at(i).toObject().value("modified").toInt()));
+                check_topic.clear();
+                continue;
+            }else{
+                MainWindow::addTopicItem(item.at(i),0);
+            }
+        }
+        ui->topic_list->sortByColumn(4,Qt::DescendingOrder);
+    }
+}
+
 void MainWindow::on_action_Config_triggered()
 {
     Setting_window *window = new Setting_window(this);
@@ -128,6 +166,7 @@ void MainWindow::on_action_Get_topic_list_triggered()
         QString topic_list_object;
         QList<QTreeWidgetItem*> check_topic;
         for(int i=0; i<get_topic_limit; i++){
+            if ( item.at(i).toObject().value("count").toInt() == 0 ) { break; }
             check_topic = ui->topic_list->findItems(QString::number(item.at(i).toObject().value("t_id").toInt()),Qt::MatchContains,0);
             if(check_topic.count() != 0){
                 check_topic.at(0)->setText(2, QString::number(item.at(i).toObject().value("count").toInt()));

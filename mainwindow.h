@@ -74,6 +74,7 @@ private:
     Ui::MainWindow *ui;
 
     void addTopicItem(QJsonValue topic_list_object, int indexof_fav_ask);
+    void load_Favorite_topics();
     void readSettings();
     void closeEvent(QCloseEvent* event);
 };
