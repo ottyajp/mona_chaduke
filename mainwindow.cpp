@@ -29,10 +29,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     MainWindow::readSettings();
 
-    MainWindow::load_Favorite_topics();
-
+    QObject::connect(this,SIGNAL(favorite_topic_reload_signal()),this,SLOT(favorite_topic_reload()));
     QObject::connect(this,SIGNAL(topic_reload_signal()),this,SLOT(topic_reload()));
     QObject::connect(ui->topic->page()->mainFrame(),SIGNAL(contentsSizeChanged(QSize)),this,SLOT(check_contents_size()));
+
+    emit favorite_topic_reload_signal();
 
 }
 
@@ -344,6 +345,83 @@ void MainWindow::topic_reload(){
     this->on_topic_list_itemDoubleClicked(ui->topic_list->selectedItems().at(0));
 }
 
+void MainWindow::favorite_topic_reload(){
+    for (;;){
+        if(ui->topic_list->invisibleRootItem()->child(0)->child(0)==0){break;}
+        qDebug()<<ui->topic_list->invisibleRootItem()->child(0)->child(0);
+        ui->topic_list->invisibleRootItem()->child(0)
+            ->removeChild(ui->topic_list->invisibleRootItem()->child(0)->child(0));
+    }
+    load_Favorite_topics();
+}
+
 void MainWindow::topic_reload_signal_fire(){
     emit topic_reload_signal();
+}
+
+void MainWindow::on_add_favorite_button_clicked()
+{
+    auth_Key auth_key;
+    QString api_name = "favorites/add";
+    QUrlQuery api_query;
+    api_query.addQueryItem("app_id","2332");
+    api_query.addQueryItem("u_id",QString::number(user_id));
+    api_query.addQueryItem("nonce",auth_key.read_nonce());
+    api_query.addQueryItem("time",auth_key.read_time());
+    api_query.addQueryItem("auth_key",auth_key.read_auth_key());
+    api_query.addQueryItem("t_id",now_topic_id);
+    QString key = knock_api(api_name,api_query);
+    QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
+    if (json.object().value("status").toInt() == 0){
+        qDebug()<<"error";
+        qDebug()<<json.object().value("error").toString();
+    }else{
+        QMessageBox message;
+        message.setText(tr("add Favorite"));
+        message.setInformativeText(tr("success"));
+        message.setStandardButtons(QMessageBox::Ok);
+        message.setDefaultButton(QMessageBox::Ok);
+        int ret = message.exec();
+        switch(ret){
+            case QMessageBox::Ok:
+                break;
+        }
+        emit favorite_topic_reload_signal();
+    }
+}
+
+void MainWindow::on_remove_favorite_button_clicked()
+{
+    auth_Key auth_key;
+    QString api_name = "favorites/delete";
+    QUrlQuery api_query;
+    api_query.addQueryItem("app_id","2332");
+    api_query.addQueryItem("u_id",QString::number(user_id));
+    api_query.addQueryItem("nonce",auth_key.read_nonce());
+    api_query.addQueryItem("time",auth_key.read_time());
+    api_query.addQueryItem("auth_key",auth_key.read_auth_key());
+    api_query.addQueryItem("t_id",now_topic_id);
+    QString key = knock_api(api_name,api_query);
+    QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
+    if (json.object().value("status").toInt() == 0){
+        qDebug()<<"error";
+        qDebug()<<json.object().value("error").toString();
+    }else{
+        QMessageBox message;
+        message.setText(tr("remove Favorite"));
+        message.setInformativeText(tr("success"));
+        message.setStandardButtons(QMessageBox::Ok);
+        message.setDefaultButton(QMessageBox::Ok);
+        int ret = message.exec();
+        switch(ret){
+            case QMessageBox::Ok:
+                break;
+        }
+        emit favorite_topic_reload_signal();
+    }
+}
+
+void MainWindow::on_actionGet_Favorite_topic_list_triggered()
+{
+    emit favorite_topic_reload_signal();
 }

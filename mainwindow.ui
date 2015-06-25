@@ -56,6 +56,20 @@
            </spacer>
           </item>
           <item>
+           <widget class="QPushButton" name="add_favorite_button">
+            <property name="text">
+             <string>&amp;add Favorite</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="remove_favorite_button">
+            <property name="text">
+             <string>r&amp;emove Favorite</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QPushButton" name="call_post_window">
             <property name="text">
              <string>p&amp;ost</string>
@@ -107,6 +121,7 @@
      <string>&amp;Topic</string>
     </property>
     <addaction name="action_Get_topic_list"/>
+    <addaction name="actionGet_Favorite_topic_list"/>
    </widget>
    <widget class="QMenu" name="menu_Help">
     <property name="title">
@@ -156,6 +171,11 @@
   <action name="actionGet_deposit_address">
    <property name="text">
     <string>get_&amp;deposit_address</string>
+   </property>
+  </action>
+  <action name="actionGet_Favorite_topic_list">
+   <property name="text">
+    <string>Get_&amp;Favorite_topic_list</string>
    </property>
   </action>
  </widget>

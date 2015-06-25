@@ -39,10 +39,14 @@ public:
 signals:
     void topic_reload_signal();
 
+    void favorite_topic_reload_signal();
+
 public slots:
     void topic_reload();
 
     void topic_reload_signal_fire();
+
+    void favorite_topic_reload();
 
 private slots:
     void on_action_Quit_triggered();
@@ -69,6 +73,12 @@ private slots:
     void open_image_window(QString);
 
     void check_contents_size();
+
+    void on_add_favorite_button_clicked();
+
+    void on_remove_favorite_button_clicked();
+
+    void on_actionGet_Favorite_topic_list_triggered();
 
 private:
     Ui::MainWindow *ui;
