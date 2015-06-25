@@ -15,14 +15,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->topic->setHtml("<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"></head><body>Mona_chaduke_top</body></html>");
 
-    ui->topic_list->setColumnCount(6);
-    ui->topic_list->setHeaderLabels(QStringList()<<"ID"<<tr("Title")<<tr("count")<<tr("rank")<<tr("updated")<<tr("modified"));
-    ui->topic_list->setColumnWidth(0,60);
-    ui->topic_list->setColumnWidth(1,340);
+    ui->topic_list->setColumnCount(5);
+    ui->topic_list->setHeaderLabels(QStringList()<<"ID"<<tr("Title")<<tr("count")<<tr("rank")<<tr("updated"));
+    ui->topic_list->setColumnWidth(0,70);
+    ui->topic_list->setColumnWidth(1,450);
     ui->topic_list->setColumnWidth(2,40);
     ui->topic_list->setColumnWidth(3,40);
     ui->topic_list->setColumnWidth(4,130);
-    ui->topic_list->setColumnWidth(5,130);
     QTreeWidgetItem *favorite_topic = new QTreeWidgetItem(ui->topic_list);
     favorite_topic->setText(1,"Favorite topics");
     QTreeWidgetItem *askmona_topic = new QTreeWidgetItem(ui->topic_list);
@@ -57,7 +56,6 @@ void MainWindow::addTopicItem(QJsonValue topic_list_object, int indexof_fav_ask)
     treeItem->setText(2,QString::number(topic_list_object.toObject().value("count").toInt()));
     treeItem->setText(3,QString::number(topic_list_object.toObject().value("rank").toInt()));
     treeItem->setText(4,from_unix_time(topic_list_object.toObject().value("updated").toInt()));
-    treeItem->setText(5,from_unix_time(topic_list_object.toObject().value("modified").toInt()));
     ui->topic_list->invisibleRootItem()->child(indexof_fav_ask)->addChild(treeItem);
 }
 
