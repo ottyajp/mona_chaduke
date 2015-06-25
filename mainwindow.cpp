@@ -165,10 +165,16 @@ void MainWindow::on_action_Get_topic_list_triggered()
     }else{
         QJsonArray item = json.object().value("topics").toArray();
         QString topic_list_object;
-        QList<QTreeWidgetItem*> check_topic;
+//        QList<QTreeWidgetItem*> check_topic;
+        for (;;){
+            if(ui->topic_list->invisibleRootItem()->child(1)->child(0)==0){break;}
+            delete ui->topic_list->invisibleRootItem()->child(1)->child(0);
+//            ui->topic_list->invisibleRootItem()->child(1)
+//                ->removeChild(ui->topic_list->invisibleRootItem()->child(1)->child(0));
+        }
         for(int i=0; i<get_topic_limit; i++){
             if ( item.at(i).toObject().value("count").toInt() == 0 ) { break; }
-            check_topic = ui->topic_list->findItems(QString::number(item.at(i).toObject().value("t_id").toInt()),Qt::MatchContains,0);
+/*            check_topic = ui->topic_list->findItems(QString::number(item.at(i).toObject().value("t_id").toInt()),Qt::MatchContains,0);
             if(check_topic.count() != 0){
                 check_topic.at(0)->setText(2, QString::number(item.at(i).toObject().value("count").toInt()));
                 check_topic.at(0)->setText(3, QString::number(item.at(i).toObject().value("rank").toInt()));
@@ -178,7 +184,8 @@ void MainWindow::on_action_Get_topic_list_triggered()
                 continue;
             }else{
                 MainWindow::addTopicItem(item.at(i),1);
-            }
+            }*/
+            MainWindow::addTopicItem(item.at(i),1);
         }
         ui->topic_list->sortByColumn(4,Qt::DescendingOrder);
     }
