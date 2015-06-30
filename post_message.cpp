@@ -40,6 +40,7 @@ void post_message::on_buttonBox_accepted()
 }
 
 void post_message::call_post_message_api(){
+status_bar->showMessage(tr("posting message..."));
     auth_Key auth_key;
     QString api_name = "responses/post";
     QUrlQuery api_query;
@@ -57,5 +58,6 @@ void post_message::call_post_message_api(){
         qDebug()<<json.object().value("error").toString();
     }else{
         emit post_success();
+        status_bar->showMessage(tr("post success!"));
     }
 }

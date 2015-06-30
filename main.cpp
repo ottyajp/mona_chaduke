@@ -17,6 +17,7 @@ QString send_mona_amount_4;
 bool sage_check;
 QSize initial_contents_size;
 int position = 0;
+QStatusBar *status_bar = 0;
 
 int main(int argc, char *argv[])
 {

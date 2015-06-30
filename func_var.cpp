@@ -1,6 +1,7 @@
 #include "func_var.h"
 
 QString knock_api(QString api_name, QUrlQuery api_query){
+status_bar->showMessage(QObject::tr("POST requesting..."));
 
     // create custom temporary event loop on stack
     QEventLoop eventLoop;
@@ -36,7 +37,7 @@ QString knock_api(QString api_name, QUrlQuery api_query){
 }
 
 QString knock_api_get(QString api_name, QUrlQuery api_query){
-
+status_bar->showMessage(QObject::tr("GET requesting..."));
     // create custom temporary event loop on stack
     QEventLoop eventLoop;
 
@@ -70,6 +71,7 @@ QString knock_api_get(QString api_name, QUrlQuery api_query){
 }
 
 auth_Key::auth_Key(){
+status_bar->showMessage(QObject::tr("making auth_key..."));
     time = QString::number(QDateTime::currentDateTime().toTime_t());
     int f = 0;
     int pos;
@@ -118,22 +120,21 @@ QString from_unix_time(int t){
 }
 
 void format_topic(QWebFrame* frame, QJsonDocument json, QString title_string){
+status_bar->showMessage(QObject::tr("formatting topic..."));
         //load template file
     initial_contents_size = frame->contentsSize();
     QString source;
     QFile file("./template.html");
     if(!file.open(QIODevice::ReadOnly)){
-        qDebug()<<QObject::tr("can't open template file.");
+        status_bar->showMessage(QObject::tr("can't open template file."));
     }
     QTextStream in(&file);
     source = in.readAll();
     frame->setHtml(source);
-        qDebug()<<source;
         //set title
     QWebElement title;
     title = frame->findFirstElement("div.title");
     title.appendInside(title_string);
-    qDebug()<<frame->contentsSize();
         //set responses
     QJsonArray res = json.object().value("responses").toArray();
     QWebElement list;
@@ -151,8 +152,8 @@ void format_topic(QWebFrame* frame, QJsonDocument json, QString title_string){
             received_mona = "+" + QString::number(receive) + "MONA / " +
                     QString::number(res.at(i).toObject().value("rec_count").toInt()) + QObject::tr("man") + "</span>";
         }
-        QString replace_imgur = res.at(i).toObject().value("response").toString();
-        replace_imgur.replace(QRegularExpression("(http://i.imgur.com/.+)(..{3})"),
+        QString replace_text = res.at(i).toObject().value("response").toString();
+        replace_text.replace(QRegularExpression("(http://i.imgur.com/.+)(\\..{3})"),
                               "<div class=\"image\" onclick=\"onClick_image('\\1\\2');\"><img src=\"\\1m\\2\" class=\"imgur\"></div>");
         QString created = from_unix_time(res.at(i).toObject().value("created").toInt());
 
@@ -166,9 +167,9 @@ void format_topic(QWebFrame* frame, QJsonDocument json, QString title_string){
                 " <span onclick=\"onClick_send_mona_link(" + QString::number(res.at(i).toObject().value("r_id").toInt()) +
                 ");\" class=\"send_mona\">" + QObject::tr("send mona") + "</span><BR>" +
                 "<span class=\"level" + QString::number(res.at(i).toObject().value("res_lv").toInt()) + "\">" +
-                replace_imgur +
+                replace_text +
                 "</span>";
         list.appendInside("<div class=\"response\">"+response+"</div>");
     }
-    qDebug()<<frame->contentsSize();
+status_bar->showMessage(QObject::tr("formatting topic completed"));
 }

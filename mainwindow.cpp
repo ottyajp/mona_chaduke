@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->topic->setHtml("<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"></head><body>Mona_chaduke_top</body></html>");
+    status_bar = ui->statusBar;
 
     ui->topic_list->setColumnCount(5);
     ui->topic_list->setHeaderLabels(QStringList()<<"ID"<<tr("Title")<<tr("count")<<tr("rank")<<tr("updated"));
@@ -34,11 +35,11 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->topic->page()->mainFrame(),SIGNAL(contentsSizeChanged(QSize)),this,SLOT(check_contents_size()));
 
     emit favorite_topic_reload_signal();
+    status_bar->showMessage("mona chaduke");
 
 }
 
 void MainWindow::check_contents_size(){
-    qDebug()<<position<<ui->topic->page()->mainFrame()->contentsSize();
     if(initial_contents_size != ui->topic->page()->mainFrame()->contentsSize()){
         ui->topic->page()->mainFrame()->setScrollPosition(QPoint(0,position));
     }
@@ -86,6 +87,7 @@ void MainWindow::closeEvent(QCloseEvent* event){
 }
 
 void MainWindow::load_Favorite_topics(){
+status_bar->showMessage(tr("loading favorite topics..."));
     auth_Key auth_key;
     QString api_name = "favorites/list";
     QUrlQuery api_query;
@@ -97,7 +99,7 @@ void MainWindow::load_Favorite_topics(){
     QString key = knock_api(api_name,api_query);
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
-        qDebug()<<"error";
+        status_bar->showMessage(tr("failed to load favorite_topics. error message is : ")+json.object().value("error").toString());
         qDebug()<<json.object().value("error").toString();
     }else{
         QJsonArray item = json.object().value("topics").toArray();
@@ -119,6 +121,7 @@ void MainWindow::load_Favorite_topics(){
         }
         ui->topic_list->sortByColumn(4,Qt::DescendingOrder);
     }
+    status_bar->showMessage(tr("loading favorite topics is complete."));
 }
 
 void MainWindow::on_action_Config_triggered()
@@ -155,13 +158,15 @@ void MainWindow::on_actionGet_profile_triggered()
 
 void MainWindow::on_action_Get_topic_list_triggered()
 {
+status_bar->showMessage(tr("loading topic list..."));
     QString api_name = "topics/list";
     QUrlQuery api_query;
     api_query.addQueryItem("limit",QString::number(get_topic_limit));
     QString key = knock_api_get(api_name,api_query);
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toString() == "0"){
-        qDebug()<<"error";
+        status_bar->showMessage(tr("failed to get topic_list. error message is : ")+json.object().value("error").toString());
+        qDebug()<<json.object().value("error").toString();
     }else{
         QJsonArray item = json.object().value("topics").toArray();
         QString topic_list_object;
@@ -189,6 +194,7 @@ void MainWindow::on_action_Get_topic_list_triggered()
         }
         ui->topic_list->sortByColumn(4,Qt::DescendingOrder);
     }
+    status_bar->showMessage(tr("loading topic list is complete"));
 }
 
 void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
@@ -215,6 +221,7 @@ if(item->text(0) != ""){
         }
     }
     if(exist == false){     //loading topic isn't exist in log
+        status_bar->showMessage(tr("loading topic isn't exist in log."));
         QString api_name = "responses/list";
         QUrlQuery api_query;
         api_query.addQueryItem("t_id",item->text(0));
@@ -246,6 +253,7 @@ if(item->text(0) != ""){
         QTextStream log_out(&log_file);
         log_out<<formatted_log.toJson();
     }else{              //loading topic is exist in log
+        status_bar->showMessage(tr("loading topic is exist in log"));
         QString api_name = "responses/list";
         QUrlQuery api_query;
         api_query.addQueryItem("t_id",now_topic_id);
@@ -258,8 +266,10 @@ if(item->text(0) != ""){
             ui->topic->setHtml("<h2>error</h2><BR>"+json.object().value("error").toString());
         }else{
             if(json.object().value("status").toInt() == 2){     //there is no update
+                status_bar->showMessage(tr("there is no update."));
                 ui->topic->setHtml(log_json_array.at(indexof_now_topic).toObject().value("text").toString());
             }else{      //there are update
+                status_bar->showMessage(tr("there are update."));
                 format_topic(ui->topic->page()->mainFrame(), json, item->text(1));
                 if(!log_file.open(QFile::ReadWrite | QFile::Truncate)){}
                 QJsonObject adding_log;
@@ -312,7 +322,7 @@ void MainWindow::on_actionGet_balance_triggered()
     QString key = knock_api(api_name,api_query);
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
-        qDebug()<<"error";
+        status_bar->showMessage(tr("failed to get balance. error message is : ")+json.object().value("error").toString());
         qDebug()<<json.object().value("error").toString();
     }else{
         double balance = json.object().value("balance").toString().toDouble();
@@ -334,7 +344,7 @@ void MainWindow::on_actionGet_deposit_address_triggered()
     QString key = knock_api(api_name,api_query);
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
-        qDebug()<<"error";
+        status_bar->showMessage(tr("failed to get depost_address. error message is : ")+json.object().value("error").toString());
         qDebug()<<json.object().value("error").toString();
     }else{
         QMessageBox::information(this,tr("your deposit address"),tr("your deposit address is\n\n") +
@@ -355,7 +365,6 @@ void MainWindow::topic_reload(){
 void MainWindow::favorite_topic_reload(){
     for (;;){
         if(ui->topic_list->invisibleRootItem()->child(0)->child(0)==0){break;}
-        qDebug()<<ui->topic_list->invisibleRootItem()->child(0)->child(0);
         ui->topic_list->invisibleRootItem()->child(0)
             ->removeChild(ui->topic_list->invisibleRootItem()->child(0)->child(0));
     }
@@ -380,19 +389,10 @@ void MainWindow::on_add_favorite_button_clicked()
     QString key = knock_api(api_name,api_query);
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
-        qDebug()<<"error";
+        status_bar->showMessage(tr("failed to add favorite. error message is : ")+json.object().value("error").toString());
         qDebug()<<json.object().value("error").toString();
     }else{
-        QMessageBox message;
-        message.setText(tr("add Favorite"));
-        message.setInformativeText(tr("success"));
-        message.setStandardButtons(QMessageBox::Ok);
-        message.setDefaultButton(QMessageBox::Ok);
-        int ret = message.exec();
-        switch(ret){
-            case QMessageBox::Ok:
-                break;
-        }
+        status_bar->showMessage(tr("success add favorite"));
         emit favorite_topic_reload_signal();
     }
 }
@@ -411,19 +411,10 @@ void MainWindow::on_remove_favorite_button_clicked()
     QString key = knock_api(api_name,api_query);
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
-        qDebug()<<"error";
+        status_bar->showMessage(tr("failed to remove favorite. error message is : ")+json.object().value("error").toString());
         qDebug()<<json.object().value("error").toString();
     }else{
-        QMessageBox message;
-        message.setText(tr("remove Favorite"));
-        message.setInformativeText(tr("success"));
-        message.setStandardButtons(QMessageBox::Ok);
-        message.setDefaultButton(QMessageBox::Ok);
-        int ret = message.exec();
-        switch(ret){
-            case QMessageBox::Ok:
-                break;
-        }
+        status_bar->showMessage(tr("success remove favorite"));
         emit favorite_topic_reload_signal();
     }
 }

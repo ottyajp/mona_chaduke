@@ -18,6 +18,7 @@ Setting_window::Setting_window(QWidget *parent) :
 
 Setting_window::~Setting_window()
 {
+    status_bar->showMessage(tr("setting complete."));
     delete ui;
 }
 

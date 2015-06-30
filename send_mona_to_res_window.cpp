@@ -35,7 +35,7 @@ void send_mona_to_res_window::on_send_button_clicked()
         switch(ret){
             case QMessageBox::Ok:{
                 long mona_amount_watanabe = (long)100000000 * mona_amount;
-                qDebug()<<mona_amount_watanabe<<","<<mona_amount;
+                status_bar->showMessage(tr("sending mona...") + mona_amount_watanabe + "[watanabe], " + mona_amount +"[MONA]");
 
                 auth_Key auth_key;
                 QString api_name = "account/send";
@@ -52,7 +52,7 @@ void send_mona_to_res_window::on_send_button_clicked()
                 QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
 
                 if (json.object().value("status").toInt() == 0){
-                    qDebug()<<"error";
+                    status_bar->showMessage(tr("failed to send mona. error message is : ")+json.object().value("error").toString());
                     qDebug()<<json.object().value("error").toString();
                 }else{
                     this->send_success_fire();
@@ -91,4 +91,5 @@ void send_mona_to_res_window::on_send_mona_preset4_clicked()
 
 void send_mona_to_res_window::send_success_fire(){
     emit send_success();
+    status_bar->showMessage(tr("mona send success!"));
 }
