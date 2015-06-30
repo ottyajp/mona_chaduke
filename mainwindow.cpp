@@ -200,10 +200,60 @@ status_bar->showMessage(tr("loading topic list..."));
 void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
 {
 if(item->text(0) != ""){
+    if (now_topic_id != ""){    //add position data to log
+        QFile log_file("./log");
+        if(!log_file.open(QFile::ReadOnly)){}
+        QTextStream in(&log_file);
+        QJsonDocument log = QJsonDocument::fromJson(in.readAll().toUtf8());
+        log_file.close();
+        QJsonArray log_array = log.object().value("topics").toArray();      //load log to log_array
+        int indexof_topic;
+        for(int i = 0; i < log_array.count(); i++){
+            if (now_topic_id == log_array.at(i).toObject().value("t_id").toString()){
+                indexof_topic = i;
+            }
+        }
+        QString save_position = QString::number(ui->topic->page()->mainFrame()->scrollPosition().y());
+        QJsonObject adding_log;
+        adding_log["t_id"] = now_topic_id;
+        adding_log["time"] = log_array.at(indexof_topic).toObject().value("time").toString();
+        adding_log["text"] = ui->topic->page()->mainFrame()->toHtml();
+        adding_log["position"] = save_position;
+        log_array.removeAt(indexof_topic);
+        log_array += adding_log;
+        if(!log_file.open(QFile::ReadWrite | QFile::Truncate)){}
+        QJsonObject root;
+        root["topics"] = log_array;
+        QJsonDocument formatted_log;
+        formatted_log.setObject(root);
+        QTextStream out(&log_file);
+        out<<formatted_log.toJson();
+    }
+
     ui->topic->setHtml("");
     if (now_topic_id != item->text(0)){
         now_topic_id = item->text(0);
-        position = 0;
+        QFile log_file("./log");
+        if(!log_file.open(QFile::ReadOnly)){}
+        QTextStream in(&log_file);
+        QJsonDocument log = QJsonDocument::fromJson(in.readAll().toUtf8());
+        log_file.close();
+        QJsonArray log_array = log.object().value("topics").toArray();
+        int indexof_topic;
+        bool is_there_position = false;
+        for(int i = 0; i < log_array.count(); i++){
+            if (now_topic_id == log_array.at(i).toObject().value("t_id").toString()){
+                indexof_topic = i;
+                is_there_position = true;
+            }
+        }
+        if(is_there_position == true){
+            position = log_array.at(indexof_topic).toObject().value("position").toString().toInt();
+            qDebug()<<position;
+        }else{
+            position = 0;
+        }
+
     }
     QFile log_file("./log");
     if(!log_file.open(QFile::ReadOnly)){
@@ -245,6 +295,7 @@ if(item->text(0) != ""){
         adding_log["t_id"] = now_topic_id;
         adding_log["time"] = QString::number(QDateTime::currentDateTime().toTime_t());
         adding_log["text"] = ui->topic->page()->mainFrame()->toHtml();
+        adding_log["position"] = "0";
         log_json_array += adding_log;
         QJsonObject root;
         root["topics"] = log_json_array;
@@ -268,6 +319,7 @@ if(item->text(0) != ""){
             if(json.object().value("status").toInt() == 2){     //there is no update
                 status_bar->showMessage(tr("there is no update."));
                 ui->topic->setHtml(log_json_array.at(indexof_now_topic).toObject().value("text").toString());
+
             }else{      //there are update
                 status_bar->showMessage(tr("there are update."));
                 format_topic(ui->topic->page()->mainFrame(), json, item->text(1));
