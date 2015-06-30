@@ -20,6 +20,11 @@
 		border-color: #AAAAAA;
 	}
 
+	span.u_name{
+		text-decoration: underline;
+		color: blue;
+	}
+
 	span.mona_yay{
 		text-decoration: underline;
 	}
@@ -108,6 +113,10 @@
 
 	var onClick_image = function(str) {
 		jsobj.open_image(str);
+	};
+
+	var onClick_u_name = function(u_id) {
+		jsobj.open_profile_window(u_id);
 	};
 	</script>
 </head>

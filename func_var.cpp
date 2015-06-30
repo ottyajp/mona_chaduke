@@ -161,7 +161,8 @@ status_bar->showMessage(QObject::tr("formatting topic..."));
 
         list = frame->findFirstElement("div.responses");
         QString response = QString::number(res.at(i).toObject().value("r_id").toInt()) + " : " +
-                res.at(i).toObject().value("u_name").toString() +
+                "<span onclick=\"onClick_u_name(" + QString::number(res.at(i).toObject().value("u_id").toInt()) + ");\" class=\"u_name\">" +
+                res.at(i).toObject().value("u_name").toString() + "</span>" +
                 res.at(i).toObject().value("u_dan").toString() + " : " +
                 created + " [" +
                 res.at(i).toObject().value("u_times").toString() + "] " +

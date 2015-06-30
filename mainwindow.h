@@ -72,6 +72,8 @@ private slots:
 
     void open_image_window(QString);
 
+    void open_profile_window(QString);
+
     void check_contents_size();
 
     void on_add_favorite_button_clicked();

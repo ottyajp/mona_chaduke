@@ -35,3 +35,8 @@ void User_Profile_window::on_pushButton_2_clicked()
 {
     close();
 }
+
+void User_Profile_window::set_u_id_from_res(QString s){
+    u_id_from_res = s;
+    ui->u_id->setText(u_id_from_res);
+}

@@ -9,11 +9,13 @@ class User_Profile_window;
 
 class User_Profile_window : public QDialog
 {
+    QString u_id_from_res;
     Q_OBJECT
 
 public:
     explicit User_Profile_window(QWidget *parent = 0);
     ~User_Profile_window();
+    void set_u_id_from_res(QString);
 
 private slots:
     void on_pushButton_clicked();

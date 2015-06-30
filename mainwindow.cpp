@@ -144,6 +144,13 @@ void MainWindow::open_image_window(QString s){
     window->show();
 }
 
+void MainWindow::open_profile_window(QString s){
+    send_to = s;
+    User_Profile_window *window = new User_Profile_window(this);
+    window->set_u_id_from_res(s);
+    window->show();
+}
+
 void MainWindow::on_action_Quit_triggered()
 {
     close();
@@ -152,7 +159,7 @@ void MainWindow::on_action_Quit_triggered()
 void MainWindow::on_actionGet_profile_triggered()
 {
     User_Profile_window *window = new User_Profile_window(this);
-    window->setModal(1);
+    window->set_u_id_from_res("");
     window->show();
 }
 
@@ -287,6 +294,7 @@ if(item->text(0) != ""){
             ui->topic->page()->mainFrame()->addToJavaScriptWindowObject("jsobj",jo);
             QObject::connect(jo,SIGNAL(send_mona_to_res_signal(QString)),this,SLOT(on_action_send_mona_to_res_clicked(QString)));
             QObject::connect(jo,SIGNAL(open_image_window_signal(QString)),this,SLOT(open_image_window(QString)));
+            QObject::connect(jo,SIGNAL(open_profile_window_signal(QString)),this,SLOT(open_profile_window(QString)));
         }
 
         if(!log_file.open(QFile::ReadWrite | QFile::Truncate)){
@@ -341,6 +349,7 @@ if(item->text(0) != ""){
             ui->topic->page()->mainFrame()->addToJavaScriptWindowObject("jsobj",jo);
             QObject::connect(jo,SIGNAL(send_mona_to_res_signal(QString)),this,SLOT(on_action_send_mona_to_res_clicked(QString)));
             QObject::connect(jo,SIGNAL(open_image_window_signal(QString)),this,SLOT(open_image_window(QString)));
+            QObject::connect(jo,SIGNAL(open_profile_window_signal(QString)),this,SLOT(open_profile_window(QString)));
         }
     }
     ui->topic->setFocus();

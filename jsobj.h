@@ -15,10 +15,14 @@ signals:
 
     void open_image_window_signal(QString);
 
+    void open_profile_window_signal(QString);
+
 public slots:
     void send_mona_to_res(QString s);
 
     void open_image(QString s);
+
+    void open_profile_window(QString s);
 };
 
 #endif // JSOBJ_H
