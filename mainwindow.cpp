@@ -149,6 +149,8 @@ void MainWindow::open_profile_window(QString s){
     User_Profile_window *window = new User_Profile_window(this);
     window->set_u_id_from_res(s);
     window->show();
+    QObject::connect(this,SIGNAL(open_profile_window_from_topic()),window,SLOT(on_pushButton_clicked()));
+    emit open_profile_window_from_topic();
 }
 
 void MainWindow::on_action_Quit_triggered()

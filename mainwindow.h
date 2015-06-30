@@ -41,6 +41,8 @@ signals:
 
     void favorite_topic_reload_signal();
 
+    void open_profile_window_from_topic();
+
 public slots:
     void topic_reload();
 
