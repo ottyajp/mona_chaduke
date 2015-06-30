@@ -256,7 +256,6 @@ if(item->text(0) != ""){
         }
         if(is_there_position == true){
             position = log_array.at(indexof_topic).toObject().value("position").toString().toInt();
-            qDebug()<<position;
         }else{
             position = 0;
         }
