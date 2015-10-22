@@ -122,6 +122,8 @@
     </property>
     <addaction name="action_Get_topic_list"/>
     <addaction name="actionGet_Favorite_topic_list"/>
+    <addaction name="separator"/>
+    <addaction name="actionForced_to_reload"/>
    </widget>
    <widget class="QMenu" name="menu_Help">
     <property name="title">
@@ -176,6 +178,11 @@
   <action name="actionGet_Favorite_topic_list">
    <property name="text">
     <string>Get_&amp;Favorite_topic_list</string>
+   </property>
+  </action>
+  <action name="actionForced_to_reload">
+   <property name="text">
+    <string>Forced_to_&amp;reload</string>
    </property>
   </action>
  </widget>

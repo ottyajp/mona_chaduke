@@ -485,3 +485,53 @@ void MainWindow::on_actionGet_Favorite_topic_list_triggered()
 {
     emit favorite_topic_reload_signal();
 }
+
+void MainWindow::on_actionForced_to_reload_triggered()
+{
+    status_bar->showMessage(tr("Forced to reload topic."));
+    QString api_name = "responses/list";
+    QUrlQuery api_query;
+    api_query.addQueryItem("t_id",now_topic_id);
+    api_query.addQueryItem("from","1");
+    api_query.addQueryItem("to",QString::number(GET_RES_LIMIT));
+    api_query.addQueryItem("topic_detail","1");
+    QString key = knock_api_get(api_name,api_query);
+    QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
+    if (json.object().value("status").toInt() == 0){
+        ui->topic->setHtml("<h2>error</h2><BR>"+json.object().value("error").toString());
+    }else{
+        QString t_title = json.object().value("topic").toObject().value("title").toString();
+        format_topic(ui->topic->page()->mainFrame(), json, t_title);
+        JsObj *jo = new JsObj();
+        ui->topic->page()->mainFrame()->addToJavaScriptWindowObject("jsobj",jo);
+        QObject::connect(jo,SIGNAL(send_mona_to_res_signal(QString)),this,SLOT(on_action_send_mona_to_res_clicked(QString)));
+        QObject::connect(jo,SIGNAL(open_image_window_signal(QString)),this,SLOT(open_image_window(QString)));
+        QObject::connect(jo,SIGNAL(open_profile_window_signal(QString)),this,SLOT(open_profile_window(QString)));
+    }
+
+    QFile log_file("./log");
+    if(!log_file.open(QFile::ReadWrite | QFile::Truncate)){
+    }
+    QTextStream in(&log_file);
+    QJsonDocument log = QJsonDocument::fromJson(in.readAll().toUtf8());
+    QJsonArray log_json_array = log.object().value("topics").toArray();
+    int indexof_now_topic = 0;
+    for(int i = 0; i< log_json_array.count(); i++){
+        if(now_topic_id == log_json_array.at(i).toObject().value("t_id").toString()){
+            indexof_now_topic = i;
+        }
+    }
+    QJsonObject adding_log;
+    adding_log["t_id"] = now_topic_id;
+    adding_log["time"] = QString::number(QDateTime::currentDateTime().toTime_t());
+    adding_log["text"] = ui->topic->page()->mainFrame()->toHtml();
+    adding_log["position"] = "0";
+    log_json_array.removeAt(indexof_now_topic);
+    log_json_array += adding_log;
+    QJsonObject root;
+    root["topics"] = log_json_array;
+    QJsonDocument formatted_log;
+    formatted_log.setObject(root);
+    QTextStream log_out(&log_file);
+    log_out<<formatted_log.toJson();
+}

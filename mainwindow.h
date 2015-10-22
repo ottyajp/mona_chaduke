@@ -84,6 +84,8 @@ private slots:
 
     void on_actionGet_Favorite_topic_list_triggered();
 
+    void on_actionForced_to_reload_triggered();
+
 private:
     Ui::MainWindow *ui;
 
