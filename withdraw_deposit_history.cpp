@@ -46,7 +46,6 @@ void withdraw_deposit_history::on_reload_clicked()
         QString created = from_unix_time(depo_json.object().value("transactions").toArray().at(i).toObject().value("created").toInt());
         QString type = depo_json.object().value("transactions").toArray().at(i).toObject().value("item").toString();
         if(type == "deposit") type = tr("deposit");
-        if(type == "withdraw") type = tr("withdraw");
         QString amount = QString::number(
                     depo_json.object().value("transactions").toArray().at(i).toObject().value("amount").toString().toDouble() / 100000000,'f',8)
                 .replace(QRegularExpression("[0]*$"),"").replace(QRegularExpression("\\.$"),"");
@@ -60,6 +59,7 @@ void withdraw_deposit_history::on_reload_clicked()
         if(with_json.object().value("transactions").toArray().at(i).toObject().value("created").toInt() == 0)break;
         QString created = from_unix_time(with_json.object().value("transactions").toArray().at(i).toObject().value("created").toInt());
         QString type = with_json.object().value("transactions").toArray().at(i).toObject().value("item").toString();
+        if(type == "withdraw") type = tr("withdraw");
         QString amount = QString::number(
                     with_json.object().value("transactions").toArray().at(i).toObject().value("amount").toString().toDouble() / 100000000,'f',8)
                 .replace(QRegularExpression("[0]*$"),"").replace(QRegularExpression("\\.$"),"");
