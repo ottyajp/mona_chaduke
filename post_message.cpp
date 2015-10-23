@@ -41,6 +41,13 @@ void post_message::on_buttonBox_accepted()
 
 void post_message::call_post_message_api(){
 status_bar->showMessage(tr("posting message..."));
+    QString sage;
+    if(ui->sage_check->checkState() == Qt::Unchecked){
+        sage = "0";
+    }
+    if(ui->sage_check->checkState() == Qt::Checked){
+        sage = "1";
+    }
     auth_Key auth_key;
     QString api_name = "responses/post";
     QUrlQuery api_query;
@@ -51,6 +58,7 @@ status_bar->showMessage(tr("posting message..."));
     api_query.addQueryItem("auth_key",auth_key.read_auth_key());
     api_query.addQueryItem("t_id",now_topic_id);
     api_query.addQueryItem("text",post_text);
+    api_query.addQueryItem("sage",sage);
     QString key = knock_api(api_name,api_query);
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
