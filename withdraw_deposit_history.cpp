@@ -69,5 +69,5 @@ void withdraw_deposit_history::on_reload_clicked()
         item->setText(2,amount);
         ui->view->addTopLevelItem(item);
     }
-    ui->view->sortByColumn(1,Qt::DescendingOrder);
+    ui->view->sortByColumn(0,Qt::DescendingOrder);
 }
