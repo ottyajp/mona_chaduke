@@ -40,4 +40,5 @@ void withdraw_window::on_withdraw_button_clicked()
         status_bar->showMessage(tr("success.  balance:") +
                                 json.object().value("balance").toString() + "watanabe");
     }
+    delete this;
 }

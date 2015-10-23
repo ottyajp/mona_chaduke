@@ -13,7 +13,6 @@ withdraw_deposit_history::withdraw_deposit_history(QWidget *parent) :
     ui->view->setHeaderLabels(QStringList()<<tr("Date")<<tr("type")<<tr("amount"));
     ui->view->setColumnWidth(0,150);
     ui->view->setColumnWidth(1,60);
-//    ui->view->setColumnWidth(2,100);
 
     emit on_reload_clicked();
 }
