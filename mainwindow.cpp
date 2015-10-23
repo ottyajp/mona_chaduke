@@ -7,6 +7,7 @@
 #include "jsobj.h"
 #include "image_window.h"
 #include "withdraw_window.h"
+#include "withdraw_deposit_history.h"
 #include <QCoreApplication>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -540,5 +541,11 @@ void MainWindow::on_actionForced_to_reload_triggered()
 void MainWindow::on_action_withdraw_balance_triggered()
 {
     withdraw_window *window = new withdraw_window(this);
+    window->show();
+}
+
+void MainWindow::on_actionWithdraw_deposit_history_triggered()
+{
+    withdraw_deposit_history *window = new withdraw_deposit_history(this);
     window->show();
 }

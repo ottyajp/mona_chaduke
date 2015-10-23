@@ -176,3 +176,25 @@ status_bar->showMessage(QObject::tr("formatting topic..."));
     }
 status_bar->showMessage(QObject::tr("formatting topic completed"));
 }
+
+QJsonDocument get_tx_history(QString type, QString limit){
+    auth_Key auth_key;
+    QString api_name = "account/txdetail";
+    QUrlQuery api_query;
+    api_query.addQueryItem("app_id","2332");
+    api_query.addQueryItem("u_id",QString::number(user_id));
+    api_query.addQueryItem("nonce",auth_key.read_nonce());
+    api_query.addQueryItem("time",auth_key.read_time());
+    api_query.addQueryItem("auth_key",auth_key.read_auth_key());
+    api_query.addQueryItem("item",type);
+    api_query.addQueryItem("limit",limit);
+    QString key = knock_api(api_name,api_query);
+    QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
+    if (json.object().value("status").toInt() == 0){
+        status_bar->showMessage(QObject::tr("failed to load history. ")+json.object().value("error").toString());
+//        qDebug()<<json.object().value("error").toString();
+    }else{
+        status_bar->showMessage(QObject::tr("success."));
+    }
+    return json;
+}

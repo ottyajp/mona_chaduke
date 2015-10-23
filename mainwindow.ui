@@ -117,6 +117,8 @@
     <addaction name="actionGet_balance"/>
     <addaction name="actionGet_deposit_address"/>
     <addaction name="action_withdraw_balance"/>
+    <addaction name="separator"/>
+    <addaction name="actionWithdraw_deposit_history"/>
    </widget>
    <widget class="QMenu" name="menuTest">
     <property name="title">
@@ -190,6 +192,11 @@
   <action name="action_withdraw_balance">
    <property name="text">
     <string>&amp;withdraw_balance</string>
+   </property>
+  </action>
+  <action name="actionWithdraw_deposit_history">
+   <property name="text">
+    <string>withdraw_deposit_&amp;history</string>
    </property>
   </action>
  </widget>

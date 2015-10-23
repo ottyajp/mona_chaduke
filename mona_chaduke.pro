@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     send_mona_to_res_window.cpp \
     image_window.cpp \
     func_var.cpp \
-    withdraw_window.cpp
+    withdraw_window.cpp \
+    withdraw_deposit_history.cpp
 
 HEADERS  += mainwindow.h \
     setting_window.h \
@@ -34,7 +35,8 @@ HEADERS  += mainwindow.h \
     send_mona_to_res_window.h \
     image_window.h \
     func_var.h \
-    withdraw_window.h
+    withdraw_window.h \
+    withdraw_deposit_history.h
 
 FORMS    += mainwindow.ui \
     setting_window.ui \
@@ -42,4 +44,5 @@ FORMS    += mainwindow.ui \
     post_message.ui \
     send_mona_to_res_window.ui \
     image_window.ui \
-    withdraw_window.ui
+    withdraw_window.ui \
+    withdraw_deposit_history.ui

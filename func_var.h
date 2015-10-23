@@ -24,6 +24,7 @@
 QString knock_api(QString, QUrlQuery);
 QString knock_api_get(QString, QUrlQuery);
 QString from_unix_time(int);
+QJsonDocument get_tx_history(QString, QString);
 void format_topic(QWebFrame*, QJsonDocument, QString);
 extern int get_topic_limit;
 extern int user_id;

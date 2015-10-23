@@ -88,6 +88,8 @@ private slots:
 
     void on_action_withdraw_balance_triggered();
 
+    void on_actionWithdraw_deposit_history_triggered();
+
 private:
     Ui::MainWindow *ui;
 
