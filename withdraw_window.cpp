@@ -32,7 +32,7 @@ void withdraw_window::on_withdraw_button_clicked()
     api_query.addQueryItem("time",auth_key.read_time());
     api_query.addQueryItem("auth_key",auth_key.read_auth_key());
     api_query.addQueryItem("amount",amount);
-    QString key = knock_api_get(api_name,api_query);
+    QString key = knock_api(api_name,api_query);
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
         status_bar->showMessage(tr("error. ") + json.object().value("error").toString());
