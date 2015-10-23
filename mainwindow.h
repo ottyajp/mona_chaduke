@@ -86,6 +86,8 @@ private slots:
 
     void on_actionForced_to_reload_triggered();
 
+    void on_action_withdraw_balance_triggered();
+
 private:
     Ui::MainWindow *ui;
 

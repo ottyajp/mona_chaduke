@@ -6,6 +6,7 @@
 #include "send_mona_to_res_window.h"
 #include "jsobj.h"
 #include "image_window.h"
+#include "withdraw_window.h"
 #include <QCoreApplication>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -534,4 +535,10 @@ void MainWindow::on_actionForced_to_reload_triggered()
     formatted_log.setObject(root);
     QTextStream log_out(&log_file);
     log_out<<formatted_log.toJson();
+}
+
+void MainWindow::on_action_withdraw_balance_triggered()
+{
+    withdraw_window *window = new withdraw_window(this);
+    window->show();
 }

@@ -23,7 +23,8 @@ SOURCES += main.cpp\
     post_message.cpp \
     send_mona_to_res_window.cpp \
     image_window.cpp \
-    func_var.cpp
+    func_var.cpp \
+    withdraw_window.cpp
 
 HEADERS  += mainwindow.h \
     setting_window.h \
@@ -32,11 +33,13 @@ HEADERS  += mainwindow.h \
     post_message.h \
     send_mona_to_res_window.h \
     image_window.h \
-    func_var.h
+    func_var.h \
+    withdraw_window.h
 
 FORMS    += mainwindow.ui \
     setting_window.ui \
     user_profile_window.ui \
     post_message.ui \
     send_mona_to_res_window.ui \
-    image_window.ui
+    image_window.ui \
+    withdraw_window.ui
