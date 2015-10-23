@@ -9,7 +9,7 @@ post_message::post_message(QWidget *parent) :
     ui(new Ui::post_message)
 {
     ui->setupUi(this);
-    if(sage_check){
+    if(sage_check == true){
         ui->sage_check->setCheckState(Qt::Checked);
     }
     QObject::connect(this,SIGNAL(post_success()),parent,SLOT(topic_reload_signal_fire()));
@@ -22,6 +22,12 @@ post_message::~post_message()
 
 void post_message::on_buttonBox_accepted()
 {
+    if(ui->sage_check->checkState() == Qt::Checked){
+        sage_check = true;
+    }
+    if(ui->sage_check->checkState() == Qt::Unchecked){
+        sage_check = false;
+    }
     post_text = ui->text->toPlainText();
     QMessageBox confirm_text;
     confirm_text.setText(tr("will you posting following sentences?"));

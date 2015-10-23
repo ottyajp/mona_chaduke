@@ -74,6 +74,7 @@ void MainWindow::readSettings(){
     send_mona_amount_2 = settings.value("send_mona_amount_2").toString();
     send_mona_amount_3 = settings.value("send_mona_amount_3").toString();
     send_mona_amount_4 = settings.value("send_mona_amount_4").toString();
+    sage_check = settings.value("sage_check").toBool();
 }
 
 void MainWindow::closeEvent(QCloseEvent* event){
@@ -85,6 +86,7 @@ void MainWindow::closeEvent(QCloseEvent* event){
     settings.setValue("send_mona_amount_2", send_mona_amount_2);
     settings.setValue("send_mona_amount_3", send_mona_amount_3);
     settings.setValue("send_mona_amount_4", send_mona_amount_4);
+    settings.setValue("sage_check", sage_check);
     event->accept();
 }
 
