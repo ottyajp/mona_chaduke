@@ -46,3 +46,5 @@ FORMS    += mainwindow.ui \
     image_window.ui \
     withdraw_window.ui \
     withdraw_deposit_history.ui
+
+win32: RC_FILE = mona_chaduke.rc
