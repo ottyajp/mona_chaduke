@@ -38,6 +38,6 @@ void withdraw_window::on_withdraw_button_clicked()
         status_bar->showMessage(tr("error. ") + json.object().value("error").toString());
     }else{
         status_bar->showMessage(tr("success.  balance:") +
-                                json.object().value("balance").toString() + "watanabe";
+                                json.object().value("balance").toString() + "watanabe");
     }
 }
