@@ -38,6 +38,7 @@ void withdraw_deposit_history::on_reload_clicked()
     status_bar->showMessage(tr("get deposit history."));
     //get history
     QJsonDocument depo_json = get_tx_history("deposit",tx_with_depo_limit);
+    status_bar->showMessage(tr("get withdraw history."));
     QThread::sleep(1);
     QJsonDocument with_json = get_tx_history("withdraw",tx_with_depo_limit);
 
