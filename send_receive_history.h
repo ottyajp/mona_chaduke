@@ -15,6 +15,11 @@ public:
     explicit send_receive_history(QWidget *parent = 0);
     ~send_receive_history();
 
+private slots:
+    void on_close_clicked();
+
+    void on_reload_clicked();
+
 private:
     Ui::send_receive_history *ui;
 };

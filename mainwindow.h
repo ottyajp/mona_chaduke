@@ -90,6 +90,8 @@ private slots:
 
     void on_actionWithdraw_deposit_history_triggered();
 
+    void on_actionSend_receive_h_istory_triggered();
+
 private:
     Ui::MainWindow *ui;
 

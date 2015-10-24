@@ -8,6 +8,7 @@
 #include "image_window.h"
 #include "withdraw_window.h"
 #include "withdraw_deposit_history.h"
+#include "send_receive_history.h"
 #include <QCoreApplication>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -553,5 +554,11 @@ void MainWindow::on_action_withdraw_balance_triggered()
 void MainWindow::on_actionWithdraw_deposit_history_triggered()
 {
     withdraw_deposit_history *window = new withdraw_deposit_history(this);
+    window->show();
+}
+
+void MainWindow::on_actionSend_receive_h_istory_triggered()
+{
+    send_receive_history *window = new send_receive_history(this);
     window->show();
 }
