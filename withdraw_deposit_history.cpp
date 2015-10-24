@@ -37,11 +37,11 @@ void withdraw_deposit_history::on_reload_clicked()
     }
     status_bar->showMessage(tr("get deposit history."));
     //get history
-    QJsonDocument depo_json = get_tx_history("deposit","10");
+    QJsonDocument depo_json = get_tx_history("deposit",tx_with_depo_limit);
     QThread::sleep(1);
-    QJsonDocument with_json = get_tx_history("withdraw","10");
+    QJsonDocument with_json = get_tx_history("withdraw",tx_with_depo_limit);
 
-    for(int i=0;i<10;i++){
+    for(int i=0;i<tx_with_depo_limit.toInt();i++){
         if(depo_json.object().value("transactions").toArray().at(i).toObject().value("created").toInt() == 0){break;}
         QString created = from_unix_time(depo_json.object().value("transactions").toArray().at(i).toObject().value("created").toInt());
         QString type = depo_json.object().value("transactions").toArray().at(i).toObject().value("item").toString();
@@ -55,7 +55,7 @@ void withdraw_deposit_history::on_reload_clicked()
         item->setText(2,amount);
         ui->view->addTopLevelItem(item);
     }
-    for(int i=0;i<10;i++){
+    for(int i=0;i<tx_with_depo_limit.toInt();i++){
         if(with_json.object().value("transactions").toArray().at(i).toObject().value("created").toInt() == 0)break;
         QString created = from_unix_time(with_json.object().value("transactions").toArray().at(i).toObject().value("created").toInt());
         QString type = with_json.object().value("transactions").toArray().at(i).toObject().value("item").toString();

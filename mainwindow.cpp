@@ -75,6 +75,8 @@ void MainWindow::readSettings(){
     send_mona_amount_3 = settings.value("send_mona_amount_3").toString();
     send_mona_amount_4 = settings.value("send_mona_amount_4").toString();
     sage_check = settings.value("sage_check").toBool();
+    tx_send_receive_limit = settings.value("tx_send_receive_limit").toString();
+    tx_with_depo_limit = settings.value("tx_with_depo_limit").toString();
 }
 
 void MainWindow::closeEvent(QCloseEvent* event){
@@ -87,6 +89,8 @@ void MainWindow::closeEvent(QCloseEvent* event){
     settings.setValue("send_mona_amount_3", send_mona_amount_3);
     settings.setValue("send_mona_amount_4", send_mona_amount_4);
     settings.setValue("sage_check", sage_check);
+    settings.setValue("tx_send_receive_limit",tx_send_receive_limit);
+    settings.setValue("tx_with_depo_limit",tx_with_depo_limit);
     event->accept();
 }
 

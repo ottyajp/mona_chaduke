@@ -13,6 +13,8 @@ Setting_window::Setting_window(QWidget *parent) :
     ui->send_mona_amount_2->setText(send_mona_amount_2);
     ui->send_mona_amount_3->setText(send_mona_amount_3);
     ui->send_mona_amount_4->setText(send_mona_amount_4);
+    ui->tx_send_receive_limit->setText(tx_send_receive_limit);
+    ui->tx_with_depo_limit->setText(tx_with_depo_limit);
     QString secret_key;
 }
 
@@ -45,5 +47,7 @@ void Setting_window::on_buttonBox_accepted()
     send_mona_amount_2 = ui->send_mona_amount_2->text();
     send_mona_amount_3 = ui->send_mona_amount_3->text();
     send_mona_amount_4 = ui->send_mona_amount_4->text();
+    tx_send_receive_limit = ui->tx_send_receive_limit->text();
+    tx_with_depo_limit = ui->tx_with_depo_limit->text();
 
 }

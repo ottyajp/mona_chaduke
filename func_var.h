@@ -36,6 +36,8 @@ extern QString send_mona_amount_1;
 extern QString send_mona_amount_2;
 extern QString send_mona_amount_3;
 extern QString send_mona_amount_4;
+extern QString tx_send_receive_limit;
+extern QString tx_with_depo_limit;
 extern bool sage_check;
 extern QSize initial_contents_size;
 extern int position;

@@ -14,6 +14,8 @@ QString send_mona_amount_1;
 QString send_mona_amount_2;
 QString send_mona_amount_3;
 QString send_mona_amount_4;
+QString tx_send_receive_limit;
+QString tx_with_depo_limit;
 bool sage_check;
 QSize initial_contents_size;
 int position = 0;
