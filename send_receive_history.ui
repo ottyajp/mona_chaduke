@@ -61,9 +61,9 @@
   </layout>
  </widget>
  <tabstops>
+  <tabstop>view</tabstop>
   <tabstop>reload</tabstop>
   <tabstop>close</tabstop>
-  <tabstop>view</tabstop>
  </tabstops>
  <resources/>
  <connections/>

@@ -2,6 +2,7 @@
 #define SEND_RECEIVE_HISTORY_H
 
 #include <QDialog>
+#include <QTreeWidgetItem>
 
 namespace Ui {
 class send_receive_history;
@@ -19,6 +20,8 @@ private slots:
     void on_close_clicked();
 
     void on_reload_clicked();
+
+    void on_view_itemDoubleClicked(QTreeWidgetItem *item);
 
 private:
     Ui::send_receive_history *ui;
