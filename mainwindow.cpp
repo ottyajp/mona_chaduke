@@ -78,6 +78,13 @@ void MainWindow::readSettings(){
     sage_check = settings.value("sage_check").toBool();
     tx_send_receive_limit = settings.value("tx_send_receive_limit").toString();
     tx_with_depo_limit = settings.value("tx_with_depo_limit").toString();
+    if(settings.value("maximized").toString() == "true"){
+        showMaximized();
+    }else{
+        if(settings.value("winWidth").toInt() != 0){
+            resize(settings.value("winWidth").toInt(), settings.value("winHeight").toInt());
+        }
+    }
 }
 
 void MainWindow::closeEvent(QCloseEvent* event){
@@ -92,6 +99,13 @@ void MainWindow::closeEvent(QCloseEvent* event){
     settings.setValue("sage_check", sage_check);
     settings.setValue("tx_send_receive_limit",tx_send_receive_limit);
     settings.setValue("tx_with_depo_limit",tx_with_depo_limit);
+    if(isMaximized() == true){
+        settings.setValue("maximized","true");
+    }else{
+        settings.setValue("maximized","false");
+        settings.setValue("winWidth",width());
+        settings.setValue("winHeight",height());
+    }
     event->accept();
 }
 
