@@ -330,7 +330,7 @@
     <message>
         <location filename="func_var.cpp" line="152"/>
         <location filename="func_var.cpp" line="155"/>
-        <location filename="send_receive_history.cpp" line="146"/>
+        <location filename="send_receive_history.cpp" line="148"/>
         <source>man</source>
         <translation>人</translation>
     </message>
@@ -355,15 +355,21 @@
         <translation>成功。</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="148"/>
+        <location filename="send_receive_history.cpp" line="150"/>
         <source>sent MONA : </source>
         <translation>やりとりされたMONA : </translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="149"/>
+        <location filename="send_receive_history.cpp" line="152"/>
         <source>sent message :
 </source>
-        <translation>やりとりされたメッセージ : </translation>
+        <translation>やりとりされたメッセージ : 
+ </translation>
+    </message>
+    <message>
+        <location filename="send_receive_history.cpp" line="154"/>
+        <source>any message wasn&apos;t sent.</source>
+        <translation>メッセージはありません。</translation>
     </message>
 </context>
 <context>
@@ -649,78 +655,83 @@
         <translation>閉じる(&amp;C)</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="14"/>
+        <location filename="send_receive_history.cpp" line="15"/>
         <source>Date</source>
         <translation>日付</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="14"/>
+        <location filename="send_receive_history.cpp" line="15"/>
         <source>type</source>
         <translation>区分</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="14"/>
+        <location filename="send_receive_history.cpp" line="15"/>
         <source>amount</source>
         <translation>量</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="14"/>
-        <location filename="send_receive_history.cpp" line="64"/>
-        <location filename="send_receive_history.cpp" line="99"/>
+        <location filename="send_receive_history.cpp" line="15"/>
+        <location filename="send_receive_history.cpp" line="65"/>
+        <location filename="send_receive_history.cpp" line="100"/>
         <source>anonymous</source>
         <translation>匿名</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="15"/>
+        <location filename="send_receive_history.cpp" line="16"/>
         <source>user</source>
         <translation>ユーザ</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="15"/>
+        <location filename="send_receive_history.cpp" line="16"/>
         <source>topic</source>
         <translation>トピック</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="15"/>
+        <location filename="send_receive_history.cpp" line="16"/>
         <source>res</source>
         <translation>レス</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="15"/>
+        <location filename="send_receive_history.cpp" line="16"/>
         <source>text</source>
         <translation>メッセージ</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="45"/>
+        <location filename="send_receive_history.cpp" line="46"/>
         <source>get send history.</source>
         <translation>ばらまき履歴を取得</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="48"/>
+        <location filename="send_receive_history.cpp" line="49"/>
         <source>get receive history.</source>
         <translation>受取履歴を取得</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="57"/>
+        <location filename="send_receive_history.cpp" line="58"/>
         <source>send</source>
         <translation>ばらまき</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="66"/>
-        <location filename="send_receive_history.cpp" line="101"/>
-        <location filename="send_receive_history.cpp" line="127"/>
+        <location filename="send_receive_history.cpp" line="67"/>
+        <location filename="send_receive_history.cpp" line="102"/>
+        <location filename="send_receive_history.cpp" line="164"/>
         <source>known</source>
         <translation>通知</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="92"/>
+        <location filename="send_receive_history.cpp" line="93"/>
         <source>receive</source>
         <translation>受取</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="136"/>
+        <location filename="send_receive_history.cpp" line="138"/>
         <source>failed to get detail.</source>
         <translation>詳細の読み込みに失敗しました。</translation>
+    </message>
+    <message>
+        <location filename="send_receive_history.cpp" line="174"/>
+        <source>no details.</source>
+        <translation>詳細情報はありません。</translation>
     </message>
 </context>
 <context>
