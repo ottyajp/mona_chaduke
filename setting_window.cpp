@@ -19,6 +19,7 @@ Setting_window::Setting_window(QWidget *parent) :
     }else{
         ui->u_id->setText(json.object().value("u_name").toString() +
                           json.object().value("u_dan").toString());
+        ui->pushButton->setEnabled(false);
     }
     ui->send_mona_amount_1->setText(send_mona_amount_1);
     ui->send_mona_amount_2->setText(send_mona_amount_2);
@@ -61,4 +62,14 @@ void Setting_window::on_buttonBox_accepted()
     tx_send_receive_limit = ui->tx_send_receive_limit->text();
     tx_with_depo_limit = ui->tx_with_depo_limit->text();
 
+}
+
+void Setting_window::on_u_address_textChanged()
+{
+    ui->pushButton->setEnabled(true);
+}
+
+void Setting_window::on_pass_textChanged()
+{
+    ui->pushButton->setEnabled(true);
 }

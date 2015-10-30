@@ -20,6 +20,10 @@ private slots:
 
     void on_buttonBox_accepted();
 
+    void on_u_address_textChanged();
+
+    void on_pass_textChanged();
+
 private:
     Ui::Setting_window *ui;
 };
