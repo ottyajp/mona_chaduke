@@ -1,6 +1,7 @@
 #include "setting_window.h"
 #include "ui_setting_window.h"
 #include "mainwindow.h"
+#include "QUrlQuery"
 
 Setting_window::Setting_window(QWidget *parent) :
     QDialog(parent),
@@ -8,7 +9,17 @@ Setting_window::Setting_window(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->get_topic_limit->setText(QString::number(get_topic_limit));
-    ui->u_id->setText(QString::number(user_id));
+    QString api_name = "users/profile";
+    QUrlQuery query;
+    query.addQueryItem("u_id",QString::number(user_id));
+    QString key = knock_api_get(api_name,query);
+    QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
+    if (json.object().value("status").toInt() == 0){
+        ui->u_id->setText("error");
+    }else{
+        ui->u_id->setText(json.object().value("u_name").toString() +
+                          json.object().value("u_dan").toString());
+    }
     ui->send_mona_amount_1->setText(send_mona_amount_1);
     ui->send_mona_amount_2->setText(send_mona_amount_2);
     ui->send_mona_amount_3->setText(send_mona_amount_3);
