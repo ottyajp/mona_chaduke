@@ -16,6 +16,9 @@ public:
     explicit send_receive_history(QWidget *parent = 0);
     ~send_receive_history();
 
+signals:
+    void open_profile_window_from_tx();
+
 private slots:
     void on_close_clicked();
 

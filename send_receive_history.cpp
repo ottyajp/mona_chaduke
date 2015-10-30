@@ -1,6 +1,7 @@
 #include "send_receive_history.h"
 #include "ui_send_receive_history.h"
 #include "mainwindow.h"
+#include "user_profile_window.h"
 #include <QDebug>
 #include <QMessageBox>
 
@@ -124,35 +125,56 @@ void send_receive_history::on_reload_clicked()
 void send_receive_history::on_view_itemDoubleClicked(QTreeWidgetItem *item)
 {
     //0date 1type 2amount 3anonymous 4user 5topic 6res 7text
-if(item->text(3) == tr("known")){
-    QString api_name = "responses/list";
-    QUrlQuery query;
-    query.addQueryItem("t_id",item->text(5));
-    query.addQueryItem("from",item->text(6));
-    query.addQueryItem("topic_detail","1");
-    QString key = knock_api_get(api_name, query);
-    QJsonDocument json0 = QJsonDocument::fromJson(key.toUtf8());
-    if (json0.object().value("status").toInt() == 0){
-        status_bar->showMessage(tr("failed to get detail.")+json0.object().value("error").toString());
-        qDebug()<<json0.object().value("error").toString();
-    }else{
-        QJsonObject json = json0.object().value("responses").toArray().at(0).toObject();
-        QString amount = QString::number(json.value("receive").toString().toDouble() / 100000000,'f',8)
-                .replace(QRegularExpression("[0]*$"),"").replace(QRegularExpression("\\.$"),"");
-        QString info = json.value("topic").toObject().value("title").toString() + "\n\n" +//title
-                item->text(0) + " " + item->text(1)+ "\n" + //date type
-                QString::number(json.value("r_id").toInt()) + "  :" + json.value("u_name").toString() +//res info 1
-                json.value("u_dan").toString() + ":" + from_unix_time(json.value("created").toInt()) + " " +//res info 2
-                amount + "MONA/" + QString::number(json.value("rec_count").toInt()) + QObject::tr("man") + "\n\n" +//res info 3
-                json.value("response").toString() + "\n\n";
-        QString informativetext = QObject::tr("sent MONA : ") + item->text(2) + "MONA\n" +
-                QObject::tr("sent message :\n") + item->text(7);//amount
-        QMessageBox detail;
-        detail.setText(info);
-        detail.setInformativeText(informativetext);
-        detail.setStandardButtons(QMessageBox::Ok);
-        detail.setDefaultButton(QMessageBox::Ok);
-        detail.exec();
+    if(item->text(5) != ""){//t_id exist(tx to res)
+        //res info and user detail, but res info includes user
+        QString api_name = "responses/list";
+        QUrlQuery query;
+        query.addQueryItem("t_id",item->text(5));
+        query.addQueryItem("from",item->text(6));
+        query.addQueryItem("topic_detail","1");
+        QString key = knock_api_get(api_name, query);
+        QJsonDocument json0 = QJsonDocument::fromJson(key.toUtf8());
+        if (json0.object().value("status").toInt() == 0){
+            status_bar->showMessage(tr("failed to get detail.")+json0.object().value("error").toString());
+            qDebug()<<json0.object().value("error").toString();
+        }else{
+            QJsonObject json = json0.object().value("responses").toArray().at(0).toObject();
+            QString amount = QString::number(json.value("receive").toString().toDouble() / 100000000,'f',8)
+                    .replace(QRegularExpression("[0]*$"),"").replace(QRegularExpression("\\.$"),"");
+            QString info = json.value("topic").toObject().value("title").toString() + "\n\n" +//title
+                    item->text(0) + " " + item->text(1)+ "\n" + //date type
+                    QString::number(json.value("r_id").toInt()) + "  :" + json.value("u_name").toString() +//res info 1
+                    json.value("u_dan").toString() + ":" + from_unix_time(json.value("created").toInt()) + " " +//res info 2
+                    amount + "MONA/" + QString::number(json.value("rec_count").toInt()) + QObject::tr("man") + "\n\n" +//res info 3
+                    json.value("response").toString() + "\n\n";
+            QString informativetext = QObject::tr("sent MONA : ") + item->text(2) + "MONA\n";
+            if(item->text(7) != ""){
+                informativetext += QObject::tr("sent message :\n") + item->text(7);
+            }else{
+                informativetext += QObject::tr("any message wasn't sent.");
+            }
+            QMessageBox detail;
+            detail.setText(info);
+            detail.setInformativeText(informativetext);
+            detail.setStandardButtons(QMessageBox::Ok);
+            detail.setDefaultButton(QMessageBox::Ok);
+            detail.exec();
+        }
+    }else{//t_id not exist(tx to user)
+        if(item->text(3) == tr("known")){//u_id exist(known)
+            //user detail
+            User_Profile_window *user_profile_window = new User_Profile_window(this);
+            user_profile_window->set_u_id_from_res(item->text(4));
+            user_profile_window->show();
+            QObject::connect(this,SIGNAL(open_profile_window_from_tx()),user_profile_window,SLOT(on_pushButton_clicked()));
+            emit open_profile_window_from_tx();
+        }else{//u_id not exist(anonymous)
+            //no information to show
+            QMessageBox detail;
+            detail.setText(tr("no details."));
+            detail.setStandardButtons(QMessageBox::Ok);
+            detail .setDefaultButton(QMessageBox::Ok);
+            detail.exec();
+        }
     }
-}
 }
