@@ -89,7 +89,7 @@ void send_receive_history::on_reload_clicked()
         if(json.value("created").toInt() == 0){break;}
         QString created = from_unix_time(json.value("created").toInt());
         QString type = json.value("item").toString();
-        if(type == "send") type = tr("send");
+        if(type == "receive") type = tr("receive");
         QString amount = QString::number(
                     json.value("amount").toString().toDouble() / 100000000,'f',8)
                 .replace(QRegularExpression("[0]*$"),"").replace(QRegularExpression("\\.$"),"");

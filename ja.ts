@@ -330,6 +330,7 @@
     <message>
         <location filename="func_var.cpp" line="152"/>
         <location filename="func_var.cpp" line="155"/>
+        <location filename="send_receive_history.cpp" line="146"/>
         <source>man</source>
         <translation>人</translation>
     </message>
@@ -352,6 +353,17 @@
         <location filename="func_var.cpp" line="197"/>
         <source>success.</source>
         <translation>成功。</translation>
+    </message>
+    <message>
+        <location filename="send_receive_history.cpp" line="148"/>
+        <source>sent MONA : </source>
+        <translation>やりとりされたMONA : </translation>
+    </message>
+    <message>
+        <location filename="send_receive_history.cpp" line="149"/>
+        <source>sent message :
+</source>
+        <translation>やりとりされたメッセージ : </translation>
     </message>
 </context>
 <context>
@@ -637,53 +649,54 @@
         <translation>閉じる(&amp;C)</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="13"/>
+        <location filename="send_receive_history.cpp" line="14"/>
         <source>Date</source>
         <translation>日付</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="13"/>
+        <location filename="send_receive_history.cpp" line="14"/>
         <source>type</source>
         <translation>区分</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="13"/>
+        <location filename="send_receive_history.cpp" line="14"/>
         <source>amount</source>
         <translation>量</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="13"/>
+        <location filename="send_receive_history.cpp" line="14"/>
         <location filename="send_receive_history.cpp" line="64"/>
+        <location filename="send_receive_history.cpp" line="99"/>
         <source>anonymous</source>
         <translation>匿名</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="14"/>
+        <location filename="send_receive_history.cpp" line="15"/>
         <source>user</source>
         <translation>ユーザ</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="14"/>
+        <location filename="send_receive_history.cpp" line="15"/>
         <source>topic</source>
         <translation>トピック</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="14"/>
+        <location filename="send_receive_history.cpp" line="15"/>
         <source>res</source>
         <translation>レス</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="14"/>
+        <location filename="send_receive_history.cpp" line="15"/>
         <source>text</source>
         <translation>メッセージ</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="44"/>
+        <location filename="send_receive_history.cpp" line="45"/>
         <source>get send history.</source>
         <translation>ばらまき履歴を取得</translation>
     </message>
     <message>
-        <location filename="send_receive_history.cpp" line="47"/>
+        <location filename="send_receive_history.cpp" line="48"/>
         <source>get receive history.</source>
         <translation>受取履歴を取得</translation>
     </message>
@@ -694,8 +707,20 @@
     </message>
     <message>
         <location filename="send_receive_history.cpp" line="66"/>
+        <location filename="send_receive_history.cpp" line="101"/>
+        <location filename="send_receive_history.cpp" line="127"/>
         <source>known</source>
         <translation>通知</translation>
+    </message>
+    <message>
+        <location filename="send_receive_history.cpp" line="92"/>
+        <source>receive</source>
+        <translation>受取</translation>
+    </message>
+    <message>
+        <location filename="send_receive_history.cpp" line="136"/>
+        <source>failed to get detail.</source>
+        <translation>詳細の読み込みに失敗しました。</translation>
     </message>
 </context>
 <context>
