@@ -22,6 +22,12 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_anonymous_check_stateChanged(int arg1);
+
+    void on_amount_textChanged();
+
+    void on_send_button_clicked();
+
 private:
     Ui::User_Profile_window *ui;
 };
