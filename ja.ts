@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="ja_JP">
+<TS version="2.1" language="ja_JP">
 <context>
     <name>MainWindow</name>
     <message>
@@ -115,141 +115,141 @@
         <translation>ばらまき/受取履歴を取得(&amp;I)</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="23"/>
+        <location filename="mainwindow.cpp" line="24"/>
         <source>Title</source>
         <translation>タイトル</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="23"/>
+        <location filename="mainwindow.cpp" line="24"/>
         <source>count</source>
         <translation>レス</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="23"/>
+        <location filename="mainwindow.cpp" line="24"/>
         <source>rank</source>
         <translation>順位</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="23"/>
+        <location filename="mainwindow.cpp" line="24"/>
         <source>updated</source>
         <translation>浮上</translation>
     </message>
     <message>
         <source>modified</source>
-        <translation>更新</translation>
+        <translation type="vanished">更新</translation>
     </message>
     <message>
         <source>can&apos;t open template file.</source>
-        <translation>テンプレートファイルが開けません。</translation>
+        <translation type="vanished">テンプレートファイルが開けません。</translation>
     </message>
     <message>
         <source>man</source>
-        <translation>人</translation>
+        <translation type="vanished">人</translation>
     </message>
     <message>
         <source>send mona</source>
-        <translation>送る</translation>
+        <translation type="vanished">送る</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="30"/>
+        <location filename="mainwindow.cpp" line="31"/>
         <source>Favorite topics</source>
         <translation>お気に入り</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="32"/>
+        <location filename="mainwindow.cpp" line="33"/>
         <source>AskMona topics</source>
         <translation>AskMona</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="99"/>
+        <location filename="mainwindow.cpp" line="114"/>
         <source>loading favorite topics...</source>
         <translation>お気に入りトピックリストを取得中...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="111"/>
+        <location filename="mainwindow.cpp" line="126"/>
         <source>failed to load favorite_topics. error message is : </source>
         <translation>お気に入りトピックリストの取得に失敗しました。エラーメッセージは以下です：</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="133"/>
+        <location filename="mainwindow.cpp" line="148"/>
         <source>loading favorite topics is complete.</source>
         <translation>お気に入りトピックリストの取得が完了しました。</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="179"/>
+        <location filename="mainwindow.cpp" line="194"/>
         <source>loading topic list...</source>
         <translation>トピックリストを取得中...</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="186"/>
+        <location filename="mainwindow.cpp" line="201"/>
         <source>failed to get topic_list. error message is : </source>
         <translation>トピックリストの取得に失敗しました。エラーメッセージは以下です：</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="215"/>
+        <location filename="mainwindow.cpp" line="230"/>
         <source>loading topic list is complete</source>
         <translation>トピックリストの取得が完了しました。</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="291"/>
+        <location filename="mainwindow.cpp" line="306"/>
         <source>loading topic isn&apos;t exist in log.</source>
         <translation>読み込み中のトピックはログに存在しません。</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="325"/>
+        <location filename="mainwindow.cpp" line="340"/>
         <source>loading topic is exist in log</source>
         <translation>読み込み中のトピックはログに存在します。</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="338"/>
+        <location filename="mainwindow.cpp" line="353"/>
         <source>there is no update.</source>
         <translation>更新がありませんでした。</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="342"/>
+        <location filename="mainwindow.cpp" line="357"/>
         <source>there are update.</source>
         <translation>更新がありました。</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="371"/>
+        <location filename="mainwindow.cpp" line="386"/>
         <source>about mona chaduke</source>
         <translation>モナ茶漬け</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="372"/>
+        <location filename="mainwindow.cpp" line="387"/>
         <source>&lt;h3&gt;mona chaduke&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;:/mona.png&quot;&gt;&lt;/p&gt;&lt;p&gt;Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz&lt;/p&gt;</source>
         <oldsource>&lt;h3&gt;mona chaduke&lt;/h3&gt;&lt;p&gt;Ah, monamona&lt;/p&gt;&lt;p&gt;Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz&lt;/p&gt;</oldsource>
         <translation>&lt;h3&gt;モナ茶漬け&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;:/mona.png&quot;&gt;&lt;/p&gt;&lt;p&gt;Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="396"/>
+        <location filename="mainwindow.cpp" line="411"/>
         <source>failed to get balance. error message is : </source>
         <translation>残高の取得に失敗しました。エラーメッセージは以下です：</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="401"/>
+        <location filename="mainwindow.cpp" line="416"/>
         <source>balance</source>
         <translation>残高</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="401"/>
+        <location filename="mainwindow.cpp" line="416"/>
         <source>your balance is
 </source>
         <translation>あなたの残高(MONA)
 </translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="418"/>
+        <location filename="mainwindow.cpp" line="433"/>
         <source>failed to get depost_address. error message is : </source>
         <translation>入金アドレスの取得に失敗しました。エラーメッセージは以下です：</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="421"/>
+        <location filename="mainwindow.cpp" line="436"/>
         <source>your deposit address</source>
         <translation>入金アドレス</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="421"/>
+        <location filename="mainwindow.cpp" line="436"/>
         <source>your deposit address is
 
 </source>
@@ -258,41 +258,41 @@
 </translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="463"/>
+        <location filename="mainwindow.cpp" line="478"/>
         <source>failed to add favorite. error message is : </source>
         <translation>お気に入りの追加に失敗しました。エラーメッセージは以下です：</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="466"/>
+        <location filename="mainwindow.cpp" line="481"/>
         <source>success add favorite</source>
         <translation>お気に入りの追加に成功しました</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="485"/>
+        <location filename="mainwindow.cpp" line="500"/>
         <source>failed to remove favorite. error message is : </source>
         <translation>お気に入りの削除に失敗しました。エラーメッセージは以下です：</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="488"/>
+        <location filename="mainwindow.cpp" line="503"/>
         <source>success remove favorite</source>
         <translation>お気に入りの削除に成功しました</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="500"/>
+        <location filename="mainwindow.cpp" line="515"/>
         <source>Forced to reload topic.</source>
         <translation>強制的にリロードします。</translation>
     </message>
     <message>
         <source>add Favorite</source>
-        <translation>お気に入りへ追加</translation>
+        <translation type="vanished">お気に入りへ追加</translation>
     </message>
     <message>
         <source>success</source>
-        <translation>成功</translation>
+        <translation type="vanished">成功</translation>
     </message>
     <message>
         <source>remove Favorite</source>
-        <translation>お気に入りから削除</translation>
+        <translation type="vanished">お気に入りから削除</translation>
     </message>
 </context>
 <context>
@@ -381,11 +381,11 @@
     </message>
     <message>
         <source>Monacoin Address</source>
-        <translation>モナコインアドレス</translation>
+        <translation type="vanished">モナコインアドレス</translation>
     </message>
     <message>
         <source>u_password</source>
-        <translation>パスワード</translation>
+        <translation type="vanished">パスワード</translation>
     </message>
     <message>
         <location filename="setting_window.ui" line="26"/>
@@ -424,7 +424,7 @@
     </message>
     <message>
         <source>get_&amp;res_limit</source>
-        <translation>レス取得上限(&amp;R)</translation>
+        <translation type="vanished">レス取得上限(&amp;R)</translation>
     </message>
     <message>
         <location filename="setting_window.ui" line="168"/>
@@ -453,14 +453,14 @@
     </message>
     <message>
         <source>get_topic_limit</source>
-        <translation>トピックリスト取得上限</translation>
+        <translation type="vanished">トピックリスト取得上限</translation>
     </message>
     <message>
         <source>get_res_limit</source>
-        <translation>レス取得上限</translation>
+        <translation type="vanished">レス取得上限</translation>
     </message>
     <message>
-        <location filename="setting_window.cpp" line="23"/>
+        <location filename="setting_window.cpp" line="35"/>
         <source>setting complete.</source>
         <translation>設定が完了しました。</translation>
     </message>
@@ -473,32 +473,82 @@
         <translation>プロフィール</translation>
     </message>
     <message>
-        <location filename="user_profile_window.ui" line="24"/>
+        <location filename="user_profile_window.ui" line="42"/>
         <source>u_id</source>
         <translation>ID</translation>
     </message>
     <message>
-        <location filename="user_profile_window.ui" line="57"/>
+        <location filename="user_profile_window.ui" line="75"/>
         <source>Name</source>
         <translation>名前</translation>
     </message>
     <message>
-        <location filename="user_profile_window.ui" line="64"/>
+        <location filename="user_profile_window.ui" line="82"/>
         <source>Dann-i</source>
         <translation>段位</translation>
     </message>
     <message>
-        <location filename="user_profile_window.ui" line="95"/>
+        <location filename="user_profile_window.ui" line="115"/>
+        <source>Tab 1</source>
+        <translation>Tab1</translation>
+    </message>
+    <message>
+        <location filename="user_profile_window.ui" line="129"/>
+        <source>Tab 2</source>
+        <translation>Tab2</translation>
+    </message>
+    <message>
+        <location filename="user_profile_window.ui" line="135"/>
+        <source>amount:</source>
+        <translation>送金量:</translation>
+    </message>
+    <message>
+        <location filename="user_profile_window.ui" line="145"/>
+        <source>MONA</source>
+        <translation>MONA</translation>
+    </message>
+    <message>
+        <location filename="user_profile_window.ui" line="152"/>
+        <source>anonymous</source>
+        <translation>匿名送金</translation>
+    </message>
+    <message>
+        <location filename="user_profile_window.ui" line="159"/>
+        <source>&amp;send</source>
+        <translation>送る(&amp;s)</translation>
+    </message>
+    <message>
+        <location filename="user_profile_window.cpp" line="11"/>
         <source>Profile</source>
         <translation>プロフィール</translation>
     </message>
     <message>
-        <location filename="user_profile_window.ui" line="113"/>
+        <location filename="user_profile_window.cpp" line="12"/>
+        <source>send</source>
+        <translation>送金</translation>
+    </message>
+    <message>
+        <location filename="user_profile_window.cpp" line="95"/>
+        <source>error. </source>
+        <translation>エラー。</translation>
+    </message>
+    <message>
+        <location filename="user_profile_window.cpp" line="98"/>
+        <source>Success!</source>
+        <translation>送金に成功しました！</translation>
+    </message>
+    <message>
+        <location filename="user_profile_window.cpp" line="102"/>
+        <source>success.  balance:</source>
+        <translation>送金に成功しました。　残高：</translation>
+    </message>
+    <message>
+        <location filename="user_profile_window.ui" line="22"/>
         <source>&amp;Reload</source>
         <translation>更新(&amp;R)</translation>
     </message>
     <message>
-        <location filename="user_profile_window.ui" line="120"/>
+        <location filename="user_profile_window.ui" line="29"/>
         <source>&amp;Close</source>
         <translation>閉じる(&amp;C)</translation>
     </message>
