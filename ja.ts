@@ -642,12 +642,17 @@
         <translation>MONA</translation>
     </message>
     <message>
-        <location filename="send_mona_to_res_window.ui" line="104"/>
+        <location filename="send_mona_to_res_window.ui" line="91"/>
+        <source>anonymous</source>
+        <translation>匿名送金</translation>
+    </message>
+    <message>
+        <location filename="send_mona_to_res_window.ui" line="118"/>
         <source>&amp;Cancel</source>
         <translation>キャンセル(&amp;C)</translation>
     </message>
     <message>
-        <location filename="send_mona_to_res_window.ui" line="111"/>
+        <location filename="send_mona_to_res_window.ui" line="125"/>
         <source>&amp;send</source>
         <translation>送る(&amp;s)</translation>
     </message>
@@ -662,27 +667,27 @@
         <translation> に何MONA送りますか？</translation>
     </message>
     <message>
-        <location filename="send_mona_to_res_window.cpp" line="30"/>
+        <location filename="send_mona_to_res_window.cpp" line="33"/>
         <source>do you really want send MONA?</source>
         <translation>MONAを本当に送りますか？</translation>
     </message>
     <message>
-        <location filename="send_mona_to_res_window.cpp" line="38"/>
+        <location filename="send_mona_to_res_window.cpp" line="41"/>
         <source>sending mona...</source>
         <translation>MONA送金中...</translation>
     </message>
     <message>
-        <location filename="send_mona_to_res_window.cpp" line="55"/>
+        <location filename="send_mona_to_res_window.cpp" line="68"/>
         <source>failed to send mona. error message is : </source>
         <translation>MONAの送金に失敗しました。エラーメッセージは以下です：</translation>
     </message>
     <message>
-        <location filename="send_mona_to_res_window.cpp" line="68"/>
+        <location filename="send_mona_to_res_window.cpp" line="81"/>
         <source>invalid amount</source>
         <translation>無効な値です</translation>
     </message>
     <message>
-        <location filename="send_mona_to_res_window.cpp" line="94"/>
+        <location filename="send_mona_to_res_window.cpp" line="107"/>
         <source>mona send success!</source>
         <translation>MONA送金に成功しました！</translation>
     </message>
