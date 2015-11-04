@@ -29,6 +29,8 @@ private slots:
 
     void on_send_mona_preset4_clicked();
 
+    void on_anonymous_check_stateChanged(int arg1);
+
 private:
     Ui::send_mona_to_res_window *ui;
     void send_success_fire();
