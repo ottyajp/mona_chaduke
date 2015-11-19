@@ -77,9 +77,7 @@ status_bar->showMessage(QObject::tr("making auth_key..."));
     int pos;
     while(1){
         qsrand(QDateTime::currentDateTime().toTime_t());
-        for(int i=0; i<5; i++){
-            nonce.append(QString(qrand()%256));
-        }
+        nonce.append(QString::number(qrand()));
 
         hash = QCryptographicHash::hash("Av610r8WvmpW4Vz3KseGRIF/SJpQFvP1Ul4EXgCZb7qQ=" +
                                         nonce.toBase64() +
