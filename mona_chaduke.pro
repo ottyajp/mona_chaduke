@@ -26,7 +26,8 @@ SOURCES += main.cpp\
     func_var.cpp \
     withdraw_window.cpp \
     withdraw_deposit_history.cpp \
-    send_receive_history.cpp
+    send_receive_history.cpp \
+    new_topic.cpp
 
 HEADERS  += mainwindow.h \
     setting_window.h \
@@ -38,7 +39,8 @@ HEADERS  += mainwindow.h \
     func_var.h \
     withdraw_window.h \
     withdraw_deposit_history.h \
-    send_receive_history.h
+    send_receive_history.h \
+    new_topic.h
 
 FORMS    += mainwindow.ui \
     setting_window.ui \
@@ -48,6 +50,7 @@ FORMS    += mainwindow.ui \
     image_window.ui \
     withdraw_window.ui \
     withdraw_deposit_history.ui \
-    send_receive_history.ui
+    send_receive_history.ui \
+    new_topic.ui
 
 win32: RC_FILE = mona_chaduke.rc

@@ -92,6 +92,8 @@ private slots:
 
     void on_actionSend_receive_h_istory_triggered();
 
+    void on_action_Create_new_topic_triggered();
+
 private:
     Ui::MainWindow *ui;
 

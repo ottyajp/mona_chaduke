@@ -9,6 +9,7 @@
 #include "withdraw_window.h"
 #include "withdraw_deposit_history.h"
 #include "send_receive_history.h"
+#include "new_topic.h"
 #include <QCoreApplication>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -575,5 +576,11 @@ void MainWindow::on_actionWithdraw_deposit_history_triggered()
 void MainWindow::on_actionSend_receive_h_istory_triggered()
 {
     send_receive_history *window = new send_receive_history(this);
+    window->show();
+}
+
+void MainWindow::on_action_Create_new_topic_triggered()
+{
+    new_Topic *window = new new_Topic(this);
     window->show();
 }
