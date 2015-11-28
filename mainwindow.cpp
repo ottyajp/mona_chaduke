@@ -69,7 +69,7 @@ void MainWindow::addTopicItem(QJsonValue topic_list_object, int indexof_fav_ask)
 }
 
 void MainWindow::readSettings(){
-    QSettings settings("tea_soak_lab", "mona_chaduke");
+    QSettings settings("mona_chaduke.ini", QSettings::IniFormat);
     get_topic_limit = settings.value("get_topic_limit").toInt();
     user_id = settings.value("user_id").toInt();
     secret_key = settings.value("secret_key").toString();
@@ -90,7 +90,7 @@ void MainWindow::readSettings(){
 }
 
 void MainWindow::closeEvent(QCloseEvent* event){
-    QSettings settings("tea_soak_lab", "mona_chaduke");
+    QSettings settings("mona_chaduke.ini", QSettings::IniFormat);
     settings.setValue("get_topic_limit", get_topic_limit);
     settings.setValue("user_id", user_id);
     settings.setValue("secret_key", secret_key);
