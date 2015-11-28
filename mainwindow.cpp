@@ -589,5 +589,43 @@ void MainWindow::on_action_Create_new_topic_triggered()
 }
 
 void MainWindow::anchor_click(QString s){
-    qDebug()<<s;
+    QString api_name = "responses/list";
+    QUrlQuery api_query;
+    api_query.addQueryItem("t_id",now_topic_id);
+    api_query.addQueryItem("from",s);
+    QString key = knock_api_get(api_name,api_query);
+    QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
+    if (json.object().value("status").toInt() == 0){
+        status_bar->showMessage(tr("failed to load response.")+json.object().value("error").toString());
+        qDebug()<<json.object().value("error").toString();
+    }else{
+        QJsonArray res = json.object().value("responses").toArray();
+
+        QString received_mona;
+        double receive = res.at(0).toObject().value("receive").toString().toDouble() / 100000000;
+        if(res.at(0).toObject().value("receive").toString()!="0"){
+            received_mona = "+" + QString::number(receive,'f',8).replace(QRegularExpression("[0]*$"),"").replace(QRegularExpression("\\.$"),"") +
+                    "MONA / " +
+                    QString::number(res.at(0).toObject().value("rec_count").toInt()) + QObject::tr("man");
+        }else{
+            received_mona = "+" + QString::number(receive) + "MONA / " +
+                    QString::number(res.at(0).toObject().value("rec_count").toInt()) + QObject::tr("man") + "";
+        }
+        QString replace_text = res.at(0).toObject().value("response").toString();
+        replace_text.replace(QRegularExpression("\n"),"\n");
+        QString created = from_unix_time(res.at(0).toObject().value("created").toInt());
+
+        QString info = QString::number(res.at(0).toObject().value("r_id").toInt()) + " : " +
+                res.at(0).toObject().value("u_name").toString() +
+                res.at(0).toObject().value("u_dan").toString() + " : " +
+                created + " [" +
+                res.at(0).toObject().value("u_times").toString() + "] " +
+                received_mona;
+        QMessageBox anchor_res;
+        anchor_res.setText(info);
+        anchor_res.setInformativeText(replace_text);
+        anchor_res.setStandardButtons(QMessageBox::Ok);
+        anchor_res.setDefaultButton(QMessageBox::Ok);
+        anchor_res.exec();
+    }
 }
