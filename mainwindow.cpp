@@ -321,6 +321,7 @@ if(item->text(0) != ""){
             QObject::connect(jo,SIGNAL(send_mona_to_res_signal(QString)),this,SLOT(on_action_send_mona_to_res_clicked(QString)));
             QObject::connect(jo,SIGNAL(open_image_window_signal(QString)),this,SLOT(open_image_window(QString)));
             QObject::connect(jo,SIGNAL(open_profile_window_signal(QString)),this,SLOT(open_profile_window(QString)));
+            QObject::connect(jo,SIGNAL(anchor_click_signal(QString)),this,SLOT(anchor_click(QString)));
         }
 
         if(!log_file.open(QFile::ReadWrite | QFile::Truncate)){
@@ -376,6 +377,7 @@ if(item->text(0) != ""){
             QObject::connect(jo,SIGNAL(send_mona_to_res_signal(QString)),this,SLOT(on_action_send_mona_to_res_clicked(QString)));
             QObject::connect(jo,SIGNAL(open_image_window_signal(QString)),this,SLOT(open_image_window(QString)));
             QObject::connect(jo,SIGNAL(open_profile_window_signal(QString)),this,SLOT(open_profile_window(QString)));
+            QObject::connect(jo,SIGNAL(anchor_click_signal(QString)),this,SLOT(anchor_click(QString)));
         }
     }
     ui->topic->setFocus();
@@ -532,6 +534,7 @@ void MainWindow::on_actionForced_to_reload_triggered()
         QObject::connect(jo,SIGNAL(send_mona_to_res_signal(QString)),this,SLOT(on_action_send_mona_to_res_clicked(QString)));
         QObject::connect(jo,SIGNAL(open_image_window_signal(QString)),this,SLOT(open_image_window(QString)));
         QObject::connect(jo,SIGNAL(open_profile_window_signal(QString)),this,SLOT(open_profile_window(QString)));
+        QObject::connect(jo,SIGNAL(anchor_click_signal(QString)),this,SLOT(anchor_click(QString)));
     }
 
     QFile log_file("./log");
@@ -583,4 +586,8 @@ void MainWindow::on_action_Create_new_topic_triggered()
 {
     new_Topic *window = new new_Topic(this);
     window->show();
+}
+
+void MainWindow::anchor_click(QString s){
+    qDebug()<<s;
 }

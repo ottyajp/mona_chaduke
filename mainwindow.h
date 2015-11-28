@@ -94,6 +94,8 @@ private slots:
 
     void on_action_Create_new_topic_triggered();
 
+    void anchor_click(QString);
+
 private:
     Ui::MainWindow *ui;
 

@@ -38,6 +38,14 @@
 		color: #33AA88;
 	}
 
+	span.anchor{
+		color: #0000FF;
+	}
+	span.anchor:hover{
+		background-color: #CCEEFF;
+		color: #33AA88
+	}
+
 	span.level0{
 		font-size: 85%;
 		white-space: pre-wrap;
@@ -117,6 +125,10 @@
 	var onClick_u_name = function(u_id) {
 		jsobj.open_profile_window(u_id);
 	};
+
+	var onClick_anchor = function(r_id) {
+		jsobj.anchor_click(r_id);
+	}
 	</script>
 </head>
 <body>

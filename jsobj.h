@@ -17,12 +17,16 @@ signals:
 
     void open_profile_window_signal(QString);
 
+    void anchor_click_signal(QString);
+
 public slots:
     void send_mona_to_res(QString s);
 
     void open_image(QString s);
 
     void open_profile_window(QString s);
+
+    void anchor_click(QString s);
 };
 
 #endif // JSOBJ_H

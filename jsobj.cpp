@@ -17,3 +17,7 @@ void JsObj::open_image(QString s){
 void JsObj::open_profile_window(QString s){
     emit open_profile_window_signal(s);
 }
+
+void JsObj::anchor_click(QString s){
+    emit anchor_click_signal(s);
+}

@@ -155,6 +155,7 @@ status_bar->showMessage(QObject::tr("formatting topic..."));
         QString replace_text = res.at(i).toObject().value("response").toString();
         replace_text.replace(QRegularExpression("(http://i.imgur.com/.+)(\\..{3})"),
                               "<div class=\"image\" onclick=\"onClick_image('\\1\\2');\"><img src=\"\\1m\\2\" class=\"imgur\"></div>");
+        replace_text.replace(QRegularExpression("(>>)([0-9]{1,4})"),"<span class=\"anchor\" onclick=\"onClick_anchor(\\2)\">\\1\\2</span>");
         QString created = from_unix_time(res.at(i).toObject().value("created").toInt());
 
         list = frame->findFirstElement("div.responses");
