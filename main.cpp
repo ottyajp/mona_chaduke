@@ -20,6 +20,7 @@ bool sage_check;
 QSize initial_contents_size;
 int position = 0;
 QStatusBar *status_bar = 0;
+bool state_log_show = false;
 
 int main(int argc, char *argv[])
 {

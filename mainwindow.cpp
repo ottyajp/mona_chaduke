@@ -11,6 +11,7 @@
 #include "send_receive_history.h"
 #include "new_topic.h"
 #include <QCoreApplication>
+#include <QPlainTextEdit>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -34,6 +35,11 @@ MainWindow::MainWindow(QWidget *parent) :
     askmona_topic->setText(1,tr("AskMona topics"));
 
     MainWindow::readSettings();
+
+    if(state_log_show == true){
+        QPlainTextEdit* state_log = new QPlainTextEdit;
+        ui->topic_list_layout->addWidget(state_log);
+    }
 
     QObject::connect(this,SIGNAL(favorite_topic_reload_signal()),this,SLOT(favorite_topic_reload()));
     QObject::connect(this,SIGNAL(topic_reload_signal()),this,SLOT(topic_reload()));
@@ -87,6 +93,9 @@ void MainWindow::readSettings(){
             resize(settings.value("winWidth").toInt(), settings.value("winHeight").toInt());
         }
     }
+    if(settings.value("state_log_show").toString() == "true"){
+        state_log_show = true;
+    }
 }
 
 void MainWindow::closeEvent(QCloseEvent* event){
@@ -107,6 +116,11 @@ void MainWindow::closeEvent(QCloseEvent* event){
         settings.setValue("maximized","false");
         settings.setValue("winWidth",width());
         settings.setValue("winHeight",height());
+    }
+    if(state_log_show == true){
+        settings.setValue("state_log_show","true");
+    }else{
+        settings.setValue("state_log_show","false");
     }
     event->accept();
 }

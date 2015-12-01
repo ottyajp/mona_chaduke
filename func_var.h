@@ -42,6 +42,7 @@ extern bool sage_check;
 extern QSize initial_contents_size;
 extern int position;
 extern QStatusBar *status_bar;
+extern bool state_log_show;
 
 class auth_Key{
 private:

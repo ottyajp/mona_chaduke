@@ -27,6 +27,7 @@ Setting_window::Setting_window(QWidget *parent) :
     ui->send_mona_amount_4->setText(send_mona_amount_4);
     ui->tx_send_receive_limit->setText(tx_send_receive_limit);
     ui->tx_with_depo_limit->setText(tx_with_depo_limit);
+    ui->show_state_log_check->setChecked(state_log_show);
     QString secret_key;
 }
 
@@ -36,7 +37,7 @@ Setting_window::~Setting_window()
     delete ui;
 }
 
-void Setting_window::on_pushButton_clicked()
+void Setting_window::on_pushButton_clicked()//authentication
 {
     QString api_name = "auth/secretkey";
     QUrlQuery api_query;
@@ -61,6 +62,7 @@ void Setting_window::on_buttonBox_accepted()
     send_mona_amount_4 = ui->send_mona_amount_4->text();
     tx_send_receive_limit = ui->tx_send_receive_limit->text();
     tx_with_depo_limit = ui->tx_with_depo_limit->text();
+    state_log_show = ui->show_state_log_check->isChecked();
 
 }
 
