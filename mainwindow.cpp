@@ -57,6 +57,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::log_changed(){
     ui->state_log_area->setPlainText(state_log_data->read_log());
+    ui->state_log_area->moveCursor(QTextCursor::End);
 }
 
 void MainWindow::check_contents_size(){
