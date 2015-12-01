@@ -43,7 +43,11 @@
            </widget>
           </item>
           <item>
-           <widget class="QPlainTextEdit" name="state_log_area"/>
+           <widget class="QPlainTextEdit" name="state_log_area">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
