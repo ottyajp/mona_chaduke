@@ -21,6 +21,7 @@ QSize initial_contents_size;
 int position = 0;
 QStatusBar *status_bar = 0;
 bool state_log_show = false;
+state_log *state_log_data;
 
 int main(int argc, char *argv[])
 {

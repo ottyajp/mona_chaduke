@@ -96,6 +96,8 @@ private slots:
 
     void anchor_click(QString);
 
+    void log_changed();
+
 private:
     Ui::MainWindow *ui;
 

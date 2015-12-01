@@ -197,3 +197,21 @@ QJsonDocument get_tx_history(QString type, QString limit){
     }
     return json;
 }
+
+state_log::state_log(){
+    log = "";
+}
+
+QString state_log::read_log(){
+    return log;
+}
+
+void state_log::add_log(QString s){
+    log = log + s + "\n";
+    emit log_changed_signal();
+}
+
+void state_log::delete_log(){
+    log = "";
+    emit log_changed_signal();
+}

@@ -42,6 +42,9 @@
             </column>
            </widget>
           </item>
+          <item>
+           <widget class="QPlainTextEdit" name="state_log_area"/>
+          </item>
          </layout>
         </item>
         <item>

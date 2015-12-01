@@ -56,6 +56,25 @@ public:
     QString read_auth_key();
 };
 
+class state_log : public QObject
+{
+    Q_OBJECT
+
+public:
+    state_log();
+    virtual ~state_log(){};
+    QString read_log();
+    void add_log(QString);
+    void delete_log();
+
+signals:
+    void log_changed_signal();
+
+private:
+    QString log;
+};
+
+extern state_log *state_log_data;
 
 #endif // FUNC_VAR_H
 

@@ -18,6 +18,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    state_log log_data;
+    state_log_data = &log_data;
+    QObject::connect(state_log_data,SIGNAL(log_changed_signal()),this,SLOT(log_changed()));
+
     setWindowIcon(QIcon(QString(":/icon.ico")));
     ui->topic->setHtml("<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"></head><body>Mona_chaduke_top</body></html>");
     status_bar = ui->statusBar;
@@ -36,9 +41,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     MainWindow::readSettings();
 
-    if(state_log_show == true){
-        QPlainTextEdit* state_log = new QPlainTextEdit;
-        ui->topic_list_layout->addWidget(state_log);
+    if(state_log_show == false){
+        ui->state_log_area->hide();
     }
 
     QObject::connect(this,SIGNAL(favorite_topic_reload_signal()),this,SLOT(favorite_topic_reload()));
@@ -47,7 +51,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
     emit favorite_topic_reload_signal();
     status_bar->showMessage("mona chaduke");
+    state_log_data->add_log("kidou kanryou.");
 
+}
+
+void MainWindow::log_changed(){
+    ui->state_log_area->setPlainText(state_log_data->read_log());
 }
 
 void MainWindow::check_contents_size(){
