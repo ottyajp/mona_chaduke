@@ -19,8 +19,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    state_log log_data;
-    state_log_data = &log_data;
     QObject::connect(state_log_data,SIGNAL(log_changed_signal()),this,SLOT(log_changed()));
 
     setWindowIcon(QIcon(QString(":/icon.ico")));
@@ -50,8 +48,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->topic->page()->mainFrame(),SIGNAL(contentsSizeChanged(QSize)),this,SLOT(check_contents_size()));
 
     emit favorite_topic_reload_signal();
-    status_bar->showMessage("mona chaduke");
-    state_log_data->add_log("kidou kanryou.");
+    status_bar->showMessage(tr("mona chaduke"));
+    state_log_data->add_log(tr("start-up complete"));
 
 }
 
@@ -136,7 +134,7 @@ void MainWindow::closeEvent(QCloseEvent* event){
 }
 
 void MainWindow::load_Favorite_topics(){
-status_bar->showMessage(tr("loading favorite topics..."));
+state_log_data->add_log(QObject::tr("loading favorite topics..."));
     auth_Key auth_key;
     QString api_name = "favorites/list";
     QUrlQuery api_query;
@@ -148,7 +146,7 @@ status_bar->showMessage(tr("loading favorite topics..."));
     QString key = knock_api(api_name,api_query);
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
-        status_bar->showMessage(tr("failed to load favorite_topics. error message is : ")+json.object().value("error").toString());
+        state_log_data->add_log(QObject::tr("failed to load favorite_topics. ")+json.object().value("error").toString());
         qDebug()<<json.object().value("error").toString();
     }else{
         QJsonArray item = json.object().value("topics").toArray();
@@ -170,7 +168,7 @@ status_bar->showMessage(tr("loading favorite topics..."));
         }
         ui->topic_list->sortByColumn(4,Qt::DescendingOrder);
     }
-    status_bar->showMessage(tr("loading favorite topics is complete."));
+    state_log_data->add_log(QObject::tr("loading favorite topics is complete."));
 }
 
 void MainWindow::on_action_Config_triggered()
@@ -216,14 +214,14 @@ void MainWindow::on_actionGet_profile_triggered()
 
 void MainWindow::on_action_Get_topic_list_triggered()
 {
-status_bar->showMessage(tr("loading topic list..."));
+state_log_data->add_log(QObject::tr("loading topic list..."));
     QString api_name = "topics/list";
     QUrlQuery api_query;
     api_query.addQueryItem("limit",QString::number(get_topic_limit));
     QString key = knock_api_get(api_name,api_query);
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toString() == "0"){
-        status_bar->showMessage(tr("failed to get topic_list. error message is : ")+json.object().value("error").toString());
+        state_log_data->add_log(QObject::tr("failed to get topic_list. ")+json.object().value("error").toString());
         qDebug()<<json.object().value("error").toString();
     }else{
         QJsonArray item = json.object().value("topics").toArray();
@@ -252,7 +250,7 @@ status_bar->showMessage(tr("loading topic list..."));
         }
         ui->topic_list->sortByColumn(4,Qt::DescendingOrder);
     }
-    status_bar->showMessage(tr("loading topic list is complete"));
+    state_log_data->add_log(QObject::tr("loading topic list is complete"));
 }
 
 void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
@@ -328,7 +326,7 @@ if(item->text(0) != ""){
         }
     }
     if(exist == false){     //loading topic isn't exist in log
-        status_bar->showMessage(tr("loading topic isn't exist in log."));
+        state_log_data->add_log(QObject::tr("loading topic isn't exist in log."));
         QString api_name = "responses/list";
         QUrlQuery api_query;
         api_query.addQueryItem("t_id",item->text(0));
@@ -363,7 +361,7 @@ if(item->text(0) != ""){
         QTextStream log_out(&log_file);
         log_out<<formatted_log.toJson();
     }else{              //loading topic is exist in log
-        status_bar->showMessage(tr("loading topic is exist in log"));
+        state_log_data->add_log(QObject::tr("loading topic is exist in log"));
         QString api_name = "responses/list";
         QUrlQuery api_query;
         api_query.addQueryItem("t_id",now_topic_id);
@@ -376,11 +374,11 @@ if(item->text(0) != ""){
             ui->topic->setHtml("<h2>error</h2><BR>"+json.object().value("error").toString());
         }else{
             if(json.object().value("status").toInt() == 2){     //there is no update
-                status_bar->showMessage(tr("there is no update."));
+                state_log_data->add_log(QObject::tr("there is no update."));
                 ui->topic->setHtml(log_json_array.at(indexof_now_topic).toObject().value("text").toString());
 
             }else{      //there are update
-                status_bar->showMessage(tr("there are update."));
+                state_log_data->add_log(QObject::tr("there are update."));
                 format_topic(ui->topic->page()->mainFrame(), json, item->text(1));
                 if(!log_file.open(QFile::ReadWrite | QFile::Truncate)){}
                 QJsonObject adding_log;
@@ -435,7 +433,7 @@ void MainWindow::on_actionGet_balance_triggered()
     QString key = knock_api(api_name,api_query);
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
-        status_bar->showMessage(tr("failed to get balance. error message is : ")+json.object().value("error").toString());
+        state_log_data->add_log(QObject::tr("failed to get balance. ")+json.object().value("error").toString());
         qDebug()<<json.object().value("error").toString();
     }else{
         double balance = json.object().value("balance").toString().toDouble();
@@ -457,7 +455,7 @@ void MainWindow::on_actionGet_deposit_address_triggered()
     QString key = knock_api(api_name,api_query);
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
-        status_bar->showMessage(tr("failed to get depost_address. error message is : ")+json.object().value("error").toString());
+        state_log_data->add_log(QObject::tr("failed to get deposit_address. ")+json.object().value("error").toString());
         qDebug()<<json.object().value("error").toString();
     }else{
         QMessageBox::information(this,tr("your deposit address"),tr("your deposit address is\n\n") +
@@ -502,10 +500,10 @@ void MainWindow::on_add_favorite_button_clicked()
     QString key = knock_api(api_name,api_query);
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
-        status_bar->showMessage(tr("failed to add favorite. error message is : ")+json.object().value("error").toString());
+        state_log_data->add_log(QObject::tr("failed to add favorite.")+json.object().value("error").toString());
         qDebug()<<json.object().value("error").toString();
     }else{
-        status_bar->showMessage(tr("success add favorite"));
+        state_log_data->add_log(QObject::tr("success add favorite."));
         emit favorite_topic_reload_signal();
     }
 }
@@ -524,10 +522,10 @@ void MainWindow::on_remove_favorite_button_clicked()
     QString key = knock_api(api_name,api_query);
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
-        status_bar->showMessage(tr("failed to remove favorite. error message is : ")+json.object().value("error").toString());
+        state_log_data->add_log(QObject::tr("failed to remove favorite. ")+json.object().value("error").toString());
         qDebug()<<json.object().value("error").toString();
     }else{
-        status_bar->showMessage(tr("success remove favorite"));
+        state_log_data->add_log(QObject::tr("success remove favorite"));
         emit favorite_topic_reload_signal();
     }
 }
@@ -539,7 +537,7 @@ void MainWindow::on_actionGet_Favorite_topic_list_triggered()
 
 void MainWindow::on_actionForced_to_reload_triggered()
 {
-    status_bar->showMessage(tr("Forced to reload topic."));
+    state_log_data->add_log(QObject::tr("Forced to reload topic."));
     QString api_name = "responses/list";
     QUrlQuery api_query;
     api_query.addQueryItem("t_id",now_topic_id);
@@ -620,7 +618,7 @@ void MainWindow::anchor_click(QString s){
     QString key = knock_api_get(api_name,api_query);
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
-        status_bar->showMessage(tr("failed to load response.")+json.object().value("error").toString());
+        state_log_data->add_log(QObject::tr("failed to load response. ")+json.object().value("error").toString());
         qDebug()<<json.object().value("error").toString();
     }else{
         QJsonArray res = json.object().value("responses").toArray();

@@ -81,9 +81,9 @@ void new_Topic::on_create_topic_clicked()
     if (json.object().value("status").toInt() == 0){
         qDebug()<<"error";
         qDebug()<<json.object().value("error").toString();
-        status_bar->showMessage(tr("Topic creation Failed."));
+        state_log_data->add_log(QObject::tr("Topic creation Failed. ")+json.object().value("error").toString());
     }else{
-        status_bar->showMessage(tr("Topic creation Success!"));
+        state_log_data->add_log(QObject::tr("Topic creation Success!"));
         delete this;
     }
 }

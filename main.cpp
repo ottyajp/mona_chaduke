@@ -31,6 +31,8 @@ int main(int argc, char *argv[])
     myappTranslator.load(":/ja");
     a.installTranslator(&myappTranslator);
 
+    state_log log_data;
+    state_log_data = &log_data;
     MainWindow w;
     w.setWindowTitle(QObject::tr("Mona Cha-du-ke!"));
     w.show();

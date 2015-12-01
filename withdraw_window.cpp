@@ -35,10 +35,9 @@ void withdraw_window::on_withdraw_button_clicked()
     QString key = knock_api(api_name,api_query);
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
-        status_bar->showMessage(tr("error. ") + json.object().value("error").toString());
+        state_log_data->add_log(QObject::tr("failed to withdraw. ")+json.object().value("error").toString());
     }else{
-        status_bar->showMessage(tr("success.  balance:") +
-                                json.object().value("balance").toString() + "watanabe");
+        state_log_data->add_log(QObject::tr("success. balance:")+json.object().value("balance").toString()+"watanabe");
     }
     delete this;
 }

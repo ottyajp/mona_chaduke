@@ -1,7 +1,7 @@
 #include "func_var.h"
 
 QString knock_api(QString api_name, QUrlQuery api_query){
-status_bar->showMessage(QObject::tr("POST requesting..."));
+state_log_data->add_log(QObject::tr("POST requesting..."));
 
     // create custom temporary event loop on stack
     QEventLoop eventLoop;
@@ -22,7 +22,7 @@ status_bar->showMessage(QObject::tr("POST requesting..."));
 
     if (reply->error() == QNetworkReply::NoError) {
         //success
-//        qDebug() << "Success" <<reply->readAll();
+        state_log_data->add_log(QObject::tr("POST request is success"));
         QString r = reply->readAll();
         delete reply;
         return r;
@@ -30,6 +30,7 @@ status_bar->showMessage(QObject::tr("POST requesting..."));
     else {
         //failure
         qDebug() << "Failure" <<reply->errorString();
+        state_log_data->add_log(QObject::tr("POST request is failure") + reply->errorString());
         QString r = "1";
         delete reply;
         return r;
@@ -37,7 +38,7 @@ status_bar->showMessage(QObject::tr("POST requesting..."));
 }
 
 QString knock_api_get(QString api_name, QUrlQuery api_query){
-status_bar->showMessage(QObject::tr("GET requesting..."));
+state_log_data->add_log(QObject::tr("GET requesting..."));
     // create custom temporary event loop on stack
     QEventLoop eventLoop;
 
@@ -56,7 +57,7 @@ status_bar->showMessage(QObject::tr("GET requesting..."));
 
     if (reply->error() == QNetworkReply::NoError) {
         //success
-//        qDebug() << "Success" <<reply->readAll();
+        state_log_data->add_log(QObject::tr("GET request is success"));
         QString r = reply->readAll();
         delete reply;
         return r;
@@ -64,6 +65,7 @@ status_bar->showMessage(QObject::tr("GET requesting..."));
     else {
         //failure
         qDebug() << "Failure" <<reply->errorString();
+        state_log_data->add_log(QObject::tr("GET request is failure") + reply->errorString());
         QString r = "1";
         delete reply;
         return r;
@@ -71,7 +73,7 @@ status_bar->showMessage(QObject::tr("GET requesting..."));
 }
 
 auth_Key::auth_Key(){
-status_bar->showMessage(QObject::tr("making auth_key..."));
+state_log_data->add_log(QObject::tr("generating auth_key..."));
     time = QString::number(QDateTime::currentDateTime().toTime_t());
     int f = 0;
     int pos;
@@ -94,6 +96,7 @@ status_bar->showMessage(QObject::tr("making auth_key..."));
             f = 0;
         }
         if(f==1){
+            state_log_data->add_log(QObject::tr("generating auth_key is success."));
             break;
         }
     }
@@ -118,13 +121,13 @@ QString from_unix_time(int t){
 }
 
 void format_topic(QWebFrame* frame, QJsonDocument json, QString title_string){
-status_bar->showMessage(QObject::tr("formatting topic..."));
+state_log_data->add_log(QObject::tr("formatting topic..."));
         //load template file
     initial_contents_size = frame->contentsSize();
     QString source;
     QFile file("./template.html");
     if(!file.open(QIODevice::ReadOnly)){
-        status_bar->showMessage(QObject::tr("can't open template file."));
+        state_log_data->add_log(QObject::tr("can't open template file."));
     }
     QTextStream in(&file);
     source = in.readAll();
@@ -173,10 +176,23 @@ status_bar->showMessage(QObject::tr("formatting topic..."));
                 "</span>";
         list.appendInside("<div class=\"response\">"+response+"</div>");
     }
-status_bar->showMessage(QObject::tr("formatting topic completed"));
+state_log_data->add_log(QObject::tr("formatting topic completed."));
 }
 
 QJsonDocument get_tx_history(QString type, QString limit){
+    if(type == "deposit"){
+        state_log_data->add_log(QObject::tr("loading deposit history..."));
+    }
+    if(type == "withdraw"){
+        state_log_data->add_log(QObject::tr("loading withdraw history..."));
+    }
+    if(type == "receive"){
+        state_log_data->add_log(QObject::tr("loading receive history..."));
+    }
+    if(type == "send"){
+        state_log_data->add_log(QObject::tr("loading send history..."));
+    }
+
     auth_Key auth_key;
     QString api_name = "account/txdetail";
     QUrlQuery api_query;
@@ -190,10 +206,9 @@ QJsonDocument get_tx_history(QString type, QString limit){
     QString key = knock_api(api_name,api_query);
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
-        status_bar->showMessage(QObject::tr("failed to load history. ")+json.object().value("error").toString());
-//        qDebug()<<json.object().value("error").toString();
+        state_log_data->add_log(QObject::tr("failed to load history. ")+json.object().value("error").toString());
     }else{
-        status_bar->showMessage(QObject::tr("success."));
+        state_log_data->add_log(QObject::tr("loading history is success."));
     }
     return json;
 }

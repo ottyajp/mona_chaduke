@@ -25,6 +25,7 @@ User_Profile_window::~User_Profile_window()
 
 void User_Profile_window::on_pushButton_clicked()
 {//reload
+    state_log_data->add_log(QObject::tr("loading user profile"));
     QString api_name = "users/profile";
     QUrlQuery api_query;
     api_query.addQueryItem("u_id",ui->u_id->text());
@@ -33,11 +34,13 @@ void User_Profile_window::on_pushButton_clicked()
     if (json.object().value("status").toInt() == 0){
         ui->u_name->setText("error");
         ui->profile->setText(json.object().value("error").toString());
+        state_log_data->add_log(QObject::tr("failed to load user profile"));
     }else{
         ui->u_name->setText(json.object().value("u_name").toString());
         ui->u_dan->setText(json.object().value("u_dan").toString());
         ui->profile->setText(json.object().value("profile").toString());
         ui->tabs->setTabEnabled(1,true);
+        state_log_data->add_log(QObject::tr("loading user profile success."));
     }
 }
 
@@ -68,6 +71,7 @@ void User_Profile_window::on_amount_textChanged()
 
 void User_Profile_window::on_send_button_clicked()
 {
+    state_log_data->add_log(QObject::tr("sending MONA..."));
     QString anonymous_send;
     if(ui->anonymous_check->isChecked() == Qt::Unchecked){//known send
         anonymous_send = "0";
@@ -92,14 +96,13 @@ void User_Profile_window::on_send_button_clicked()
     QString key = knock_api(api_name,api_query);
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
     if (json.object().value("status").toInt() == 0){
-        status_bar->showMessage(tr("error. ") + json.object().value("error").toString());
+        state_log_data->add_log(QObject::tr("failed to send MONA. ")+json.object().value("error").toString());
     }else{
         QMessageBox alert;
         alert.setText(tr("Success!"));
         alert.setStandardButtons(QMessageBox::Ok);
         alert.setDefaultButton(QMessageBox::Ok);
         alert.exec();
-        status_bar->showMessage(tr("success.  balance:") +
-                                json.object().value("balance").toString() + "watanabe");
+        state_log_data->add_log(QObject::tr("success. balance:")+json.object().value("balance").toString()+"watanabe");
     }
 }

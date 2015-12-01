@@ -43,10 +43,10 @@ void send_receive_history::on_reload_clicked()
         if(ui->view->invisibleRootItem()->child(0) == 0){break;}
         delete ui->view->invisibleRootItem()->child(0);
     }
-    status_bar->showMessage(tr("get send history."));
+    state_log_data->add_log(QObject::tr("get send history."));
     //get history
     QJsonDocument send_json = get_tx_history("send",tx_send_receive_limit);
-    status_bar->showMessage(tr("get receive history."));
+    state_log_data->add_log(QObject::tr("get receive history."));
     QThread::sleep(1);
     QJsonDocument receive_json = get_tx_history("receive",tx_send_receive_limit);
 
@@ -135,7 +135,7 @@ void send_receive_history::on_view_itemDoubleClicked(QTreeWidgetItem *item)
         QString key = knock_api_get(api_name, query);
         QJsonDocument json0 = QJsonDocument::fromJson(key.toUtf8());
         if (json0.object().value("status").toInt() == 0){
-            status_bar->showMessage(tr("failed to get detail.")+json0.object().value("error").toString());
+            state_log_data->add_log(QObject::tr("failed to get detail.")+json0.object().value("error").toString());
             qDebug()<<json0.object().value("error").toString();
         }else{
             QJsonObject json = json0.object().value("responses").toArray().at(0).toObject();

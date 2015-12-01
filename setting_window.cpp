@@ -33,12 +33,13 @@ Setting_window::Setting_window(QWidget *parent) :
 
 Setting_window::~Setting_window()
 {
-    status_bar->showMessage(tr("setting complete."));
+    state_log_data->add_log(QObject::tr("setting complete."));
     delete ui;
 }
 
 void Setting_window::on_pushButton_clicked()//authentication
 {
+    state_log_data->add_log(QObject::tr("authenticate"));
     QString api_name = "auth/secretkey";
     QUrlQuery api_query;
     api_query.addQueryItem("app_id","2332");
@@ -47,10 +48,15 @@ void Setting_window::on_pushButton_clicked()//authentication
     api_query.addQueryItem("pass",ui->pass->text());
     QString key = knock_api(api_name,api_query);
     QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
-    key = json.object().value("secretkey").toString();
-    secret_key = key;
-    ui->u_id->setText(QString::number(json.object().value("u_id").toInt()));
-    user_id = json.object().value("u_id").toInt();
+    if(json.object().value("status").toInt() == 0){
+        state_log_data->add_log(QObject::tr("authentication failed.")+json.object().value("error").toString());
+    }else{
+        key = json.object().value("secretkey").toString();
+        secret_key = key;
+        ui->u_id->setText(QString::number(json.object().value("u_id").toInt()));
+        user_id = json.object().value("u_id").toInt();
+        state_log_data->add_log(QObject::tr("authentication success."));
+    }
 }
 
 void Setting_window::on_buttonBox_accepted()

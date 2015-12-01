@@ -35,10 +35,10 @@ void withdraw_deposit_history::on_reload_clicked()
         if(ui->view->invisibleRootItem()->child(0) == 0){break;}
         delete ui->view->invisibleRootItem()->child(0);
     }
-    status_bar->showMessage(tr("get deposit history."));
+    state_log_data->add_log(QObject::tr("get deposit history."));
     //get history
     QJsonDocument depo_json = get_tx_history("deposit",tx_with_depo_limit);
-    status_bar->showMessage(tr("get withdraw history."));
+    state_log_data->add_log(QObject::tr("get withdraw history."));
     QThread::sleep(1);
     QJsonDocument with_json = get_tx_history("withdraw",tx_with_depo_limit);
 

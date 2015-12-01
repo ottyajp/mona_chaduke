@@ -38,7 +38,7 @@ void send_mona_to_res_window::on_send_button_clicked()
         switch(ret){
             case QMessageBox::Ok:{
                 long mona_amount_watanabe = (long)100000000 * mona_amount;
-                status_bar->showMessage(tr("sending mona...") + mona_amount_watanabe + "[watanabe], " + mona_amount +"[MONA]");
+                state_log_data->add_log(QObject::tr("sending mona...")+mona_amount+"[MONA]");
 
                 QString anonymous_send;
                 if(ui->anonymous_check->isChecked() == Qt::Unchecked){//known send
@@ -65,7 +65,7 @@ void send_mona_to_res_window::on_send_button_clicked()
                 QJsonDocument json = QJsonDocument::fromJson(key.toUtf8());
 
                 if (json.object().value("status").toInt() == 0){
-                    status_bar->showMessage(tr("failed to send mona. error message is : ")+json.object().value("error").toString());
+                    state_log_data->add_log(QObject::tr("failed to send mona. ")+json.object().value("error").toString());
                     qDebug()<<json.object().value("error").toString();
                 }else{
                     this->send_success_fire();
@@ -104,7 +104,7 @@ void send_mona_to_res_window::on_send_mona_preset4_clicked()
 
 void send_mona_to_res_window::send_success_fire(){
     emit send_success();
-    status_bar->showMessage(tr("mona send success!"));
+    state_log_data->add_log(QObject::tr("mona send success!"));
 }
 
 void send_mona_to_res_window::on_anonymous_check_stateChanged(int arg1)

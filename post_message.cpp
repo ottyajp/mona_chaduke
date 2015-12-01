@@ -46,7 +46,7 @@ void post_message::on_buttonBox_accepted()
 }
 
 void post_message::call_post_message_api(){
-status_bar->showMessage(tr("posting message..."));
+    state_log_data->add_log(QObject::tr("posting message..."));
     QString sage;
     if(ui->sage_check->checkState() == Qt::Unchecked){
         sage = "0";
@@ -70,8 +70,9 @@ status_bar->showMessage(tr("posting message..."));
     if (json.object().value("status").toInt() == 0){
         qDebug()<<"error";
         qDebug()<<json.object().value("error").toString();
+        state_log_data->add_log(QObject::tr("post failure.")+json.object().value("error").toString());
     }else{
         emit post_success();
-        status_bar->showMessage(tr("post success!"));
+        state_log_data->add_log(QObject::tr("post success!"));
     }
 }
