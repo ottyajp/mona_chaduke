@@ -411,7 +411,7 @@ void MainWindow::on_action_About_triggered()
     QMessageBox::about(this, tr("about mona chaduke"),
                        tr("<h3>mona chaduke</h3>"
                           "<p><img src=\":/mona.png\"></p>"
-                          "<p>Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz</p>"));
+                          "<p>Donate<BR><img width=\"150\" src=\":/qr.png\"><BR>M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz</p>"));
 }
 
 void MainWindow::on_call_post_window_clicked()
