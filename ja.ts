@@ -222,9 +222,9 @@
     </message>
     <message>
         <location filename="mainwindow.cpp" line="412"/>
-        <source>&lt;h3&gt;mona chaduke&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;:/mona.png&quot;&gt;&lt;/p&gt;&lt;p&gt;Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz&lt;/p&gt;</source>
-        <oldsource>&lt;h3&gt;mona chaduke&lt;/h3&gt;&lt;p&gt;Ah, monamona&lt;/p&gt;&lt;p&gt;Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz&lt;/p&gt;</oldsource>
-        <translation>&lt;h3&gt;モナ茶漬け&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;:/mona.png&quot;&gt;&lt;/p&gt;&lt;p&gt;Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz&lt;/p&gt;</translation>
+        <source>&lt;h3&gt;mona chaduke&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;:/mona.png&quot;&gt;&lt;/p&gt;&lt;p&gt;Donate&lt;BR&gt;&lt;img width=&quot;150&quot; src=&quot;:/qr.png&quot;&gt;&lt;BR&gt;M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz&lt;/p&gt;</source>
+        <oldsource>&lt;h3&gt;mona chaduke&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;:/mona.png&quot;&gt;&lt;/p&gt;&lt;p&gt;Donate:M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz&lt;/p&gt;</oldsource>
+        <translation>&lt;h3&gt;モナ茶漬け&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;:/mona.png&quot;&gt;&lt;/p&gt;&lt;p&gt;Donate&lt;BR&gt;&lt;img width=&quot;150&quot; src=&quot;:/qr.png&quot;&gt;&lt;BR&gt;M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz&lt;/p&gt;</translation>
     </message>
     <message>
         <source>failed to get balance. error message is : </source>
@@ -341,32 +341,37 @@
         <translation>auth_keyの生成に成功しました。</translation>
     </message>
     <message>
-        <location filename="func_var.cpp" line="179"/>
+        <location filename="func_var.cpp" line="133"/>
+        <source>can&apos;t open style file.</source>
+        <translation>style.cssが開けません。</translation>
+    </message>
+    <message>
+        <location filename="func_var.cpp" line="185"/>
         <source>formatting topic completed.</source>
         <translation>トピックの整形を完了しました。</translation>
     </message>
     <message>
-        <location filename="func_var.cpp" line="184"/>
+        <location filename="func_var.cpp" line="190"/>
         <source>loading deposit history...</source>
         <translation>入金履歴を読み込み中...</translation>
     </message>
     <message>
-        <location filename="func_var.cpp" line="187"/>
+        <location filename="func_var.cpp" line="193"/>
         <source>loading withdraw history...</source>
         <translation>出金履歴を読み込み中...</translation>
     </message>
     <message>
-        <location filename="func_var.cpp" line="190"/>
+        <location filename="func_var.cpp" line="196"/>
         <source>loading receive history...</source>
         <translation>受取履歴を読み込み中...</translation>
     </message>
     <message>
-        <location filename="func_var.cpp" line="193"/>
+        <location filename="func_var.cpp" line="199"/>
         <source>loading send history...</source>
         <translation>ばらまき履歴を読み込み中...</translation>
     </message>
     <message>
-        <location filename="func_var.cpp" line="211"/>
+        <location filename="func_var.cpp" line="217"/>
         <source>loading history is success.</source>
         <translation>履歴の読み込みに成功しました。</translation>
     </message>
@@ -380,13 +385,12 @@
         <translation>トピックを整形中...</translation>
     </message>
     <message>
-        <location filename="func_var.cpp" line="130"/>
         <source>can&apos;t open template file.</source>
-        <translation>テンプレートファイルが開けません。</translation>
+        <translation type="vanished">テンプレートファイルが開けません。</translation>
     </message>
     <message>
-        <location filename="func_var.cpp" line="153"/>
-        <location filename="func_var.cpp" line="156"/>
+        <location filename="func_var.cpp" line="159"/>
+        <location filename="func_var.cpp" line="162"/>
         <location filename="mainwindow.cpp" line="631"/>
         <location filename="mainwindow.cpp" line="634"/>
         <location filename="send_receive_history.cpp" line="148"/>
@@ -394,7 +398,7 @@
         <translation>人</translation>
     </message>
     <message>
-        <location filename="func_var.cpp" line="173"/>
+        <location filename="func_var.cpp" line="179"/>
         <source>send mona</source>
         <translation>送る</translation>
     </message>
@@ -403,7 +407,7 @@
         <translation type="vanished">トピックの整形を完了しました</translation>
     </message>
     <message>
-        <location filename="func_var.cpp" line="209"/>
+        <location filename="func_var.cpp" line="215"/>
         <source>failed to load history. </source>
         <translation>履歴のロードに失敗。</translation>
     </message>
@@ -634,22 +638,22 @@
         <translation>MONA送金に成功しました！</translation>
     </message>
     <message>
-        <location filename="setting_window.cpp" line="36"/>
+        <location filename="setting_window.cpp" line="37"/>
         <source>setting complete.</source>
         <translation>設定が完了しました。</translation>
     </message>
     <message>
-        <location filename="setting_window.cpp" line="42"/>
+        <location filename="setting_window.cpp" line="43"/>
         <source>authenticate</source>
         <translation>認証処理を行います</translation>
     </message>
     <message>
-        <location filename="setting_window.cpp" line="52"/>
+        <location filename="setting_window.cpp" line="53"/>
         <source>authentication failed.</source>
         <translation>認証に失敗しました。</translation>
     </message>
     <message>
-        <location filename="setting_window.cpp" line="58"/>
+        <location filename="setting_window.cpp" line="59"/>
         <source>authentication success.</source>
         <translation>認証に成功しました。</translation>
     </message>
@@ -756,6 +760,11 @@
         <translation>動作ログを表示する</translation>
     </message>
     <message>
+        <location filename="setting_window.ui" line="280"/>
+        <source>&lt;p align=&quot;right&quot; style=&quot; color:#ff0000;&quot;&gt;need a reboot to apply changes.&lt;/p&gt;</source>
+        <translation>&lt;p align=&quot;right&quot; style=&quot; color:#ff0000;&quot;&gt;変更の適用に再起動が必要です&lt;/p&gt;</translation>
+    </message>
+    <message>
         <source>get_&amp;res_limit</source>
         <translation type="vanished">レス取得上限(&amp;R)</translation>
     </message>
@@ -795,6 +804,11 @@
     <message>
         <source>setting complete.</source>
         <translation type="vanished">設定が完了しました。</translation>
+    </message>
+    <message>
+        <location filename="setting_window.cpp" line="88"/>
+        <source>need a reboot to apply changes</source>
+        <translation>変更の適用に再起動が必要です</translation>
     </message>
 </context>
 <context>
