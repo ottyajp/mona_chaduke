@@ -125,12 +125,18 @@ state_log_data->add_log(QObject::tr("formatting topic..."));
         //load template file
     initial_contents_size = frame->contentsSize();
     QString source;
-    QFile file("./template.html");
-    if(!file.open(QIODevice::ReadOnly)){
-        state_log_data->add_log(QObject::tr("can't open template file."));
+    QFile temp1(":/template.html");
+    temp1.open(QIODevice::ReadOnly);
+    QTextStream in_temp1(&temp1);
+    QFile style("./style.css");
+    if(!style.open(QIODevice::ReadOnly)){
+        state_log_data->add_log(QObject::tr("can't open style file."));
     }
-    QTextStream in(&file);
-    source = in.readAll();
+    QTextStream in_style(&style);
+    QFile temp2(":/template2.html");
+    temp2.open(QIODevice::ReadOnly);
+    QTextStream in_temp2(&temp2);
+    source = in_temp1.readAll() + in_style.readAll() + in_temp2.readAll();
     frame->setHtml(source);
         //set title
     QWebElement title;
