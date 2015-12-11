@@ -3,5 +3,6 @@
         <file>ja.qm</file>
         <file>mona.png</file>
         <file>icon.ico</file>
+        <file>qr.png</file>
     </qresource>
 </RCC>
