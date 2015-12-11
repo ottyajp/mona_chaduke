@@ -24,6 +24,8 @@ private slots:
 
     void on_pass_textChanged();
 
+    void on_show_state_log_check_stateChanged();
+
 private:
     Ui::Setting_window *ui;
 };

@@ -29,6 +29,7 @@ Setting_window::Setting_window(QWidget *parent) :
     ui->tx_with_depo_limit->setText(tx_with_depo_limit);
     ui->show_state_log_check->setChecked(state_log_show);
     QString secret_key;
+    ui->need_reboot->setText(tr(""));
 }
 
 Setting_window::~Setting_window()
@@ -80,4 +81,9 @@ void Setting_window::on_u_address_textChanged()
 void Setting_window::on_pass_textChanged()
 {
     ui->pushButton->setEnabled(true);
+}
+
+void Setting_window::on_show_state_log_check_stateChanged()
+{
+    ui->need_reboot->setText("<p align=\"right\" style=\" color:#ff0000;\">"+tr("need a reboot to apply changes")+"</p>");
 }
