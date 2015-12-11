@@ -4,5 +4,7 @@
         <file>mona.png</file>
         <file>icon.ico</file>
         <file>qr.png</file>
+        <file>template.html</file>
+        <file>template2.html</file>
     </qresource>
 </RCC>
