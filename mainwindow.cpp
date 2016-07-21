@@ -337,7 +337,10 @@ if(item->text(0) != ""){
         if (json.object().value("status").toInt() == 0){
             ui->topic->setHtml("<h2>error</h2><BR>"+json.object().value("error").toString());
         }else{
-            format_topic(ui->topic->page()->mainFrame(), json, item->text(1));
+            topic_view *topic = new topic_view;
+            ui->tab_view->addTab(topic, item->text(1));
+            format_topic(topic->page()->mainFrame(), json, item->text(1));
+//            format_topic(ui->topic->page()->mainFrame(), json, item->text(1));
             JsObj *jo = new JsObj();
             ui->topic->page()->mainFrame()->addToJavaScriptWindowObject("jsobj",jo);
             QObject::connect(jo,SIGNAL(send_mona_to_res_signal(QString)),this,SLOT(on_action_send_mona_to_res_clicked(QString)));
@@ -654,10 +657,10 @@ void MainWindow::anchor_click(QString s){
 
 topic_view::topic_view(){}
 
-topic_view::set_topic_id(QString arg){
+void topic_view::set_topic_id(QString arg){
     topic_id = arg;
 }
 
-topic_view::get_topic_id(){
+QString topic_view::get_topic_id(){
     return topic_id;
 }
