@@ -338,7 +338,8 @@ if(item->text(0) != ""){
             ui->topic->setHtml("<h2>error</h2><BR>"+json.object().value("error").toString());
         }else{
             topic_view *topic = new topic_view;
-            ui->tab_view->addTab(topic, item->text(1));
+            int current_index = ui->tab_view->currentIndex()+1;
+            ui->tab_view->setCurrentIndex(ui->tab_view->insertTab(current_index, topic, item->text(1)));
             format_topic(topic->page()->mainFrame(), json, item->text(1));
 //            format_topic(ui->topic->page()->mainFrame(), json, item->text(1));
             JsObj *jo = new JsObj();
