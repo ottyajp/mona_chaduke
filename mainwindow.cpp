@@ -651,3 +651,13 @@ void MainWindow::anchor_click(QString s){
         anchor_res.exec();
     }
 }
+
+topic_view::topic_view(){}
+
+topic_view::set_topic_id(QString arg){
+    topic_id = arg;
+}
+
+topic_view::get_topic_id(){
+    return topic_id;
+}
