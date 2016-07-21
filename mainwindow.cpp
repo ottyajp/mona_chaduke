@@ -664,3 +664,9 @@ void topic_view::set_topic_id(QString arg){
 QString topic_view::get_topic_id(){
     return topic_id;
 }
+
+void MainWindow::on_tab_view_tabCloseRequested(int index)
+{
+    ui->tab_view->widget(index)->deleteLater();
+    ui->tab_view->removeTab(index);
+}

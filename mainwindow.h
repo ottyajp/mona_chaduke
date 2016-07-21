@@ -98,6 +98,8 @@ private slots:
 
     void log_changed();
 
+    void on_tab_view_tabCloseRequested(int index);
+
 private:
     Ui::MainWindow *ui;
 
