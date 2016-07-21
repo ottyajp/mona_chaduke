@@ -59,7 +59,6 @@ private slots:
 
     void on_action_Get_topic_list_triggered();
 
-    void on_topic_list_itemDoubleClicked(QTreeWidgetItem *item);
     void on_action_About_triggered();
 
     void on_call_post_window_clicked();

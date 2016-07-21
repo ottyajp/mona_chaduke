@@ -253,7 +253,7 @@ state_log_data->add_log(QObject::tr("loading topic list..."));
     state_log_data->add_log(QObject::tr("loading topic list is complete"));
 }
 
-void MainWindow::on_topic_list_itemDoubleClicked(QTreeWidgetItem *item)
+void MainWindow::on_topic_list_itemActivated(QTreeWidgetItem *item)
 {
 if(item->text(0) != ""){
     if (now_topic_id != ""){    //add position data to log
@@ -466,14 +466,9 @@ void MainWindow::on_actionGet_deposit_address_triggered()
     }
 }
 
-void MainWindow::on_topic_list_itemActivated(QTreeWidgetItem *item)
-{
-    this->on_topic_list_itemDoubleClicked(item);
-}
-
 void MainWindow::topic_reload(){
     position = ui->topic->page()->mainFrame()->scrollPosition().y();
-    this->on_topic_list_itemDoubleClicked(ui->topic_list->selectedItems().at(0));
+    this->on_topic_list_itemActivated(ui->topic_list->selectedItems().at(0));
 }
 
 void MainWindow::favorite_topic_reload(){
