@@ -27,7 +27,8 @@ SOURCES += main.cpp\
     withdraw_window.cpp \
     withdraw_deposit_history.cpp \
     send_receive_history.cpp \
-    new_topic.cpp
+    new_topic.cpp \
+    topic_view.cpp
 
 HEADERS  += mainwindow.h \
     setting_window.h \
@@ -40,7 +41,8 @@ HEADERS  += mainwindow.h \
     withdraw_window.h \
     withdraw_deposit_history.h \
     send_receive_history.h \
-    new_topic.h
+    new_topic.h \
+    topic_view.h
 
 FORMS    += mainwindow.ui \
     setting_window.ui \
