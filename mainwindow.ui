@@ -99,7 +99,7 @@
          <enum>QTabWidget::Rounded</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>-1</number>
         </property>
         <property name="elideMode">
          <enum>Qt::ElideNone</enum>
@@ -107,22 +107,6 @@
         <property name="tabsClosable">
          <bool>true</bool>
         </property>
-        <widget class="QWidget" name="mona_chaduke_tab">
-         <attribute name="title">
-          <string>mona_chaduke</string>
-         </attribute>
-         <layout class="QGridLayout" name="gridLayout_2">
-          <item row="0" column="0">
-           <widget class="QWebView" name="topic">
-            <property name="url">
-             <url>
-              <string>about:blank</string>
-             </url>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
        </widget>
       </item>
      </layout>
@@ -252,13 +236,6 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <customwidgets>
-  <customwidget>
-   <class>QWebView</class>
-   <extends>QWidget</extends>
-   <header>QtWebKitWidgets/QWebView</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>
