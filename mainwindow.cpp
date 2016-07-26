@@ -25,6 +25,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->topic->setHtml("<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"></head><body>Mona_chaduke_top</body></html>");
     status_bar = ui->statusBar;
 
+    topic_view *topic = new topic_view;
+    ui->tab_view->addTab(topic,tr("mona_chaduke"));
+
     ui->topic_list->setColumnCount(5);
     ui->topic_list->setHeaderLabels(QStringList()<<"ID"<<tr("Title")<<tr("count")<<tr("rank")<<tr("updated"));
     ui->topic_list->setColumnWidth(0,70);
@@ -337,7 +340,22 @@ if(item->text(0) != ""){
         if (json.object().value("status").toInt() == 0){
             ui->topic->setHtml("<h2>error</h2><BR>"+json.object().value("error").toString());
         }else{
-            topic_view *topic = new topic_view;
+            int opened_topic_index = -1;
+            topic_view *topic;
+            for(int i=0; i<ui->tab_view->count(); i++){
+                void *w = ui->tab_view->widget(i);
+                topic = (topic_view *)w;
+                if( item->text(0) == topic->get_topic_id() ){
+                    opened_topic_index = i;
+                }
+            }
+            if(opened_topic_index == -1){
+                topic = new topic_view;
+            }else{
+                void *w = ui->tab_view->widget(opened_topic_index);
+                topic = (topic_view *)w;
+            }
+            topic->set_topic_id(item->text(0));
             int current_index = ui->tab_view->currentIndex()+1;
             ui->tab_view->setCurrentIndex(ui->tab_view->insertTab(current_index, topic, item->text(1)));
             format_topic(topic->page()->mainFrame(), json, item->text(1));
