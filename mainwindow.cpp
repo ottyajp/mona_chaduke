@@ -25,9 +25,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->topic->setHtml("<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"></head><body>Mona_chaduke_top</body></html>");
     status_bar = ui->statusBar;
 
-    topic_view *topic = new topic_view;
-    ui->tab_view->addTab(topic,tr("mona_chaduke"));
-
     ui->topic_list->setColumnCount(5);
     ui->topic_list->setHeaderLabels(QStringList()<<"ID"<<tr("Title")<<tr("count")<<tr("rank")<<tr("updated"));
     ui->topic_list->setColumnWidth(0,70);
@@ -345,6 +342,8 @@ if(item->text(0) != ""){
             for(int i=0; i<ui->tab_view->count(); i++){
                 void *w = ui->tab_view->widget(i);
                 topic = (topic_view *)w;
+                qDebug()<<ui->tab_view->count();
+                qDebug()<<topic->get_topic_id();
                 if( item->text(0) == topic->get_topic_id() ){
                     opened_topic_index = i;
                 }
@@ -667,16 +666,6 @@ void MainWindow::anchor_click(QString s){
         anchor_res.setDefaultButton(QMessageBox::Ok);
         anchor_res.exec();
     }
-}
-
-topic_view::topic_view(){}
-
-void topic_view::set_topic_id(QString arg){
-    topic_id = arg;
-}
-
-QString topic_view::get_topic_id(){
-    return topic_id;
 }
 
 void MainWindow::on_tab_view_tabCloseRequested(int index)
