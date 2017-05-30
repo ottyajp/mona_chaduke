@@ -7,6 +7,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->topic_list->setColumnWidth(0, 70); //id
+    ui->topic_list->setColumnWidth(1, 40); //rank
+    ui->topic_list->setColumnWidth(2, 800);//title
+    ui->topic_list->setColumnWidth(3, 40); //count
+    ui->topic_list->setColumnWidth(4, 100);//updated
+    ui->topic_list->setColumnWidth(5, 100);//created
+    ui->topic_list->setColumnWidth(6, 100);//category
+    ui->topic_list->setColumnWidth(7, 100);//tags
     QWebView *view = new QWebView();
     view->setUrl(QUrl("http://google.com/"));
     ui->topic_tab_widget->addTab(view, "test");
