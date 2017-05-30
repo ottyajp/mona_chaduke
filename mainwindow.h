@@ -2,7 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTreeWidgetItem>
 #include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
 #include <QWebView>
 
 namespace Ui {
@@ -19,6 +22,8 @@ public:
 
 private slots:
     void on_actionQuit_Q_triggered();
+
+    void on_action_Load_topic_list_triggered();
 
 private:
     Ui::MainWindow *ui;

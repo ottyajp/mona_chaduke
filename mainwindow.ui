@@ -89,7 +89,14 @@
     <addaction name="separator"/>
     <addaction name="actionQuit_Q"/>
    </widget>
+   <widget class="QMenu" name="menuTopic">
+    <property name="title">
+     <string>&amp;Topic</string>
+    </property>
+    <addaction name="action_Load_topic_list"/>
+   </widget>
    <addaction name="menuFile_F"/>
+   <addaction name="menuTopic"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -111,6 +118,11 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="action_Load_topic_list">
+   <property name="text">
+    <string>&amp;Load topic list</string>
    </property>
   </action>
  </widget>
