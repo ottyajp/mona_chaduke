@@ -2,4 +2,7 @@
     <qresource prefix="/icon">
         <file>icon.ico</file>
     </qresource>
+    <qresource prefix="/lang">
+        <file>ja.qm</file>
+    </qresource>
 </RCC>

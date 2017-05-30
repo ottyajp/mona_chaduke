@@ -37,3 +37,5 @@ FORMS += \
 
 RESOURCES += \
     resources.qrc
+
+TRANSLATIONS = ja.ts
