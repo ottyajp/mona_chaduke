@@ -1,58 +1,34 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2015-05-14T22:31:39
+# Project created by QtCreator 2017-05-30T23:20:21
 #
 #-------------------------------------------------
 
-QT       += core gui network webkitwidgets
+QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = mona_chaduke
 TEMPLATE = app
 
-CODECFORSRC = UTF-8
-TRANSLATIONS = ja.ts
-RESOURCES += lang.qrc
+# The following define makes your compiler emit warnings if you use
+# any feature of Qt which as been marked as deprecated (the exact warnings
+# depend on your compiler). Please consult the documentation of the
+# deprecated API in order to know how to port your code away from it.
+DEFINES += QT_DEPRECATED_WARNINGS
 
-SOURCES += main.cpp\
-        mainwindow.cpp \
-    setting_window.cpp \
-    user_profile_window.cpp \
-    jsobj.cpp \
-    post_message.cpp \
-    send_mona_to_res_window.cpp \
-    image_window.cpp \
-    func_var.cpp \
-    withdraw_window.cpp \
-    withdraw_deposit_history.cpp \
-    send_receive_history.cpp \
-    new_topic.cpp \
-    topic_view.cpp
+# You can also make your code fail to compile if you use deprecated APIs.
+# In order to do so, uncomment the following line.
+# You can also select to disable deprecated APIs only up to a certain version of Qt.
+#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-HEADERS  += mainwindow.h \
-    setting_window.h \
-    user_profile_window.h \
-    jsobj.h \
-    post_message.h \
-    send_mona_to_res_window.h \
-    image_window.h \
-    func_var.h \
-    withdraw_window.h \
-    withdraw_deposit_history.h \
-    send_receive_history.h \
-    new_topic.h \
-    topic_view.h
 
-FORMS    += mainwindow.ui \
-    setting_window.ui \
-    user_profile_window.ui \
-    post_message.ui \
-    send_mona_to_res_window.ui \
-    image_window.ui \
-    withdraw_window.ui \
-    withdraw_deposit_history.ui \
-    send_receive_history.ui \
-    new_topic.ui
+SOURCES += \
+        main.cpp \
+        mainwindow.cpp
 
-win32: RC_FILE = mona_chaduke.rc
+HEADERS += \
+        mainwindow.h
+
+FORMS += \
+        mainwindow.ui
