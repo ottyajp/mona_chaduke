@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->setWindowIcon(QIcon(":/icon/icon.ico"));
+
     ui->topic_list->setColumnWidth(0, 70); //id
     ui->topic_list->setColumnWidth(1, 40); //rank
     ui->topic_list->setColumnWidth(2, 800);//title
