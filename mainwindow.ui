@@ -81,6 +81,15 @@
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile_F">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="actionConfig_C"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuit_Q"/>
+   </widget>
+   <addaction name="menuFile_F"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -91,6 +100,19 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionConfig_C">
+   <property name="text">
+    <string>Config (&amp;C)</string>
+   </property>
+  </action>
+  <action name="actionQuit_Q">
+   <property name="text">
+    <string>Quit (&amp;Q)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
