@@ -114,7 +114,7 @@
         <widget class="QLineEdit" name="password"/>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="auth_button">
          <property name="text">
           <string>Authenticate</string>
          </property>
