@@ -15,72 +15,71 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <widget class="QTreeWidget" name="topic_list">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
+    <item row="0" column="0">
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QTreeWidget" name="topic_list">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>150</height>
+        </size>
+       </property>
+       <column>
+        <property name="text">
+         <string>ID</string>
         </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>150</height>
-         </size>
+       </column>
+       <column>
+        <property name="text">
+         <string>Rank</string>
         </property>
-        <column>
-         <property name="text">
-          <string>ID</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Rank</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Topic title</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Count</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Updated</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Created</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Category</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Tags</string>
-         </property>
-        </column>
-       </widget>
-      </item>
-      <item>
-       <widget class="QTabWidget" name="topic_tab_widget">
-        <property name="currentIndex">
-         <number>-1</number>
+       </column>
+       <column>
+        <property name="text">
+         <string>Topic title</string>
         </property>
-       </widget>
-      </item>
-     </layout>
+       </column>
+       <column>
+        <property name="text">
+         <string>Count</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Updated</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Created</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Category</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Tags</string>
+        </property>
+       </column>
+      </widget>
+      <widget class="QTabWidget" name="topic_tab_widget">
+       <property name="currentIndex">
+        <number>-1</number>
+       </property>
+      </widget>
+     </widget>
     </item>
    </layout>
   </widget>
