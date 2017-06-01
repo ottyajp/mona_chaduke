@@ -26,11 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    network_access.cpp
+    network_access.cpp \
+    func_var.cpp
 
 HEADERS += \
         mainwindow.h \
-    network_access.h
+    network_access.h \
+    func_var.h
 
 FORMS += \
         mainwindow.ui

@@ -8,6 +8,9 @@
 #include <QJsonArray>
 #include <QWebView>
 
+#include "network_access.h"
+#include "func_var.h"
+
 namespace Ui {
 class MainWindow;
 }

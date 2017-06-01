@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "network_access.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -11,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->topic_list->setColumnWidth(0, 70); //id
     ui->topic_list->setColumnWidth(1, 40); //rank
-    ui->topic_list->setColumnWidth(2, 800);//title
+    ui->topic_list->setColumnWidth(2, 700);//title
     ui->topic_list->setColumnWidth(3, 40); //count
     ui->topic_list->setColumnWidth(4, 100);//updated
     ui->topic_list->setColumnWidth(5, 100);//created
@@ -49,10 +48,12 @@ void MainWindow::on_action_Load_topic_list_triggered()
             item->setText(1, QString::number(topics.at(i).toObject().value("rank").toInt()));
             item->setText(2, topics.at(i).toObject().value("title").toString());
             item->setText(3, QString::number(topics.at(i).toObject().value("count").toInt()));
-            item->setText(4, QString::number(topics.at(i).toObject().value("updated").toInt()));
-            item->setText(5, QString::number(topics.at(i).toObject().value("created").toInt()));
+            item->setText(4, from_unix_time(topics.at(i).toObject().value("updated").toInt()));
+            item->setText(5, from_unix_time(topics.at(i).toObject().value("created").toInt()));
             item->setText(6, topics.at(i).toObject().value("category").toString());
             item->setText(7, topics.at(i).toObject().value("tags").toString());
         }
     }
+    ui->topic_list->resizeColumnToContents(4);
+    ui->topic_list->resizeColumnToContents(5);
 }
