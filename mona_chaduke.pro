@@ -27,15 +27,18 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     network_access.cpp \
-    func_var.cpp
+    func_var.cpp \
+    config.cpp
 
 HEADERS += \
         mainwindow.h \
     network_access.h \
-    func_var.h
+    func_var.h \
+    config.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    config.ui
 
 RESOURCES += \
     resources.qrc

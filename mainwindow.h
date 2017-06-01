@@ -11,6 +11,8 @@
 #include "network_access.h"
 #include "func_var.h"
 
+#include "config.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -27,6 +29,8 @@ private slots:
     void on_actionQuit_Q_triggered();
 
     void on_action_Load_topic_list_triggered();
+
+    void on_actionConfig_C_triggered();
 
 private:
     Ui::MainWindow *ui;

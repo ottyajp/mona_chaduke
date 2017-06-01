@@ -57,3 +57,10 @@ void MainWindow::on_action_Load_topic_list_triggered()
     ui->topic_list->resizeColumnToContents(4);
     ui->topic_list->resizeColumnToContents(5);
 }
+
+void MainWindow::on_actionConfig_C_triggered()
+{
+    config *conf = new config(this);
+    conf->setWindowModality(Qt::ApplicationModal);
+    conf->show();
+}
