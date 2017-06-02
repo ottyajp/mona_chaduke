@@ -38,7 +38,9 @@ void config::on_auth_button_clicked()
         mes->showMessage(tr("authentication failed.")+"<BR>"+json.object().value("error").toString());
         return;
     }else{
-        qDebug()<<json.object().value("u_id").toInt();
-        qDebug()<<json.object().value("secretkey").toString();
+        QString u_id = QString::number(json.object().value("u_id").toInt());
+        QString secretkey = json.object().value("secretkey").toString();
+        emit success_auth(secretkey, u_id);
+        ui->label_user->setText(u_id);
     }
 }

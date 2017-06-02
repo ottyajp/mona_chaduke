@@ -61,6 +61,13 @@ void MainWindow::on_action_Load_topic_list_triggered()
 void MainWindow::on_actionConfig_C_triggered()
 {
     config *conf = new config(this);
+    connect(conf, SIGNAL(success_auth(QString,QString)),
+            this, SLOT(set_secretkey_uid(QString,QString)));
     conf->setWindowModality(Qt::ApplicationModal);
     conf->show();
+}
+
+void MainWindow::set_secretkey_uid(QString key, QString id){
+    this->secretkey = key;
+    this->u_id = id;
 }
