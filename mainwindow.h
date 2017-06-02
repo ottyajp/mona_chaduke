@@ -6,6 +6,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QSettings>
 #include <QWebView>
 
 #include "network_access.h"
@@ -33,6 +34,10 @@ private slots:
     void on_action_Load_topic_list_triggered();
 
     void on_actionConfig_C_triggered();
+
+    void saveSettings();
+
+    void loadSettings();
 
     void set_secretkey_uid(QString key, QString id);
 

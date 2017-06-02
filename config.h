@@ -28,8 +28,14 @@ public:
 signals:
     void success_auth(QString key, QString id);
 
+    void save();
+
 private slots:
     void on_auth_button_clicked();
+
+    void on_buttons_accepted();
+
+    void on_buttons_rejected();
 
 private:
     Ui::config *ui;

@@ -44,3 +44,14 @@ void config::on_auth_button_clicked()
         ui->label_user->setText(u_id);
     }
 }
+
+void config::on_buttons_accepted()
+{
+    emit save();
+    this->close();
+}
+
+void config::on_buttons_rejected()
+{
+    this->close();
+}

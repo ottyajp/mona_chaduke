@@ -63,8 +63,23 @@ void MainWindow::on_actionConfig_C_triggered()
     config *conf = new config(this);
     connect(conf, SIGNAL(success_auth(QString,QString)),
             this, SLOT(set_secretkey_uid(QString,QString)));
+    connect(conf, SIGNAL(save()),
+            this, SLOT(saveSettings()));
     conf->setWindowModality(Qt::ApplicationModal);
     conf->show();
+}
+
+void MainWindow::saveSettings(){
+    QSettings set("settings.ini", QSettings::IniFormat);
+    set.setValue("secretkey", this->secretkey);
+    set.setValue("u_id", this->u_id);
+}
+
+void MainWindow::loadSettings(){
+    QSettings set("settings.ini", QSettings::IniFormat);
+    this->secretkey = set.value("secretkey").toString();
+    this->u_id = set.value("u_id").toString();
+    qDebug()<<this->secretkey<<this->u_id;
 }
 
 void MainWindow::set_secretkey_uid(QString key, QString id){
