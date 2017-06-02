@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowIcon(QIcon(":/icon/icon.ico"));
 
+    this->loadSettings();
+
     ui->topic_list->setColumnWidth(0, 70); //id
     ui->topic_list->setColumnWidth(1, 40); //rank
     ui->topic_list->setColumnWidth(2, 700);//title
@@ -66,6 +68,7 @@ void MainWindow::on_actionConfig_C_triggered()
     connect(conf, SIGNAL(save()),
             this, SLOT(saveSettings()));
     conf->setWindowModality(Qt::ApplicationModal);
+    conf->set_uid(this->u_id);
     conf->show();
 }
 
@@ -79,7 +82,6 @@ void MainWindow::loadSettings(){
     QSettings set("settings.ini", QSettings::IniFormat);
     this->secretkey = set.value("secretkey").toString();
     this->u_id = set.value("u_id").toString();
-    qDebug()<<this->secretkey<<this->u_id;
 }
 
 void MainWindow::set_secretkey_uid(QString key, QString id){

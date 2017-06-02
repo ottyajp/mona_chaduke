@@ -24,6 +24,7 @@ class config : public QDialog
 public:
     explicit config(QWidget *parent = 0);
     ~config();
+    void set_uid(QString uid);
 
 signals:
     void success_auth(QString key, QString id);

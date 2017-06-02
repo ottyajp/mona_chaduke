@@ -55,3 +55,9 @@ void config::on_buttons_rejected()
 {
     this->close();
 }
+
+void config::set_uid(QString uid){
+    if(uid != ""){
+        ui->label_user->setText(uid);
+    }
+}
