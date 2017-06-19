@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->topic_list->setColumnWidth(5, 100);//created
     ui->topic_list->setColumnWidth(6, 100);//category
     ui->topic_list->setColumnWidth(7, 100);//tags
-    QWebView *view = new QWebView();
+    QWebEngineView *view = new QWebEngineView();
     view->setUrl(QUrl("http://google.com/"));
     ui->topic_tab_widget->addTab(view, "test");
 }

@@ -7,7 +7,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QSettings>
-#include <QWebView>
+#include <QWebEngineView>
 
 #include "network_access.h"
 #include "func_var.h"
