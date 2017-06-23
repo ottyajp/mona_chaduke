@@ -11,6 +11,7 @@
 
 #include "network_access.h"
 #include "func_var.h"
+#include "topic_view.h"
 
 #include "config.h"
 

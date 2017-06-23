@@ -28,13 +28,15 @@ SOURCES += \
         mainwindow.cpp \
     network_access.cpp \
     func_var.cpp \
-    config.cpp
+    config.cpp \
+    topic_view.cpp
 
 HEADERS += \
         mainwindow.h \
     network_access.h \
     func_var.h \
-    config.h
+    config.h \
+    topic_view.h
 
 FORMS += \
         mainwindow.ui \
