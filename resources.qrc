@@ -5,4 +5,8 @@
     <qresource prefix="/lang">
         <file>ja.qm</file>
     </qresource>
+    <qresource prefix="/template">
+        <file>template.html</file>
+        <file>template2.html</file>
+    </qresource>
 </RCC>
