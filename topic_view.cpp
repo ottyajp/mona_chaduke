@@ -15,13 +15,16 @@ QWebEngineView* topic_view::view(){
     return this;
 }
 
+void topic_view::put_log(QString str){
+    qDebug()<<str;
+}
+
 void topic_view::setInitScreen(){
     QString source = read_file(":/initScreen/initScreen.html");
     this->setHtml(source);
 }
 
 void topic_view::jsComp(){
-    this->page()->runJavaScript("PrintLog('from C++ Log');");
     this->isInitialized = true;
 }
 

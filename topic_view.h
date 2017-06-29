@@ -24,6 +24,7 @@ signals:
 
 public slots:
     void jsComp();
+    void put_log(QString str);
 };
 
 #endif // TOPIC_VIEW_H

@@ -17,7 +17,6 @@
             PrintLog('qt is defined');
             new QWebChannel(qt.webChannelTransport, function(channel) {
                 widget = channel.objects.widget;
-                PrintLog(JSON.stringify(widget));
                 widget.jsComp();
             });
         } else {
@@ -25,13 +24,13 @@
         }
     }
     function PrintLog(txt) {
-        const box = document.getElementById("log");
-        box.value += ("\n" + txt);
+        if (typeof widget != 'undefined') {
+            widget.put_log(txt);
+        }
     }
     </script>
 </head>
 <body onload="initialize()">
     <div id="title"></div>
-    <textarea id="log" rows="20" cols="100">log</textarea>
 </body>
 </html>
