@@ -9,4 +9,7 @@
         <file>template.html</file>
         <file>template2.html</file>
     </qresource>
+    <qresource prefix="/initScreen">
+        <file>initScreen.html</file>
+    </qresource>
 </RCC>

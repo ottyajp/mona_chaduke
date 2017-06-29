@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <style type="text/css">
+    /* styles... */
+    </style>
+    <script src="qrc:///qtwebchannel/qwebchannel.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    var widtget;
+    function initialize() {
+        initialize_qt();
+    }
+    function initialize_qt() {
+        if (typeof qt != 'undefined') {
+            PrintLog('qt is defined');
+            new QWebChannel(qt.webChannelTransport, function(channel) {
+                widget = channel.objects.widget;
+                PrintLog(JSON.stringify(widget));
+                widget.jsComp();
+            });
+        } else {
+            PrintLog('qt is not defined');
+        }
+    }
+    function PrintLog(txt) {
+        const box = document.getElementById("log");
+        box.value += ("\n" + txt);
+    }
+    </script>
+</head>
+<body onload="initialize()">
+    <div id="title"></div>
+    <textarea id="log" rows="20" cols="100">log</textarea>
+</body>
+</html>

@@ -1,5 +1,30 @@
 	</style>
+        <script src="qrc:///qtwebchannel/qwebchannel.js" type="text/javascript"></script>
 	<script type="text/javascript">
+        var widget;
+        function initialize() {
+            initialize_qt();
+        }
+        function initialize_qt() {
+            if (typeof qt != 'undefined') {
+                PrintLog('qt is defined');
+                new QWebChannel(qt.webChannelTransport, function(channel) {
+                    widget = channel.objects.widget;
+                    PrintLog(JSON.stringify(widget));
+                    widget.jsComp();
+                });
+            } else {
+                PrintLog('qt is not defined');
+            }
+        }
+        function setTitle(title) {
+            document.getElementById("title").innerHTML = title;
+        }
+        function PrintLog(txt) {
+            const box = document.getElementById("log");
+            box.value += ("\n" + txt);
+        }
+
 	var onClick_send_mona_link = function(x) {
 		jsobj.send_mona_to_res(x);
 	};
@@ -17,10 +42,11 @@
 	}
 	</script>
 </head>
-<body>
-	<div class="title"></div>
+<body onload="initialize()">
+        <div id="title"></div>
 	<div class="responses">
 
 	</div>
+        <textarea id="log" rows="20" cols="100">log</textarea>
 </body>
 </html>

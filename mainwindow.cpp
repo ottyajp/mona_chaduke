@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->topic_list->setColumnWidth(7, 100);//tags
 
     topic_view *topic = new topic_view();
+    topic->setInitScreen();
     ui->topic_tab_widget->addTab(topic->view(), "test");
 }
 
