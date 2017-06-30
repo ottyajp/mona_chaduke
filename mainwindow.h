@@ -24,6 +24,8 @@ class MainWindow : public QMainWindow
     Q_OBJECT
     QString secretkey;
     QString u_id;
+    QString topics_limit;
+    QString responses_limit;
 
 public:
     explicit MainWindow(QWidget *parent = 0);

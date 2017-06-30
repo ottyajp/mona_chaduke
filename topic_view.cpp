@@ -35,8 +35,10 @@ void topic_view::setTitle(QString title){
 }
 
 void topic_view::loadTopic(QString t_id){
+    QSettings set("settings.ini", QSettings::IniFormat);
     QUrlQuery query;
     query.addQueryItem("t_id", t_id);
+    query.addQueryItem("to", set.value("responses_limit").toString());
     QJsonDocument json = QJsonDocument::fromJson(
                 access_get("responses/list", query).toUtf8());
     qDebug()<<json;

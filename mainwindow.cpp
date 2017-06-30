@@ -80,12 +80,15 @@ void MainWindow::saveSettings(QMap<QString, QString> data){
     set.setValue("u_id", this->u_id);
     set.setValue("topics_limit", data["topics_limit"]);
     set.setValue("responses_limit", data["responses_limit"]);
+    this->loadSettings();
 }
 
 void MainWindow::loadSettings(){
     QSettings set("settings.ini", QSettings::IniFormat);
     this->secretkey = set.value("secretkey").toString();
     this->u_id = set.value("u_id").toString();
+    this->topics_limit = set.value("topics_limit").toString();
+    this->responses_limit = set.value("responses_limit").toString();
 }
 
 void MainWindow::set_secretkey_uid(QString key, QString id){

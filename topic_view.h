@@ -4,7 +4,9 @@
 #include <QWebEngineView>
 #include <QWebChannel>
 #include <QtCore/QThread>
+#include <QSettings>
 #include <QJsonDocument>
+#include <QJsonObject>
 
 #include "func_var.h"
 
