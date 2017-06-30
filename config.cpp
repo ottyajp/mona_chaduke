@@ -44,7 +44,7 @@ void config::on_auth_button_clicked()
         QString u_id = QString::number(json.object().value("u_id").toInt());
         QString secretkey = json.object().value("secretkey").toString();
         emit success_auth(secretkey, u_id);
-        ui->label_user->setText(u_id);
+        this->set_uid(u_id);
     }
 }
 
@@ -64,6 +64,18 @@ void config::on_buttons_rejected()
 
 void config::set_uid(QString uid){
     if(uid != ""){
-        ui->label_user->setText(uid);
+        QUrlQuery query;
+        query.addQueryItem("u_id", uid);
+        QJsonDocument json = QJsonDocument::fromJson(
+                    access_get("users/profile", query).toUtf8());
+        if(json.object().value("status").toInt() == 0){
+            ui->label_user->setText(tr("invalid user"));
+            qDebug()<<json.object().value("error").toString();
+        }else{
+            QString str = json.object().value("u_name").toString() +
+                    " " +
+                    json.object().value("u_dan").toString();
+            ui->label_user->setText(str);
+        }
     }
 }
