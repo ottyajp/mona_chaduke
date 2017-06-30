@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     topic_view *topic = new topic_view();
     topic->setInitScreen();
-    ui->topic_tab_widget->addTab(topic->view(), "test");
+    ui->topic_tab_widget->addTab(topic, "test");
 }
 
 MainWindow::~MainWindow()

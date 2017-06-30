@@ -11,10 +11,6 @@ topic_view::topic_view(QWidget *parent) : QWebEngineView(parent)
     this->setHtml(source);
 }
 
-QWebEngineView* topic_view::view(){
-    return this;
-}
-
 void topic_view::put_log(QString str){
     qDebug()<<str;
 }

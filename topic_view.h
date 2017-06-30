@@ -16,7 +16,6 @@ private:
 
 public:
     explicit topic_view(QWidget *parent = 0);
-    QWebEngineView* view();
     void setInitScreen();
     void setTitle(QString title);
 
