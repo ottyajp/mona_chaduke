@@ -33,3 +33,11 @@ void topic_view::setTitle(QString title){
     QString s = QString("PrintLog('%1');").arg(title);
     this->page()->runJavaScript(s);
 }
+
+void topic_view::loadTopic(QString t_id){
+    QUrlQuery query;
+    query.addQueryItem("t_id", t_id);
+    QJsonDocument json = QJsonDocument::fromJson(
+                access_get("responses/list", query).toUtf8());
+    qDebug()<<json;
+}

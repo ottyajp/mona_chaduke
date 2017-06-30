@@ -4,6 +4,7 @@
 #include <QWebEngineView>
 #include <QWebChannel>
 #include <QtCore/QThread>
+#include <QJsonDocument>
 
 #include "func_var.h"
 
@@ -18,6 +19,7 @@ public:
     explicit topic_view(QWidget *parent = 0);
     void setInitScreen();
     void setTitle(QString title);
+    void loadTopic(QString t_id);
 
 signals:
 
