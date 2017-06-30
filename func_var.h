@@ -6,6 +6,8 @@
 #include <QTextStream>
 #include <QDebug>
 
+#include "network_access.h"
+
 QString from_unix_time(int unix_time);
 
 QString read_file(QString file_name);

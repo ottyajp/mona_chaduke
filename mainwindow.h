@@ -36,11 +36,13 @@ private slots:
 
     void on_actionConfig_C_triggered();
 
-    void saveSettings();
+    void saveSettings(QMap<QString, QString> data);
 
     void loadSettings();
 
     void set_secretkey_uid(QString key, QString id);
+
+    void on_topic_list_itemActivated(QTreeWidgetItem *item);
 
 private:
     Ui::MainWindow *ui;

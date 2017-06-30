@@ -66,17 +66,20 @@ void MainWindow::on_actionConfig_C_triggered()
     config *conf = new config(this);
     connect(conf, SIGNAL(success_auth(QString,QString)),
             this, SLOT(set_secretkey_uid(QString,QString)));
-    connect(conf, SIGNAL(save()),
-            this, SLOT(saveSettings()));
+    connect(conf, SIGNAL(save(QMap<QString, QString>)),
+            this, SLOT(saveSettings(QMap<QString, QString>)));
     conf->setWindowModality(Qt::ApplicationModal);
     conf->set_uid(this->u_id);
     conf->show();
 }
 
-void MainWindow::saveSettings(){
+void MainWindow::saveSettings(QMap<QString, QString> data){
+    qDebug()<<data;
     QSettings set("settings.ini", QSettings::IniFormat);
     set.setValue("secretkey", this->secretkey);
     set.setValue("u_id", this->u_id);
+    set.setValue("topics_limit", data["topics_limit"]);
+    set.setValue("responses_limit", data["responses_limit"]);
 }
 
 void MainWindow::loadSettings(){
@@ -88,4 +91,10 @@ void MainWindow::loadSettings(){
 void MainWindow::set_secretkey_uid(QString key, QString id){
     this->secretkey = key;
     this->u_id = id;
+}
+
+void MainWindow::on_topic_list_itemActivated(QTreeWidgetItem *item)
+{
+    auto *topic = static_cast<topic_view*>(ui->topic_tab_widget->widget(0));
+    topic->loadTopic(item->text(0));
 }

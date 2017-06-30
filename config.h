@@ -8,6 +8,7 @@
 #include <QUrlQuery>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QSettings>
 
 #include "network_access.h"
 #include "func_var.h"
@@ -29,7 +30,7 @@ public:
 signals:
     void success_auth(QString key, QString id);
 
-    void save();
+    void save(QMap<QString, QString> data);
 
 private slots:
     void on_auth_button_clicked();

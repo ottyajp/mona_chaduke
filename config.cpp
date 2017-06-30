@@ -6,6 +6,9 @@ config::config(QWidget *parent) :
     ui(new Ui::config)
 {
     ui->setupUi(this);
+    QSettings set("settings.ini", QSettings::IniFormat);
+    ui->topics_limit->setText(set.value("topics_limit").toString());
+    ui->responses_limit->setText(set.value("responses_limit").toString());
 }
 
 config::~config()
@@ -47,7 +50,10 @@ void config::on_auth_button_clicked()
 
 void config::on_buttons_accepted()
 {
-    emit save();
+    QMap<QString, QString> data;
+    data["topics_limit"] = ui->topics_limit->text();
+    data["responses_limit"] = ui->responses_limit->text();
+    emit save(data);
     this->close();
 }
 
