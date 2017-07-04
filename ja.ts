@@ -49,32 +49,32 @@
         <translation>タグ</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="97"/>
+        <location filename="mainwindow.ui" line="100"/>
         <source>&amp;File</source>
         <translation>ファイル (&amp;F)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="105"/>
+        <location filename="mainwindow.ui" line="108"/>
         <source>&amp;Topic</source>
         <translation>トピック (&amp;T)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="123"/>
+        <location filename="mainwindow.ui" line="126"/>
         <source>Config (&amp;C)</source>
         <translation>コンフィグ (&amp;C)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="128"/>
+        <location filename="mainwindow.ui" line="131"/>
         <source>Quit (&amp;Q)</source>
         <translation>終了 (&amp;Q)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="131"/>
+        <location filename="mainwindow.ui" line="134"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="136"/>
+        <location filename="mainwindow.ui" line="139"/>
         <source>&amp;Load topic list</source>
         <translation>トピックリストをロード (&amp;L)</translation>
     </message>
@@ -88,7 +88,7 @@
         <translation>人</translation>
     </message>
     <message>
-        <location filename="topic_view.cpp" line="79"/>
+        <location filename="topic_view.cpp" line="81"/>
         <source>send mona</source>
         <translation>←送る</translation>
     </message>
@@ -117,6 +117,7 @@
     </message>
     <message>
         <location filename="config.ui" line="123"/>
+        <location filename="config.cpp" line="23"/>
         <source>Authenticate</source>
         <translation>認証する</translation>
     </message>
@@ -131,24 +132,38 @@
         <translation>レス取得数</translation>
     </message>
     <message>
-        <location filename="config.cpp" line="23"/>
+        <location filename="config.cpp" line="31"/>
         <source>you must fill Monacoin address.</source>
         <translation>Monacoinアドレスを入力してください。</translation>
     </message>
     <message>
-        <location filename="config.cpp" line="28"/>
+        <location filename="config.cpp" line="36"/>
         <source>you must fill your Passowrd.</source>
         <translation>パスワードを入力してください。</translation>
     </message>
     <message>
-        <location filename="config.cpp" line="41"/>
+        <location filename="config.cpp" line="49"/>
         <source>authentication failed.</source>
         <translation>認証に失敗しました。</translation>
     </message>
     <message>
-        <location filename="config.cpp" line="72"/>
+        <location filename="config.cpp" line="85"/>
+        <source>error occured.</source>
+        <translation>エラーが発生しました。</translation>
+    </message>
+    <message>
+        <location filename="config.cpp" line="88"/>
+        <source>authenticated</source>
+        <translation>認証済</translation>
+    </message>
+    <message>
+        <location filename="config.cpp" line="102"/>
+        <source>re-authenticate</source>
+        <translation>再認証</translation>
+    </message>
+    <message>
         <source>invalid user</source>
-        <translation>無効なユーザ</translation>
+        <translation type="vanished">無効なユーザ</translation>
     </message>
 </context>
 </TS>
