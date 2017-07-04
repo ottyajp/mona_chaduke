@@ -17,7 +17,10 @@ void topic_view::put_log(QString str){
 
 void topic_view::setInitScreen(){
     QString source = read_file(":/initScreen/initScreen.html");
-    this->setHtml(source);
+    QString style = "<style type=\"text/css\">" +
+            read_file("./style.css") +
+            "</style>";
+    this->setHtml(source + style);
 }
 
 void topic_view::jsComp(){
@@ -39,7 +42,10 @@ void topic_view::loadTopic(QString t_id){
     QUrlQuery query;
     query.addQueryItem("t_id", t_id);
     query.addQueryItem("to", set.value("responses_limit").toString());
+    query.addQueryItem("topic_detail", "1");
     QJsonDocument json = QJsonDocument::fromJson(
                 access_get("responses/list", query).toUtf8());
-    qDebug()<<json;
+    QString data = json.toJson();
+    QString s = QString("loadTopic(%1);").arg(data);
+    this->page()->runJavaScript(s);
 }
