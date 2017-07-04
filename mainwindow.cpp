@@ -38,14 +38,14 @@ void MainWindow::on_actionQuit_Q_triggered()
 void MainWindow::on_action_Load_topic_list_triggered()
 {
     QUrlQuery query;
-    query.addQueryItem("limit","10");
+    query.addQueryItem("limit",this->topics_limit);
     QJsonDocument json = QJsonDocument::fromJson(access_get("topics/list", query).toUtf8());
     if(json.object().value("status").toString() == "0"){
         qDebug()<<json.object().value("error").toString();
     }else{
         ui->topic_list->clear();
         QJsonArray topics = json.object().value("topics").toArray();
-        for(int i=0; i<10; i++){
+        for(int i=0; i<this->topics_limit.toInt(); i++){
             QTreeWidgetItem *item = new QTreeWidgetItem(ui->topic_list);
             item->setText(0, QString::number(topics.at(i).toObject().value("t_id").toInt()));
             item->setText(1, QString::number(topics.at(i).toObject().value("rank").toInt()));
