@@ -21,6 +21,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     topic_view *topic = new topic_view();
     topic->setInitScreen();
+    back_topic = new topic_view();
+    back_topic->setInitScreen();
     ui->topic_tab_widget->addTab(topic, "test");
 }
 
@@ -98,6 +100,12 @@ void MainWindow::set_secretkey_uid(QString key, QString id){
 
 void MainWindow::on_topic_list_itemActivated(QTreeWidgetItem *item)
 {
-    auto *topic = static_cast<topic_view*>(ui->topic_tab_widget->widget(0));
-    topic->loadTopic(item->text(0));
+    int pos = ui->topic_tab_widget->currentIndex();
+    this->back_topic->loadTopic(item->text(0));
+    ui->topic_tab_widget->insertTab(pos + 1, this->back_topic, item->text(2));
+    ui->topic_tab_widget->setCurrentIndex(pos + 1);
+    this->back_topic = new topic_view();
+    this->back_topic->setInitScreen();
+//    auto *topic = static_cast<topic_view*>(ui->topic_tab_widget->widget(pos));
+//    topic->loadTopic(item->text(0));
 }
