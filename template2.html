@@ -10,21 +10,27 @@
                 PrintLog('qt is defined');
                 new QWebChannel(qt.webChannelTransport, function(channel) {
                     widget = channel.objects.widget;
-                    PrintLog(JSON.stringify(widget));
                     widget.jsComp();
                 });
             } else {
                 PrintLog('qt is not defined');
             }
         }
+        function PrintLog(txt) {
+            if (typeof widget != 'undefined') {
+                widget.put_log(txt);
+            }
+        }
+
         function setTitle(title) {
             document.getElementById("title").innerHTML = title;
         }
-        function PrintLog(txt) {
-            const box = document.getElementById("log");
-            box.value += ("\n" + txt);
+        function addRes(res) {
+            const div = document.createElement("div");
+            const response = document.getElementById("responses").appendChild(div);
+            response.classList.add('response');
+            response.innerHTML = res;
         }
-
 	var onClick_send_mona_link = function(x) {
 		jsobj.send_mona_to_res(x);
 	};
@@ -44,9 +50,7 @@
 </head>
 <body onload="initialize()">
         <div id="title"></div>
-	<div class="responses">
-
+        <div id="responses">
 	</div>
-        <textarea id="log" rows="20" cols="100">log</textarea>
 </body>
 </html>
