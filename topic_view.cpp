@@ -68,6 +68,7 @@ void topic_view::loadTopic(QString t_id){
         }
         QString replace_text = res.value("response").toString();
         replace_text.replace(QRegularExpression("\n"),"<BR>");
+        replace_text.replace(QRegularExpression("'"),"\\'");
         replace_text.replace(QRegularExpression("(>>)([0-9]{1,4})"),"&gt;&gt;\\2");
         QString response = QString::number(res.value("r_id").toInt()) + " : " +
                 "<span class=\"u_name\">" + res.value("u_name").toString() + "</span>" +
