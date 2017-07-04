@@ -4,6 +4,8 @@
 #include <QString>
 #include <QByteArray>
 #include <QDateTime>
+#include <QCryptographicHash>
+#include <QSettings>
 
 class auth_key
 {

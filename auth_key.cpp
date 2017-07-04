@@ -6,7 +6,7 @@ auth_key::auth_key()
     bool isValid = true;
     int pos;
     while(true){
-        qsrand(time);
+        qsrand(QDateTime::currentDateTime().toTime_t());
         nonce.append(QString::number(qrand()));
 
         QSettings set("settings.ini", QSettings::IniFormat);
