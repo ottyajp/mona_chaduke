@@ -9,10 +9,12 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QSettings>
+#include <QTextBrowser>
 
 #include "network_access.h"
 #include "func_var.h"
 #include "mainwindow.h"
+#include "auth_key.h"
 
 namespace Ui {
 class config;
@@ -41,6 +43,7 @@ private slots:
 
 private:
     Ui::config *ui;
+    bool authenticated;
 };
 
 #endif // CONFIG_H

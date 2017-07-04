@@ -9,6 +9,7 @@ config::config(QWidget *parent) :
     QSettings set("settings.ini", QSettings::IniFormat);
     ui->topics_limit->setText(set.value("topics_limit").toString());
     ui->responses_limit->setText(set.value("responses_limit").toString());
+    authenticated = false;
 }
 
 config::~config()
@@ -18,6 +19,13 @@ config::~config()
 
 void config::on_auth_button_clicked()
 {
+    if(authenticated) {
+        ui->auth_button->setText(tr("Authenticate"));
+        ui->address->setEnabled(true);
+        ui->password->setEnabled(true);
+        this->authenticated = false;
+        return;
+    }
     if(ui->address->text() == ""){
         QErrorMessage *mes = new QErrorMessage(this);
         mes->showMessage(tr("you must fill Monacoin address."));
@@ -64,18 +72,35 @@ void config::on_buttons_rejected()
 
 void config::set_uid(QString uid){
     if(uid != ""){
+        auth_key key;
         QUrlQuery query;
+        query.addQueryItem("app_id", "2332");
         query.addQueryItem("u_id", uid);
+        query.addQueryItem("nonce", key.read_nonce());
+        query.addQueryItem("time", key.read_time());
+        query.addQueryItem("auth_key", key.read_auth_key());
         QJsonDocument json = QJsonDocument::fromJson(
-                    access_get("users/profile", query).toUtf8());
+                    access_post("users/myprofile", query).toUtf8());
         if(json.object().value("status").toInt() == 0){
-            ui->label_user->setText(tr("invalid user"));
+            ui->label_user->setText(tr("error occured."));
             qDebug()<<json.object().value("error").toString();
         }else{
-            QString str = json.object().value("u_name").toString() +
-                    " " +
-                    json.object().value("u_dan").toString();
-            ui->label_user->setText(str);
+            ui->label_user->setText(tr("authenticated"));
+            QLabel *u_name = new QLabel();
+            u_name->setText(json.object().value("u_name").toString() + " " +
+                    json.object().value("u_dan").toString());
+            QTextBrowser *profile = new QTextBrowser();
+            QString str = json.object().value("profile").toString();
+            str.replace(QRegularExpression("\\\\n"), "<BR>");
+            profile->setHtml(str);
+            QVBoxLayout *layout = new QVBoxLayout();
+            layout->addWidget(u_name);
+            layout->addWidget(profile);
+            ui->userLayout->addLayout(layout);
+            ui->address->setEnabled(false);
+            ui->password->setEnabled(false);
+            ui->auth_button->setText(tr("re-authenticate"));
+            this->authenticated = true;
         }
     }
 }
