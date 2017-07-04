@@ -104,8 +104,6 @@ void MainWindow::on_topic_list_itemActivated(QTreeWidgetItem *item)
     ui->topic_tab_widget->insertTab(pos + 1, this->back_topic, item->text(2));
     ui->topic_tab_widget->setCurrentIndex(pos + 1);
     this->back_topic = new topic_view();
-//    auto *topic = static_cast<topic_view*>(ui->topic_tab_widget->widget(pos));
-//    topic->loadTopic(item->text(0));
 }
 
 void MainWindow::on_topic_tab_widget_tabCloseRequested(int index)
