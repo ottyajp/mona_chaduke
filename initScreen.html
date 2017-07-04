@@ -26,22 +26,14 @@
         }
     }
 
-    function loadTopic(object) {
-        const title = object.topic.title;
+    function setTitle(title) {
         document.getElementById("title").innerHTML = title;
-        const responses = document.getElementById("responses");
-        object['responses'].forEach((res) => {
-            const res_data = `<div class="response">
-                ${res['r_id']}
-                &nbsp;:&nbsp;
-                <span class="u_name">${res['u_name']}</span>${res['u_dan']}
-                &nbsp;:&nbsp;
-                ${res['created']}&nbsp;[${res['u_times']}]&nbsp;
-                <BR>
-                <span class="level${res['res_lv']}">${res['response']}</span>
-                </div>`;
-            responses.innerHTML += res_data;
-        });
+    }
+    function addRes(res) {
+        const div = document.createElement("div");
+        const response = document.getElementById("responses").appendChild(div);
+        response.classList.add('response');
+        response.innerHTML = res;
     }
     </script>
 </head>

@@ -6,7 +6,9 @@
 #include <QtCore/QThread>
 #include <QSettings>
 #include <QJsonDocument>
+#include <QJsonArray>
 #include <QJsonObject>
+#include <QRegularExpression>
 
 #include "func_var.h"
 
