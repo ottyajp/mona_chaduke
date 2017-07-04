@@ -70,6 +70,8 @@ void topic_view::loadTopic(QString t_id){
         replace_text.replace(QRegularExpression("\n"),"<BR>");
         replace_text.replace(QRegularExpression("'"),"\\'");
         replace_text.replace(QRegularExpression("(>>)([0-9]{1,4})"),"&gt;&gt;\\2");
+        replace_text.replace(QRegularExpression("(http://i.imgur.com/.+)(\\..{3})"),
+                             "<div class=\"image\"><img src=\"\\1m\\2\" class=\"imgur\"></div>");
         QString response = QString::number(res.value("r_id").toInt()) + " : " +
                 "<span class=\"u_name\">" + res.value("u_name").toString() + "</span>" +
                 res.value("u_dan").toString() + " : " +
