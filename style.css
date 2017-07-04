@@ -1,8 +1,8 @@
-	div.title{
+	div#title{
 		font-size: 30px;
 	}
 
-	div.responses{
+	div#responses{
 		background-color: #DDDDDD;
 		padding: 8px;
 	}
