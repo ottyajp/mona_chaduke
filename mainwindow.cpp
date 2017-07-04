@@ -107,3 +107,10 @@ void MainWindow::on_topic_list_itemActivated(QTreeWidgetItem *item)
 //    auto *topic = static_cast<topic_view*>(ui->topic_tab_widget->widget(pos));
 //    topic->loadTopic(item->text(0));
 }
+
+void MainWindow::on_topic_tab_widget_tabCloseRequested(int index)
+{
+    auto *topic = static_cast<topic_view*>(ui->topic_tab_widget->widget(index));
+    ui->topic_tab_widget->removeTab(index);
+    delete topic;
+}

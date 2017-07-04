@@ -47,6 +47,8 @@ private slots:
 
     void on_topic_list_itemActivated(QTreeWidgetItem *item);
 
+    void on_topic_tab_widget_tabCloseRequested(int index);
+
 private:
     Ui::MainWindow *ui;
 };

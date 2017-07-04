@@ -78,6 +78,9 @@
        <property name="currentIndex">
         <number>-1</number>
        </property>
+       <property name="tabsClosable">
+        <bool>true</bool>
+       </property>
       </widget>
      </widget>
     </item>
@@ -89,7 +92,7 @@
      <x>0</x>
      <y>0</y>
      <width>543</width>
-     <height>22</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile_F">
