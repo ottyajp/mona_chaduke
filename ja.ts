@@ -59,24 +59,39 @@
         <translation>トピック (&amp;T)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="126"/>
+        <location filename="mainwindow.ui" line="127"/>
         <source>Config (&amp;C)</source>
         <translation>コンフィグ (&amp;C)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="131"/>
+        <location filename="mainwindow.ui" line="132"/>
         <source>Quit (&amp;Q)</source>
         <translation>終了 (&amp;Q)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="134"/>
+        <location filename="mainwindow.ui" line="135"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="139"/>
+        <location filename="mainwindow.ui" line="140"/>
         <source>&amp;Load topic list</source>
         <translation>トピックリストをロード (&amp;L)</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="145"/>
+        <source>Load &amp;Favorite topic list</source>
+        <translation>お気に入りトピックリストをロード(&amp;F)</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="25"/>
+        <source>favorite topics</source>
+        <translation>お気に入りトピック</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="28"/>
+        <source>all topics</source>
+        <translation>全てのトピック</translation>
     </message>
 </context>
 <context>
