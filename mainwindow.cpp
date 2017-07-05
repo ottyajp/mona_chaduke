@@ -19,10 +19,18 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->topic_list->setColumnWidth(6, 100);//category
     ui->topic_list->setColumnWidth(7, 100);//tags
 
+    QFont font;
+    font.setBold(true);
     this->favorite_topic = new QTreeWidgetItem(ui->topic_list);
     favorite_topic->setText(2, tr("favorite topics"));
+    favorite_topic->setFont(2, font);
     this->all_topic = new QTreeWidgetItem(ui->topic_list);
     all_topic->setText(2, tr("all topics"));
+    all_topic->setFont(2, font);
+    for(int i=0; i<8; i++){
+        favorite_topic->setBackgroundColor(i, QColor(240, 255, 240, 200));
+        all_topic->setBackgroundColor(i, QColor(240, 255, 240, 200));
+    }
     topic_view *topic = new topic_view();
     topic->setInitScreen();
     back_topic = new topic_view();
