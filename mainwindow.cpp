@@ -48,7 +48,12 @@ void MainWindow::on_action_Load_topic_list_triggered()
     if(json.object().value("status").toString() == "0"){
         qDebug()<<json.object().value("error").toString();
     }else{
-        ui->topic_list->clear();
+        while(true){
+            if(this->all_topic->childCount() == 0) {break;}
+            QTreeWidgetItem *item = this->all_topic->child(0);
+            this->all_topic->removeChild(item);
+            delete item;
+        }
         QJsonArray topics = json.object().value("topics").toArray();
         for(int i=0; i<this->topics_limit.toInt(); i++){
             QTreeWidgetItem *item = new QTreeWidgetItem(this->all_topic);
@@ -135,6 +140,12 @@ void MainWindow::on_actionLoad_Favorite_topic_list_triggered()
     if(json.object().value("status").toInt() == 0){
         qDebug()<<json.object().value("error").toString();
     }else{
+        while(true){
+            if(this->favorite_topic->childCount() == 0) {break;}
+            QTreeWidgetItem *item = this->favorite_topic->child(0);
+            this->favorite_topic->removeChild(item);
+            delete item;
+        }
         for(int i=0; i<200; i++){
             QJsonObject topic = json.object().value("topics").toArray().at(i).toObject();
             QTreeWidgetItem *item = new QTreeWidgetItem(this->favorite_topic);
