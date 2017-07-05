@@ -103,6 +103,9 @@ void MainWindow::set_secretkey_uid(QString key, QString id){
 
 void MainWindow::on_topic_list_itemActivated(QTreeWidgetItem *item)
 {
+    if(item->text(0) == ""){
+        return;
+    }
     int pos = ui->topic_tab_widget->currentIndex();
     this->back_topic->loadTopic(item->text(0));
     ui->topic_tab_widget->insertTab(pos + 1, this->back_topic, item->text(2));
