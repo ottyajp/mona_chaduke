@@ -19,6 +19,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->topic_list->setColumnWidth(6, 100);//category
     ui->topic_list->setColumnWidth(7, 100);//tags
 
+    this->favorite_topic = new QTreeWidgetItem(ui->topic_list);
+    favorite_topic->setText(2, tr("favorite topics"));
+    this->all_topic = new QTreeWidgetItem(ui->topic_list);
+    all_topic->setText(2, tr("all topics"));
     topic_view *topic = new topic_view();
     topic->setInitScreen();
     back_topic = new topic_view();
@@ -47,7 +51,7 @@ void MainWindow::on_action_Load_topic_list_triggered()
         ui->topic_list->clear();
         QJsonArray topics = json.object().value("topics").toArray();
         for(int i=0; i<this->topics_limit.toInt(); i++){
-            QTreeWidgetItem *item = new QTreeWidgetItem(ui->topic_list);
+            QTreeWidgetItem *item = new QTreeWidgetItem(this->all_topic);
             item->setText(0, QString::number(topics.at(i).toObject().value("t_id").toInt()));
             item->setText(1, QString::number(topics.at(i).toObject().value("rank").toInt()));
             item->setText(2, topics.at(i).toObject().value("title").toString());
@@ -130,7 +134,7 @@ void MainWindow::on_actionLoad_Favorite_topic_list_triggered()
     }else{
         for(int i=0; i<200; i++){
             QJsonObject topic = json.object().value("topics").toArray().at(i).toObject();
-            QTreeWidgetItem *item = new QTreeWidgetItem(ui->topic_list);
+            QTreeWidgetItem *item = new QTreeWidgetItem(this->favorite_topic);
             item->setText(0, QString::number(topic.value("t_id").toInt()));
             item->setText(1, QString::number(topic.value("rank").toInt()));
             item->setText(2, topic.value("title").toString());

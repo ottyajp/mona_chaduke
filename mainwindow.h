@@ -27,6 +27,8 @@ class MainWindow : public QMainWindow
     QString topics_limit;
     QString responses_limit;
     topic_view *back_topic;
+    QTreeWidgetItem *all_topic;
+    QTreeWidgetItem *favorite_topic;
 
 public:
     explicit MainWindow(QWidget *parent = 0);
