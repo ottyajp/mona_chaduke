@@ -112,3 +112,35 @@ void MainWindow::on_topic_tab_widget_tabCloseRequested(int index)
     ui->topic_tab_widget->removeTab(index);
     delete topic;
 }
+
+void MainWindow::on_actionLoad_Favorite_topic_list_triggered()
+{
+    auth_key key;
+    QUrlQuery query;
+    query.addQueryItem("app_id", "2332");
+    query.addQueryItem("u_id", this->u_id);
+    query.addQueryItem("nonce", key.read_nonce());
+    query.addQueryItem("time", key.read_time());
+    query.addQueryItem("auth_key", key.read_auth_key());
+    query.addQueryItem("order", "updated");
+    QJsonDocument json = QJsonDocument::fromJson(
+                access_post("favorites/list", query).toUtf8());
+    if(json.object().value("status").toInt() == 0){
+        qDebug()<<json.object().value("error").toString();
+    }else{
+        for(int i=0; i<200; i++){
+            QJsonObject topic = json.object().value("topics").toArray().at(i).toObject();
+            QTreeWidgetItem *item = new QTreeWidgetItem(ui->topic_list);
+            item->setText(0, QString::number(topic.value("t_id").toInt()));
+            item->setText(1, QString::number(topic.value("rank").toInt()));
+            item->setText(2, topic.value("title").toString());
+            item->setText(3, QString::number(topic.value("count").toInt()));
+            item->setText(4, from_unix_time(topic.value("updated").toInt()));
+            item->setText(5, from_unix_time(topic.value("created").toInt()));
+            item->setText(6, topic.value("category").toString());
+            item->setText(7, topic.value("tags").toString());
+        }
+    }
+    ui->topic_list->resizeColumnToContents(4);
+    ui->topic_list->resizeColumnToContents(5);
+}

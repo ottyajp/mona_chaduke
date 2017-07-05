@@ -49,6 +49,8 @@ private slots:
 
     void on_topic_tab_widget_tabCloseRequested(int index);
 
+    void on_actionLoad_Favorite_topic_list_triggered();
+
 private:
     Ui::MainWindow *ui;
 };

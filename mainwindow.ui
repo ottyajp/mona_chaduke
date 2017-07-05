@@ -108,6 +108,7 @@
      <string>&amp;Topic</string>
     </property>
     <addaction name="action_Load_topic_list"/>
+    <addaction name="actionLoad_Favorite_topic_list"/>
    </widget>
    <addaction name="menuFile_F"/>
    <addaction name="menuTopic"/>
@@ -137,6 +138,11 @@
   <action name="action_Load_topic_list">
    <property name="text">
     <string>&amp;Load topic list</string>
+   </property>
+  </action>
+  <action name="actionLoad_Favorite_topic_list">
+   <property name="text">
+    <string>Load &amp;Favorite topic list</string>
    </property>
   </action>
  </widget>
