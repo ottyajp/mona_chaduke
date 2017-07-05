@@ -148,6 +148,9 @@ void MainWindow::on_actionLoad_Favorite_topic_list_triggered()
         }
         for(int i=0; i<200; i++){
             QJsonObject topic = json.object().value("topics").toArray().at(i).toObject();
+            if(topic.value("t_id").toInt() == 0){
+                break;
+            }
             QTreeWidgetItem *item = new QTreeWidgetItem(this->favorite_topic);
             item->setText(0, QString::number(topic.value("t_id").toInt()));
             item->setText(1, QString::number(topic.value("rank").toInt()));
