@@ -181,4 +181,17 @@
         <translation type="vanished">無効なユーザ</translation>
     </message>
 </context>
+<context>
+    <name>image_window</name>
+    <message>
+        <location filename="image_window.ui" line="14"/>
+        <source>Dialog</source>
+        <translation>画像ウィンドウ</translation>
+    </message>
+    <message>
+        <location filename="image_window.ui" line="22"/>
+        <source>&amp;Close</source>
+        <translation>閉じる(&amp;C)</translation>
+    </message>
+</context>
 </TS>
