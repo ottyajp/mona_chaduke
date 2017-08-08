@@ -18,6 +18,7 @@ void image_window::setUrl(QString url){
     ui->verticalLayout->addWidget(image);
     ui->verticalLayout->setDirection(QBoxLayout::BottomToTop);
     image->setUrl(QUrl(url));
+    this->setWindowTitle(url);
 }
 
 void image_window::on_close_button_clicked()
