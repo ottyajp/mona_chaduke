@@ -11,6 +11,7 @@
 #include <QRegularExpression>
 
 #include "func_var.h"
+#include "image_window.h"
 
 class topic_view : public QWebEngineView
 {
@@ -30,6 +31,7 @@ signals:
 public slots:
     void jsComp();
     void put_log(QString str);
+    void click_image(QString str);
 };
 
 #endif // TOPIC_VIEW_H

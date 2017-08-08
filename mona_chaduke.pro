@@ -30,7 +30,8 @@ SOURCES += \
     func_var.cpp \
     config.cpp \
     topic_view.cpp \
-    auth_key.cpp
+    auth_key.cpp \
+    image_window.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -38,11 +39,13 @@ HEADERS += \
     func_var.h \
     config.h \
     topic_view.h \
-    auth_key.h
+    auth_key.h \
+    image_window.h
 
 FORMS += \
         mainwindow.ui \
-    config.ui
+    config.ui \
+    image_window.ui
 
 RESOURCES += \
     resources.qrc

@@ -71,7 +71,7 @@ void topic_view::loadTopic(QString t_id){
         replace_text.replace(QRegularExpression("'"),"\\'");
         replace_text.replace(QRegularExpression("(>>)([0-9]{1,4})"),"<span class=\"anchor\">\\1\\2</span>");
         replace_text.replace(QRegularExpression("(http://i.imgur.com/.+)(\\..{3})"),
-                             "<div class=\"image\"><img src=\"\\1m\\2\" class=\"imgur\"></div>");
+                             "<div class=\"image\"><img src=\"\\1m\\2\" class=\"imgur\" onclick=\"onClick_image(`\\1\\2`)\"></div>");
         QString response = QString::number(res.value("r_id").toInt()) + " : " +
                 "<span class=\"u_name\">" + res.value("u_name").toString() + "</span>" +
                 res.value("u_dan").toString() + " : " +
@@ -85,4 +85,10 @@ void topic_view::loadTopic(QString t_id){
         QString s = QString("addRes('%1');").arg(response);
         this->page()->runJavaScript(s);
     }
+}
+
+void topic_view::click_image(QString str){
+    image_window *window = new image_window(this);
+    window->setUrl(str);
+    window->show();
 }
