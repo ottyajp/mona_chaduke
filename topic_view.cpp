@@ -60,7 +60,7 @@ void topic_view::loadTopic(QString t_id){
             received_mona = "<span class=\"mona_yay\">+" +
                     QString::number(receive,'f',8).replace(QRegularExpression("[0]*$"),"").replace(QRegularExpression("\\.$"),"") +
                     "MONA</b> / " +
-                    QString::number(res.value("res_count").toInt()) +
+                    QString::number(res.value("rec_count").toInt()) +
                     QObject::tr("people") + "</span>";
         }else{
             received_mona = "+" + QString::number(receive) +
