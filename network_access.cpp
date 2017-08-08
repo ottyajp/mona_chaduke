@@ -11,7 +11,7 @@ QString access_post(QString api_name, QUrlQuery api_query){
     QNetworkRequest req(url);
     req.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
     QByteArray data;
-    data.append(api_query.toString());
+    data.append(api_query.toString().replace('+',"%2B"));
     QNetworkReply *reply = mgr.post(req,data);
     eventLoop.exec();
 

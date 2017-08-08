@@ -39,7 +39,7 @@ void config::on_auth_button_clicked()
     QString api_name = "auth/secretkey";
     QUrlQuery query;
     query.addQueryItem("app_id", "2332");
-    query.addQueryItem("app_secretkey", "Av610r8WvmpW4Vz3KseGRIF/SJpQFvP1Ul4EXgCZb7qQ=");
+    query.addQueryItem("app_secretkey", "AvoreZ4HUoNFuIEHZGomAjL8OYy3rMEMoUqfWkRXd6r0=");
     query.addQueryItem("u_address", ui->address->text());
     query.addQueryItem("pass", ui->password->text());
     QJsonDocument json = QJsonDocument::fromJson(access_post(api_name, query).toUtf8());
