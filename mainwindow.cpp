@@ -75,6 +75,9 @@ void MainWindow::on_action_Load_topic_list_triggered()
             item->setText(7, topics.at(i).toObject().value("tags").toString());
         }
     }
+    this->all_topic->setExpanded(true);
+    ui->topic_list->resizeColumnToContents(0);
+    ui->topic_list->resizeColumnToContents(3);
     ui->topic_list->resizeColumnToContents(4);
     ui->topic_list->resizeColumnToContents(5);
 }
@@ -170,6 +173,9 @@ void MainWindow::on_actionLoad_Favorite_topic_list_triggered()
             item->setText(7, topic.value("tags").toString());
         }
     }
+    this->favorite_topic->setExpanded(true);
+    ui->topic_list->resizeColumnToContents(0);
+    ui->topic_list->resizeColumnToContents(3);
     ui->topic_list->resizeColumnToContents(4);
     ui->topic_list->resizeColumnToContents(5);
 }
