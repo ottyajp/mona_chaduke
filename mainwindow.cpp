@@ -187,3 +187,26 @@ void MainWindow::on_actionGet_balance_triggered()
     window->get();
     window->show();
 }
+
+void MainWindow::on_actionGet_deposit_address_triggered()
+{
+    auth_key key;
+    QUrlQuery query;
+    query.addQueryItem("app_id", "2332");
+    query.addQueryItem("u_id", this->u_id);
+    query.addQueryItem("nonce", key.read_nonce());
+    query.addQueryItem("time", key.read_time());
+    query.addQueryItem("auth_key", key.read_auth_key());
+    QJsonDocument json = QJsonDocument::fromJson(
+                access_post("account/deposit", query).toUtf8());
+    if(json.object().value("status").toInt() == 0){
+        qDebug()<<json.object().value("error").toString();
+    }else{
+        QMessageBox box;
+        box.setText(tr("deposit address") + "<p>" +
+              json.object().value("d_address").toString() +
+              "</p>");
+        box.exec();
+        qDebug()<<json.object().value("d_address").toString();
+    }
+}

@@ -8,6 +8,7 @@
 #include <QJsonArray>
 #include <QSettings>
 #include <QWebEngineView>
+#include <QMessageBox>
 
 #include "network_access.h"
 #include "func_var.h"
@@ -55,6 +56,8 @@ private slots:
     void on_actionLoad_Favorite_topic_list_triggered();
 
     void on_actionGet_balance_triggered();
+
+    void on_actionGet_deposit_address_triggered();
 
 private:
     Ui::MainWindow *ui;

@@ -115,6 +115,7 @@
      <string>&amp;MONA</string>
     </property>
     <addaction name="actionGet_balance"/>
+    <addaction name="actionGet_deposit_address"/>
    </widget>
    <addaction name="menuFile_F"/>
    <addaction name="menuTopic"/>
@@ -155,6 +156,11 @@
   <action name="actionGet_balance">
    <property name="text">
     <string>Get &amp;balance</string>
+   </property>
+  </action>
+  <action name="actionGet_deposit_address">
+   <property name="text">
+    <string>Get &amp;deposit address</string>
    </property>
   </action>
  </widget>
