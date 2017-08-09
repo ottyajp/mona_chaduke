@@ -12,4 +12,8 @@
     <qresource prefix="/initScreen">
         <file>initScreen.html</file>
     </qresource>
+    <qresource prefix="/image">
+        <file>mona.png</file>
+        <file>qr.png</file>
+    </qresource>
 </RCC>

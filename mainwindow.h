@@ -59,6 +59,8 @@ private slots:
 
     void on_actionGet_deposit_address_triggered();
 
+    void on_actionabout_triggered();
+
 private:
     Ui::MainWindow *ui;
 };

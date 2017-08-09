@@ -210,3 +210,12 @@ void MainWindow::on_actionGet_deposit_address_triggered()
         qDebug()<<json.object().value("d_address").toString();
     }
 }
+
+void MainWindow::on_actionabout_triggered()
+{
+    QString text = "mona-chaduke<BR>Developed by @ottyajp<BR><BR> \
+            <img src=\":/image/mona.png\"> \
+            <p>Donation is welcome<BR>M9MVFihH7VBAUciXg1BpbaqfXnHMUYfvtz \
+            <img src=\":/image/qr.png\"></p>";
+    QMessageBox::about(this, tr("mona chaduke"), text);
+}

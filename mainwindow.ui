@@ -117,9 +117,16 @@
     <addaction name="actionGet_balance"/>
     <addaction name="actionGet_deposit_address"/>
    </widget>
+   <widget class="QMenu" name="menu_Help">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionabout"/>
+   </widget>
    <addaction name="menuFile_F"/>
    <addaction name="menuTopic"/>
    <addaction name="menu_MONA"/>
+   <addaction name="menu_Help"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -161,6 +168,11 @@
   <action name="actionGet_deposit_address">
    <property name="text">
     <string>Get &amp;deposit address</string>
+   </property>
+  </action>
+  <action name="actionabout">
+   <property name="text">
+    <string>&amp;About</string>
    </property>
   </action>
  </widget>
