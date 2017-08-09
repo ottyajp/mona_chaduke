@@ -55,16 +55,14 @@ void topic_view::loadTopic(QString t_id){
         }
         QString created = from_unix_time(res.value("created").toInt());
         QString received_mona;
-        double receive = res.value("receive").toString().toDouble() / 100000000;
         if(res.value("receive").toString() != "0"){
             received_mona = "<span class=\"mona_yay\">+" +
-                    QString::number(receive,'f',8).replace(QRegularExpression("[0]*$"),"").replace(QRegularExpression("\\.$"),"") +
+                    watanabe2mona(res.value("receive").toString().toLongLong()) +
                     "MONA</b> / " +
                     QString::number(res.value("rec_count").toInt()) +
                     QObject::tr("people") + "</span>";
         }else{
-            received_mona = "+" + QString::number(receive) +
-                    "MONA / 0" + QObject::tr("people");
+            received_mona = "+0MONA / 0" + QObject::tr("people");
         }
         QString replace_text = res.value("response").toString();
         replace_text.replace(QRegularExpression("\n"),"<BR>");
