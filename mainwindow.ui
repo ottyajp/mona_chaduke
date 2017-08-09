@@ -92,7 +92,7 @@
      <x>0</x>
      <y>0</y>
      <width>543</width>
-     <height>20</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile_F">
@@ -110,8 +110,15 @@
     <addaction name="action_Load_topic_list"/>
     <addaction name="actionLoad_Favorite_topic_list"/>
    </widget>
+   <widget class="QMenu" name="menu_MONA">
+    <property name="title">
+     <string>&amp;MONA</string>
+    </property>
+    <addaction name="actionGet_balance"/>
+   </widget>
    <addaction name="menuFile_F"/>
    <addaction name="menuTopic"/>
+   <addaction name="menu_MONA"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -143,6 +150,11 @@
   <action name="actionLoad_Favorite_topic_list">
    <property name="text">
     <string>Load &amp;Favorite topic list</string>
+   </property>
+  </action>
+  <action name="actionGet_balance">
+   <property name="text">
+    <string>Get &amp;balance</string>
    </property>
   </action>
  </widget>

@@ -179,3 +179,11 @@ void MainWindow::on_actionLoad_Favorite_topic_list_triggered()
     ui->topic_list->resizeColumnToContents(4);
     ui->topic_list->resizeColumnToContents(5);
 }
+
+void MainWindow::on_actionGet_balance_triggered()
+{
+    get_balance *window = new get_balance(this);
+    window->set_uid(this->u_id);
+    window->get();
+    window->show();
+}

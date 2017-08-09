@@ -14,6 +14,7 @@
 #include "topic_view.h"
 
 #include "config.h"
+#include "get_balance.h"
 
 namespace Ui {
 class MainWindow;
@@ -52,6 +53,8 @@ private slots:
     void on_topic_tab_widget_tabCloseRequested(int index);
 
     void on_actionLoad_Favorite_topic_list_triggered();
+
+    void on_actionGet_balance_triggered();
 
 private:
     Ui::MainWindow *ui;
