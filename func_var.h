@@ -5,11 +5,14 @@
 #include <QFile>
 #include <QTextStream>
 #include <QDebug>
+#include <QRegularExpression>
 
 #include "network_access.h"
 
 QString from_unix_time(int unix_time);
 
 QString read_file(QString file_name);
+
+QString watanabe2mona(qlonglong watanabe);
 
 #endif // FUNC_VAR_H

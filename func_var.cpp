@@ -16,3 +16,10 @@ QString read_file(QString file_name){
         return stream->readAll();
     }
 }
+
+QString watanabe2mona(qlonglong watanabe){
+    QString temp = QString::number(double(watanabe)/100000000, 'f', 8);
+    temp.replace(QRegularExpression("[0]*$"),"");
+    temp.replace(QRegularExpression("\\.$"),"");
+    return temp;
+}
