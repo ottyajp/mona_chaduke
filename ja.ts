@@ -59,29 +59,39 @@
         <translation>トピック (&amp;T)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="127"/>
+        <location filename="mainwindow.ui" line="115"/>
+        <source>&amp;MONA</source>
+        <translation>&amp;MONA</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="134"/>
         <source>Config (&amp;C)</source>
         <translation>コンフィグ (&amp;C)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="132"/>
+        <location filename="mainwindow.ui" line="139"/>
         <source>Quit (&amp;Q)</source>
         <translation>終了 (&amp;Q)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="135"/>
+        <location filename="mainwindow.ui" line="142"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="140"/>
+        <location filename="mainwindow.ui" line="147"/>
         <source>&amp;Load topic list</source>
         <translation>トピックリストをロード (&amp;L)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="145"/>
+        <location filename="mainwindow.ui" line="152"/>
         <source>Load &amp;Favorite topic list</source>
         <translation>お気に入りトピックリストをロード(&amp;F)</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="157"/>
+        <source>Get &amp;balance</source>
+        <translation>残高取得(&amp;B)</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="25"/>
@@ -97,13 +107,13 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="topic_view.cpp" line="64"/>
-        <location filename="topic_view.cpp" line="67"/>
+        <location filename="topic_view.cpp" line="63"/>
+        <location filename="topic_view.cpp" line="65"/>
         <source>people</source>
         <translation>人</translation>
     </message>
     <message>
-        <location filename="topic_view.cpp" line="81"/>
+        <location filename="topic_view.cpp" line="79"/>
         <source>send mona</source>
         <translation>←送る</translation>
     </message>
@@ -179,6 +189,54 @@
     <message>
         <source>invalid user</source>
         <translation type="vanished">無効なユーザ</translation>
+    </message>
+</context>
+<context>
+    <name>get_balance</name>
+    <message>
+        <location filename="get_balance.ui" line="14"/>
+        <source>Balance</source>
+        <translation>残高</translation>
+    </message>
+    <message>
+        <location filename="get_balance.ui" line="26"/>
+        <source>deposit</source>
+        <translation>入金済み</translation>
+    </message>
+    <message>
+        <location filename="get_balance.ui" line="33"/>
+        <source>send</source>
+        <translation>ばらまき</translation>
+    </message>
+    <message>
+        <location filename="get_balance.ui" line="40"/>
+        <source>receive</source>
+        <translation>受け取り</translation>
+    </message>
+    <message>
+        <location filename="get_balance.ui" line="47"/>
+        <source>withdraw</source>
+        <translation>出金済み</translation>
+    </message>
+    <message>
+        <location filename="get_balance.ui" line="54"/>
+        <source>gift</source>
+        <translation>運営から</translation>
+    </message>
+    <message>
+        <location filename="get_balance.ui" line="61"/>
+        <source>reserved</source>
+        <translation>一時預かり</translation>
+    </message>
+    <message>
+        <location filename="get_balance.ui" line="146"/>
+        <source>balance</source>
+        <translation>残高</translation>
+    </message>
+    <message>
+        <location filename="get_balance.ui" line="177"/>
+        <source>&amp;Close</source>
+        <translation>閉じる(&amp;C)</translation>
     </message>
 </context>
 <context>
