@@ -37,12 +37,19 @@ void get_balance::get(){
         qDebug()<<json.object().value("error").toString();
     }else{
         QJsonObject detail = json.object().value("accounts").toObject();
-        ui->deposit->setText(detail.value("deposit").toString());
-        ui->send->setText(detail.value("send").toString());
-        ui->receive->setText(detail.value("receive").toString());
-        ui->withdraw->setText(detail.value("withdraw").toString());
-        ui->gift->setText(detail.value("gift").toString());
-        ui->reserved->setText(detail.value("reserved").toString());
-        ui->balance->setText(detail.value("balance").toString());
+        ui->deposit->setText("+" + watanabe2mona(
+                detail.value("deposit").toString().toLongLong()));
+        ui->send->setText("-" + watanabe2mona(
+                detail.value("send").toString().toLongLong()));
+        ui->receive->setText("+" + watanabe2mona(
+                detail.value("receive").toString().toLongLong()));
+        ui->withdraw->setText("-" + watanabe2mona(
+                detail.value("withdraw").toString().toLongLong()));
+        ui->gift->setText("+" + watanabe2mona(
+                detail.value("gift").toString().toLongLong()));
+        ui->reserved->setText("-" + watanabe2mona(
+                detail.value("reserved").toString().toLongLong()));
+        ui->balance->setText(watanabe2mona(
+                detail.value("balance").toString().toLongLong()));
     }
 }
