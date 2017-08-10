@@ -64,34 +64,49 @@
         <translation>&amp;MONA</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="134"/>
+        <location filename="mainwindow.ui" line="122"/>
+        <source>&amp;Help</source>
+        <translation>ヘルプ(&amp;H)</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="142"/>
         <source>Config (&amp;C)</source>
         <translation>コンフィグ (&amp;C)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="139"/>
+        <location filename="mainwindow.ui" line="147"/>
         <source>Quit (&amp;Q)</source>
         <translation>終了 (&amp;Q)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="142"/>
+        <location filename="mainwindow.ui" line="150"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="147"/>
+        <location filename="mainwindow.ui" line="155"/>
         <source>&amp;Load topic list</source>
         <translation>トピックリストをロード (&amp;L)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="152"/>
+        <location filename="mainwindow.ui" line="160"/>
         <source>Load &amp;Favorite topic list</source>
         <translation>お気に入りトピックリストをロード(&amp;F)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="157"/>
+        <location filename="mainwindow.ui" line="165"/>
         <source>Get &amp;balance</source>
         <translation>残高取得(&amp;B)</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="170"/>
+        <source>Get &amp;deposit address</source>
+        <translation>入金アドレスの取得(&amp;D)</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="175"/>
+        <source>&amp;About</source>
+        <translation>このアプリケーションについて(&amp;A)</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="25"/>
@@ -102,6 +117,16 @@
         <location filename="mainwindow.cpp" line="28"/>
         <source>all topics</source>
         <translation>全てのトピック</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="206"/>
+        <source>deposit address</source>
+        <translation>入金アドレス</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="220"/>
+        <source>mona chaduke</source>
+        <translation>もなちゃづけ</translation>
     </message>
 </context>
 <context>
