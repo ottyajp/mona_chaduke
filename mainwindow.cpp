@@ -207,7 +207,6 @@ void MainWindow::on_actionGet_deposit_address_triggered()
               json.object().value("d_address").toString() +
               "</p>");
         box.exec();
-        qDebug()<<json.object().value("d_address").toString();
     }
 }
 
