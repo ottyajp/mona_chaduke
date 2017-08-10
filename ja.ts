@@ -124,7 +124,7 @@
         <translation>入金アドレス</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="220"/>
+        <location filename="mainwindow.cpp" line="219"/>
         <source>mona chaduke</source>
         <translation>もなちゃづけ</translation>
     </message>
@@ -151,33 +151,48 @@
         <translation>コンフィグ</translation>
     </message>
     <message>
-        <location filename="config.ui" line="26"/>
+        <location filename="config.ui" line="119"/>
         <source>Monacoin Address</source>
         <translation>Monacoinアドレス</translation>
     </message>
     <message>
-        <location filename="config.ui" line="50"/>
+        <location filename="config.ui" line="143"/>
         <source>Password</source>
         <translation>パスワード</translation>
     </message>
     <message>
-        <location filename="config.ui" line="87"/>
+        <location filename="config.ui" line="180"/>
         <source>not authenticated</source>
         <translation>未認証</translation>
     </message>
     <message>
-        <location filename="config.ui" line="123"/>
+        <location filename="config.ui" line="216"/>
         <location filename="config.cpp" line="23"/>
         <source>Authenticate</source>
         <translation>認証する</translation>
     </message>
     <message>
-        <location filename="config.ui" line="167"/>
+        <location filename="config.ui" line="236"/>
+        <source>Automatic acquisition setting</source>
+        <translation>自動取得設定</translation>
+    </message>
+    <message>
+        <location filename="config.ui" line="243"/>
+        <source>Topic list</source>
+        <translation>トピックリスト</translation>
+    </message>
+    <message>
+        <location filename="config.ui" line="250"/>
+        <source>Favorite topic list</source>
+        <translation>お気に入りトピックリスト</translation>
+    </message>
+    <message>
+        <location filename="config.ui" line="26"/>
         <source>Get Topics limit</source>
         <translation>トピック取得数</translation>
     </message>
     <message>
-        <location filename="config.ui" line="191"/>
+        <location filename="config.ui" line="50"/>
         <source>Get Responses limit</source>
         <translation>レス取得数</translation>
     </message>
