@@ -31,6 +31,8 @@ class MainWindow : public QMainWindow
     topic_view *back_topic;
     QTreeWidgetItem *all_topic;
     QTreeWidgetItem *favorite_topic;
+    bool aa_topic_list;
+    bool aa_fav_topic_list;
 
 public:
     explicit MainWindow(QWidget *parent = 0);

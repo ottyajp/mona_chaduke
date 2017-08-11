@@ -31,6 +31,12 @@ MainWindow::MainWindow(QWidget *parent) :
         favorite_topic->setBackgroundColor(i, QColor(240, 255, 240, 200));
         all_topic->setBackgroundColor(i, QColor(240, 255, 240, 200));
     }
+    if(this->aa_topic_list) {
+        this->on_action_Load_topic_list_triggered();
+    }
+    if(this->aa_fav_topic_list) {
+        this->on_actionLoad_Favorite_topic_list_triggered();
+    }
     topic_view *topic = new topic_view();
     topic->setInitScreen();
     back_topic = new topic_view();
@@ -112,6 +118,12 @@ void MainWindow::loadSettings(){
     this->u_id = set.value("u_id").toString();
     this->topics_limit = set.value("topics_limit").toString();
     this->responses_limit = set.value("responses_limit").toString();
+    if(qvariant2bool(set.value("aa_topic_list"))) {
+        this->aa_topic_list = true;
+    }
+    if(qvariant2bool(set.value("aa_fav_topic_list"))) {
+        this->aa_fav_topic_list = true;
+    }
 }
 
 void MainWindow::set_secretkey_uid(QString key, QString id){
