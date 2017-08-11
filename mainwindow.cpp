@@ -101,7 +101,6 @@ void MainWindow::on_actionConfig_C_triggered()
 }
 
 void MainWindow::saveSettings(QMap<QString, QString> data){
-    qDebug()<<data;
     QSettings set("settings.ini", QSettings::IniFormat);
     set.setValue("secretkey", this->secretkey);
     set.setValue("u_id", this->u_id);

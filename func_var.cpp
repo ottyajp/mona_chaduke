@@ -25,7 +25,6 @@ QString watanabe2mona(qlonglong watanabe){
 }
 
 bool qvariant2bool(QVariant var){
-    qDebug()<<var.toString();
     if(var.toString() == "true"){
         return true;
     }else{
