@@ -120,9 +120,13 @@ void MainWindow::loadSettings(){
     this->responses_limit = set.value("responses_limit").toString();
     if(qvariant2bool(set.value("aa_topic_list"))) {
         this->aa_topic_list = true;
+    }else{
+        this->aa_topic_list = false;
     }
     if(qvariant2bool(set.value("aa_fav_topic_list"))) {
         this->aa_fav_topic_list = true;
+    }else{
+        this->aa_fav_topic_list = false;
     }
 }
 
