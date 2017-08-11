@@ -23,3 +23,12 @@ QString watanabe2mona(qlonglong watanabe){
     temp.replace(QRegularExpression("\\.$"),"");
     return temp;
 }
+
+bool qvariant2bool(QVariant var){
+    qDebug()<<var.toString();
+    if(var.toString() == "true"){
+        return true;
+    }else{
+        return false;
+    }
+}

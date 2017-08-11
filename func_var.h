@@ -15,4 +15,6 @@ QString read_file(QString file_name);
 
 QString watanabe2mona(qlonglong watanabe);
 
+bool qvariant2bool(QVariant var);
+
 #endif // FUNC_VAR_H
