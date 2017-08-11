@@ -101,6 +101,8 @@ void MainWindow::saveSettings(QMap<QString, QString> data){
     set.setValue("u_id", this->u_id);
     set.setValue("topics_limit", data["topics_limit"]);
     set.setValue("responses_limit", data["responses_limit"]);
+    set.setValue("aa_topic_list", data["aa_topic_list"]);
+    set.setValue("aa_fav_topic_list", data["aa_fav_topic_list"]);
     this->loadSettings();
 }
 
