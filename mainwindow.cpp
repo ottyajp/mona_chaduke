@@ -144,6 +144,7 @@ void MainWindow::on_topic_list_itemActivated(QTreeWidgetItem *item)
     this->back_topic->loadTopic(item->text(0));
     ui->topic_tab_widget->insertTab(pos + 1, this->back_topic, item->text(2));
     ui->topic_tab_widget->setCurrentIndex(pos + 1);
+    this->back_topic->setFocus();
     this->back_topic = new topic_view();
 }
 
