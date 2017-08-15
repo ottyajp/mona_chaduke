@@ -2,6 +2,11 @@
 #define POST_WINDOW_H
 
 #include <QDialog>
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
+
+#include "network_access.h"
 
 namespace Ui {
 class post_window;
