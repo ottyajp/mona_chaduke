@@ -6,6 +6,8 @@ post_window::post_window(QWidget *parent) :
     ui(new Ui::post_window)
 {
     ui->setupUi(this);
+    QSettings set("settings.ini", QSettings::IniFormat);
+    ui->sage->setChecked(qvariant2bool(set.value("always_sage")));
 }
 
 post_window::~post_window()

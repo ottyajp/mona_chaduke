@@ -108,6 +108,7 @@ void MainWindow::saveSettings(QMap<QString, QString> data){
     set.setValue("responses_limit", data["responses_limit"]);
     set.setValue("aa_topic_list", data["aa_topic_list"]);
     set.setValue("aa_fav_topic_list", data["aa_fav_topic_list"]);
+    set.setValue("always_sage", data["always_sage"]);
     this->loadSettings();
 }
 

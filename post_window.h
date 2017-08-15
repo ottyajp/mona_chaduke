@@ -7,8 +7,10 @@
 #include <QJsonObject>
 #include <QMessageBox>
 #include <QErrorMessage>
+#include <QSettings>
 
 #include "network_access.h"
+#include "func_var.h"
 #include "auth_key.h"
 
 namespace Ui {

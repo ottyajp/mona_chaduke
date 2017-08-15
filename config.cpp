@@ -11,6 +11,7 @@ config::config(QWidget *parent) :
     ui->responses_limit->setText(set.value("responses_limit").toString());
     ui->aa_topic_list->setChecked(qvariant2bool(set.value("aa_topic_list")));
     ui->aa_fav_topic_list->setChecked(qvariant2bool(set.value("aa_fav_topic_list")));
+    ui->always_sage->setChecked(qvariant2bool(set.value("always_sage")));
     authenticated = false;
 }
 
@@ -65,6 +66,7 @@ void config::on_buttons_accepted()
     data["responses_limit"] = ui->responses_limit->text();
     data["aa_topic_list"] = ui->aa_topic_list->isChecked() ? "true" : "false";
     data["aa_fav_topic_list"] = ui->aa_fav_topic_list->isChecked() ? "true" : "false";
+    data["always_sage"] = ui->always_sage->isChecked() ? "true" : "false";
     emit save(data);
     this->close();
 }
