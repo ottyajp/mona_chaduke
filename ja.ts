@@ -49,62 +49,67 @@
         <translation>タグ</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="100"/>
+        <location filename="mainwindow.ui" line="97"/>
+        <source>&amp;post</source>
+        <translation>投稿する(&amp;P)</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.ui" line="130"/>
         <source>&amp;File</source>
         <translation>ファイル (&amp;F)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="108"/>
+        <location filename="mainwindow.ui" line="138"/>
         <source>&amp;Topic</source>
         <translation>トピック (&amp;T)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="115"/>
+        <location filename="mainwindow.ui" line="145"/>
         <source>&amp;MONA</source>
         <translation>&amp;MONA</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="122"/>
+        <location filename="mainwindow.ui" line="152"/>
         <source>&amp;Help</source>
         <translation>ヘルプ(&amp;H)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="142"/>
+        <location filename="mainwindow.ui" line="172"/>
         <source>Config (&amp;C)</source>
         <translation>コンフィグ (&amp;C)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="147"/>
+        <location filename="mainwindow.ui" line="177"/>
         <source>Quit (&amp;Q)</source>
         <translation>終了 (&amp;Q)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="150"/>
+        <location filename="mainwindow.ui" line="180"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="155"/>
+        <location filename="mainwindow.ui" line="185"/>
         <source>&amp;Load topic list</source>
         <translation>トピックリストをロード (&amp;L)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="160"/>
+        <location filename="mainwindow.ui" line="190"/>
         <source>Load &amp;Favorite topic list</source>
         <translation>お気に入りトピックリストをロード(&amp;F)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="165"/>
+        <location filename="mainwindow.ui" line="195"/>
         <source>Get &amp;balance</source>
         <translation>残高取得(&amp;B)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="170"/>
+        <location filename="mainwindow.ui" line="200"/>
         <source>Get &amp;deposit address</source>
         <translation>入金アドレスの取得(&amp;D)</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="175"/>
+        <location filename="mainwindow.ui" line="205"/>
         <source>&amp;About</source>
         <translation>このアプリケーションについて(&amp;A)</translation>
     </message>
@@ -119,12 +124,12 @@
         <translation>全てのトピック</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="206"/>
+        <location filename="mainwindow.cpp" line="224"/>
         <source>deposit address</source>
         <translation>入金アドレス</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="219"/>
+        <location filename="mainwindow.cpp" line="237"/>
         <source>mona chaduke</source>
         <translation>もなちゃづけ</translation>
     </message>
@@ -132,13 +137,13 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="topic_view.cpp" line="63"/>
-        <location filename="topic_view.cpp" line="65"/>
+        <location filename="topic_view.cpp" line="64"/>
+        <location filename="topic_view.cpp" line="66"/>
         <source>people</source>
         <translation>人</translation>
     </message>
     <message>
-        <location filename="topic_view.cpp" line="79"/>
+        <location filename="topic_view.cpp" line="80"/>
         <source>send mona</source>
         <translation>←送る</translation>
     </message>
@@ -151,78 +156,83 @@
         <translation>コンフィグ</translation>
     </message>
     <message>
-        <location filename="config.ui" line="119"/>
+        <location filename="config.ui" line="151"/>
         <source>Monacoin Address</source>
         <translation>Monacoinアドレス</translation>
     </message>
     <message>
-        <location filename="config.ui" line="143"/>
+        <location filename="config.ui" line="175"/>
         <source>Password</source>
         <translation>パスワード</translation>
     </message>
     <message>
-        <location filename="config.ui" line="180"/>
+        <location filename="config.ui" line="212"/>
         <source>not authenticated</source>
         <translation>未認証</translation>
     </message>
     <message>
-        <location filename="config.ui" line="216"/>
-        <location filename="config.cpp" line="23"/>
+        <location filename="config.ui" line="248"/>
+        <location filename="config.cpp" line="26"/>
         <source>Authenticate</source>
         <translation>認証する</translation>
     </message>
     <message>
-        <location filename="config.ui" line="236"/>
+        <location filename="config.ui" line="266"/>
+        <source>Always sage</source>
+        <translation>常時sage</translation>
+    </message>
+    <message>
+        <location filename="config.ui" line="42"/>
         <source>Automatic acquisition setting</source>
         <translation>自動取得設定</translation>
     </message>
     <message>
-        <location filename="config.ui" line="243"/>
+        <location filename="config.ui" line="49"/>
         <source>Topic list</source>
         <translation>トピックリスト</translation>
     </message>
     <message>
-        <location filename="config.ui" line="250"/>
+        <location filename="config.ui" line="56"/>
         <source>Favorite topic list</source>
         <translation>お気に入りトピックリスト</translation>
     </message>
     <message>
-        <location filename="config.ui" line="26"/>
+        <location filename="config.ui" line="78"/>
         <source>Get Topics limit</source>
         <translation>トピック取得数</translation>
     </message>
     <message>
-        <location filename="config.ui" line="50"/>
+        <location filename="config.ui" line="102"/>
         <source>Get Responses limit</source>
         <translation>レス取得数</translation>
     </message>
     <message>
-        <location filename="config.cpp" line="31"/>
+        <location filename="config.cpp" line="34"/>
         <source>you must fill Monacoin address.</source>
         <translation>Monacoinアドレスを入力してください。</translation>
     </message>
     <message>
-        <location filename="config.cpp" line="36"/>
+        <location filename="config.cpp" line="39"/>
         <source>you must fill your Passowrd.</source>
         <translation>パスワードを入力してください。</translation>
     </message>
     <message>
-        <location filename="config.cpp" line="49"/>
+        <location filename="config.cpp" line="52"/>
         <source>authentication failed.</source>
         <translation>認証に失敗しました。</translation>
     </message>
     <message>
-        <location filename="config.cpp" line="85"/>
+        <location filename="config.cpp" line="91"/>
         <source>error occured.</source>
         <translation>エラーが発生しました。</translation>
     </message>
     <message>
-        <location filename="config.cpp" line="88"/>
+        <location filename="config.cpp" line="94"/>
         <source>authenticated</source>
         <translation>認証済</translation>
     </message>
     <message>
-        <location filename="config.cpp" line="102"/>
+        <location filename="config.cpp" line="108"/>
         <source>re-authenticate</source>
         <translation>再認証</translation>
     </message>
@@ -290,6 +300,44 @@
         <location filename="image_window.ui" line="22"/>
         <source>&amp;Close</source>
         <translation>閉じる(&amp;C)</translation>
+    </message>
+</context>
+<context>
+    <name>post_window</name>
+    <message>
+        <location filename="post_window.ui" line="14"/>
+        <source>Dialog</source>
+        <translation>投稿</translation>
+    </message>
+    <message>
+        <location filename="post_window.ui" line="24"/>
+        <source>Topic:</source>
+        <translation>トピック：</translation>
+    </message>
+    <message>
+        <location filename="post_window.ui" line="52"/>
+        <source>s&amp;age</source>
+        <translation>s&amp;age</translation>
+    </message>
+    <message>
+        <location filename="post_window.ui" line="72"/>
+        <source>&amp;Submit</source>
+        <translation>投稿(&amp;S)</translation>
+    </message>
+    <message>
+        <location filename="post_window.ui" line="79"/>
+        <source>&amp;Cancel</source>
+        <translation>キャンセル(&amp;C)</translation>
+    </message>
+    <message>
+        <location filename="post_window.cpp" line="46"/>
+        <source>ok?</source>
+        <translation>よろしいですか？</translation>
+    </message>
+    <message>
+        <location filename="post_window.cpp" line="70"/>
+        <source>posting messages was failed.</source>
+        <translation>メッセージの投稿に失敗しました。</translation>
     </message>
 </context>
 </TS>
