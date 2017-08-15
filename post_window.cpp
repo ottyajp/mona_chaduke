@@ -12,3 +12,8 @@ post_window::~post_window()
 {
     delete ui;
 }
+
+void post_window::on_cancel_clicked()
+{
+    this->close();
+}
