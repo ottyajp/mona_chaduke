@@ -239,6 +239,9 @@ void MainWindow::on_actionabout_triggered()
 void MainWindow::on_postButton_clicked()
 {
     topic_view* view = static_cast<topic_view*>(ui->topic_tab_widget->currentWidget());
+    if(view->getTopicID() == ""){
+        return;
+    }
     post_window* window = new post_window(this);
     window->setTopicID(view->getTopicID());
     window->show();
