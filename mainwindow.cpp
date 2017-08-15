@@ -244,5 +244,6 @@ void MainWindow::on_postButton_clicked()
     }
     post_window* window = new post_window(this);
     window->setTopicID(view->getTopicID());
+    window->setUserID(this->u_id);
     window->show();
 }
