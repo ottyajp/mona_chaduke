@@ -57,6 +57,9 @@ void post_window::on_submit_clicked()
         query.addQueryItem("auth_key", key.read_auth_key());
         query.addQueryItem("t_id", this->t_id);
         query.addQueryItem("text", ui->textEdit->toPlainText());
+        if(ui->sage->isChecked()){
+            query.addQueryItem("sage", "1");
+        }
         json = QJsonDocument::fromJson(
                     access_post("responses/post", query).toUtf8());
         if(json.object().value("status").toInt() == 0){
