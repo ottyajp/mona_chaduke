@@ -13,6 +13,7 @@
 #include "network_access.h"
 #include "func_var.h"
 #include "topic_view.h"
+#include "post_window.h"
 
 #include "config.h"
 #include "get_balance.h"
