@@ -32,7 +32,8 @@ SOURCES += \
     topic_view.cpp \
     auth_key.cpp \
     image_window.cpp \
-    get_balance.cpp
+    get_balance.cpp \
+    post_window.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -42,13 +43,15 @@ HEADERS += \
     topic_view.h \
     auth_key.h \
     image_window.h \
-    get_balance.h
+    get_balance.h \
+    post_window.h
 
 FORMS += \
         mainwindow.ui \
     config.ui \
     image_window.ui \
-    get_balance.ui
+    get_balance.ui \
+    post_window.ui
 
 RESOURCES += \
     resources.qrc
