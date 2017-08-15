@@ -14,12 +14,14 @@ class post_window : public QDialog
 public:
     explicit post_window(QWidget *parent = 0);
     ~post_window();
+    void setTopicID(QString t_id);
 
 private slots:
     void on_cancel_clicked();
 
 private:
     Ui::post_window *ui;
+    QString t_id;
 };
 
 #endif // POST_WINDOW_H
