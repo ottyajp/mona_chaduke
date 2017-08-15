@@ -19,12 +19,14 @@ class topic_view : public QWebEngineView
 private:
     QWebChannel channel;
     bool isInitialized;
+    QString t_id;
 
 public:
     explicit topic_view(QWidget *parent = 0);
     void setInitScreen();
     void setTitle(QString title);
     void loadTopic(QString t_id);
+    QString getTopicID();
 
 signals:
 

@@ -38,6 +38,7 @@ void topic_view::setTitle(QString title){
 }
 
 void topic_view::loadTopic(QString t_id){
+    this->t_id = t_id;
     QSettings set("settings.ini", QSettings::IniFormat);
     QUrlQuery query;
     query.addQueryItem("t_id", t_id);
@@ -83,6 +84,10 @@ void topic_view::loadTopic(QString t_id){
         QString s = QString("addRes('%1');").arg(response);
         this->page()->runJavaScript(s);
     }
+}
+
+QString topic_view::getTopicID(){
+    return this->t_id;
 }
 
 void topic_view::click_image(QString str){
