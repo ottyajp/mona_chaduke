@@ -49,7 +49,7 @@
        <item>
         <widget class="QCheckBox" name="sage">
          <property name="text">
-          <string>sage</string>
+          <string>s&amp;age</string>
          </property>
         </widget>
        </item>
