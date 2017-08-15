@@ -235,3 +235,9 @@ void MainWindow::on_actionabout_triggered()
             <img src=\":/image/qr.png\"></p>";
     QMessageBox::about(this, tr("mona chaduke"), text);
 }
+
+void MainWindow::on_postButton_clicked()
+{
+    topic_view* view = static_cast<topic_view*>(ui->topic_tab_widget->currentWidget());
+    qDebug()<<view->getTopicID();
+}

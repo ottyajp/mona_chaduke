@@ -63,6 +63,8 @@ private slots:
 
     void on_actionabout_triggered();
 
+    void on_postButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
