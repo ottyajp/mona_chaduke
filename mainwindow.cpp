@@ -249,3 +249,8 @@ void MainWindow::on_postButton_clicked()
     window->setUserID(this->u_id);
     window->show();
 }
+
+void MainWindow::on_action_Close_current_tab_triggered()
+{
+    this->on_topic_tab_widget_tabCloseRequested(ui->topic_tab_widget->currentIndex());
+}

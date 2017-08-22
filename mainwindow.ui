@@ -139,6 +139,8 @@
     </property>
     <addaction name="action_Load_topic_list"/>
     <addaction name="actionLoad_Favorite_topic_list"/>
+    <addaction name="separator"/>
+    <addaction name="action_Close_current_tab"/>
    </widget>
    <widget class="QMenu" name="menu_MONA">
     <property name="title">
@@ -203,6 +205,14 @@
   <action name="actionabout">
    <property name="text">
     <string>&amp;About</string>
+   </property>
+  </action>
+  <action name="action_Close_current_tab">
+   <property name="text">
+    <string>&amp;Close current tab</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
    </property>
   </action>
  </widget>

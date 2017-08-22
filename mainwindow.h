@@ -66,6 +66,8 @@ private slots:
 
     void on_postButton_clicked();
 
+    void on_action_Close_current_tab_triggered();
+
 private:
     Ui::MainWindow *ui;
 };
