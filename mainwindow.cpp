@@ -140,6 +140,13 @@ void MainWindow::on_topic_list_itemActivated(QTreeWidgetItem *item)
     if(item->text(0) == ""){
         return;
     }
+    for(int i=0; i<ui->topic_tab_widget->count(); i++){
+        auto *topic = static_cast<topic_view*>(ui->topic_tab_widget->widget(i));
+        if(topic->getTopicID() == item->text(0)){
+            ui->topic_tab_widget->setCurrentIndex(i);
+            return;
+        }
+    }
     int pos = ui->topic_tab_widget->currentIndex();
     this->back_topic->loadTopic(item->text(0));
     ui->topic_tab_widget->insertTab(pos + 1, this->back_topic, item->text(2));
