@@ -68,6 +68,10 @@ private slots:
 
     void on_action_Close_current_tab_triggered();
 
+    void on_actionMove_to_the_right_tab_triggered();
+
+    void on_actionMove_to_the_left_tab_triggered();
+
 private:
     Ui::MainWindow *ui;
 };

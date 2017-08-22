@@ -254,3 +254,13 @@ void MainWindow::on_action_Close_current_tab_triggered()
 {
     this->on_topic_tab_widget_tabCloseRequested(ui->topic_tab_widget->currentIndex());
 }
+
+void MainWindow::on_actionMove_to_the_right_tab_triggered()
+{
+    ui->topic_tab_widget->setCurrentIndex(ui->topic_tab_widget->currentIndex()+1);
+}
+
+void MainWindow::on_actionMove_to_the_left_tab_triggered()
+{
+    ui->topic_tab_widget->setCurrentIndex(ui->topic_tab_widget->currentIndex()-1);
+}
