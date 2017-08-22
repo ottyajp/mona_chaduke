@@ -257,10 +257,18 @@ void MainWindow::on_action_Close_current_tab_triggered()
 
 void MainWindow::on_actionMove_to_the_right_tab_triggered()
 {
-    ui->topic_tab_widget->setCurrentIndex(ui->topic_tab_widget->currentIndex()+1);
+    if(ui->topic_tab_widget->currentIndex() == ui->topic_tab_widget->count()-1){
+        ui->topic_tab_widget->setCurrentIndex(0);
+    }else{
+        ui->topic_tab_widget->setCurrentIndex(ui->topic_tab_widget->currentIndex()+1);
+    }
 }
 
 void MainWindow::on_actionMove_to_the_left_tab_triggered()
 {
-    ui->topic_tab_widget->setCurrentIndex(ui->topic_tab_widget->currentIndex()-1);
+    if(ui->topic_tab_widget->currentIndex() == 0){
+        ui->topic_tab_widget->setCurrentIndex(ui->topic_tab_widget->count()-1);
+    }else{
+        ui->topic_tab_widget->setCurrentIndex(ui->topic_tab_widget->currentIndex()-1);
+    }
 }
